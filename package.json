@@ -1,0 +1,35 @@
+{
+  "name": "convergence-messages",
+  "version": "1.0.0-SNAPSHOT",
+  "description": "Convergence Messages",
+  "tags": [
+    "Convergence",
+    "Messages"
+  ],
+  "author": "Convergence Labs",
+  "homepage": "http://www.convergencelabs.com",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.convergencelabs.tech/shared/convergence-messages.git"
+  },
+  "bugs": "https://gitlab.convergencelabs.tech/shared/convergence-messages/issues",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "gulp",
+    "timestamp": "gulp bump"
+  },
+  "publishConfig": {
+    "registry": "https://nexus.convergencelabs.tech/repository/convergence-npm/"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-bump": "^2.1.0",
+    "gulp-protobufjs": "^1.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "mkdirp": "^0.5.0",
+    "protobufjs": "^5.0.1"
+  }
+}
