@@ -1,23 +1,14 @@
 const gulp = require('gulp');
 
 const del = require('del');
-const gulpprotobuf = require('gulp-protobufjs');
 const fs = require('fs');
+const bump = require('gulp-bump');
 
 const packageJson = JSON.parse(fs.readFileSync('./package.json'));
 
-gulp.task('default', ["build"]);
+gulp.task('default', []);
 
-gulp.task('build', function () {
-  return gulp.src('src/**/*.proto')
-    .pipe(gulpprotobuf({
-		target: 'commonjs'
-	}))
-    .pipe(gulp.dest('build/'));
-});
-
-
-gulp.task('release', ['build'], function () {
+gulp.task('release', function () {
   // you will need to have the environment var GITHUB_TOKEN set to a personal access token from
   // https://github.com/settings/tokens
   gulp.src(["build/*"])
@@ -32,17 +23,12 @@ gulp.task('release', ['build'], function () {
 gulp.task('bump', function(){
     gulp.src('./package.json')
         .pipe(bump({version: packageJson.version + '.' + new Date().getTime()}))
-        .pipe(gulp.dest('./'));
-});
-
-gulp.task('copyPackage', function(){
-    gulp.src('./package.json')
-        .pipe((gulp.dest('build')))
+        .pipe(gulp.dest('./dist/'));
 });
 
 /**
  * Removes all build artifacts.
  */
 gulp.task('clean', function () {
-  return del(["build"]);
+  return del(["dist"]);
 });
