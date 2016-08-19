@@ -18,7 +18,7 @@ node {
           sh '''
             mkdir dist
             mkdir -p src/main/java/com/convergencelabs/messages
-            protoc proto_files/test.proto --proto_path=proto_files --java_out=src/main/java/com/convergencelabs/messages --js_out=dist
+            protoc proto_files/test.proto --proto_path=proto_files --java_out=src/main/java/com/convergencelabs/messages --js_out=import_style=commonjs:dist
 		  '''
         }
       }
