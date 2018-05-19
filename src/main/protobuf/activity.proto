@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package convergence.protocol;
+
+message ActivityJoinMessage {
+  string activityId = 1;
+  map<string, string> state = 2;
+}
+
+message ActivityLeaveMessage {
+  string activityId = 1;
+}
+
+message ActivityParticipantsRequestMessage {
+  string activityId = 1;
+}
+
+message ActivitySetStateMessage {
+  string activityId = 1;
+  map<string, string> state = 2;
+}
+
+message ActivityRemoveStateMessage {
+  string activityId = 1;
+  repeated string keys = 2;
+}
+
+message ActivityClearStateMessage {
+  string activityId = 1;
+}

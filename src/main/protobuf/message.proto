@@ -1,0 +1,222 @@
+syntax = "proto3";
+
+package convergence.protocol;
+
+import "google/protobuf/any.proto";
+
+
+
+message MessageEnvelope {
+
+  google.protobuf.Any body = 1;
+  string responseId = 2;
+  string requestId = 3;
+
+  enum MessageType {
+    Error = 0;
+
+    Ping = 1;
+    Pong = 2;
+
+    HandshakeRequest = 3;
+    HandshakeResponse = 4;
+
+    PasswordAuthRequest = 5;
+    TokenAuthRequest = 6;
+    AnonymousAuthRequest = 7;
+    ReconnectAuthRequest = 8;
+
+    AuthenticationResponse = 10;
+
+    // Models
+    OpenRealTimeModelRequest = 100;
+    OpenRealTimeModelResponse = 101;
+
+    CloseRealTimeModelRequest = 102;
+    CloseRealTimeModelResponse = 103;
+
+    CreateRealTimeModelRequest = 104;
+    CreateRealTimeModelResponse = 105;
+
+    DeleteRealtimeModelRequest = 106;
+    DeleteRealtimeModelResponse = 107;
+
+    ForceCloseRealTimeModel = 108;
+
+    RemoteClientOpenedModel = 109;
+    RemoteClientClosedModel = 110;
+
+    ModelAutoCreateConfigRequest = 111;
+    ModelAutoCreateConfigResponse = 112;
+
+    RemoteOperation = 113;
+
+    OperationSubmission = 114;
+    OperationAck = 115;
+
+    PublishReference = 116;
+    SetReference = 117;
+    ClearReference = 118;
+    UnpublishReference = 119;
+
+    ReferencePublished = 120;
+    ReferenceSet = 121;
+    ReferenceCleared = 122;
+    ReferenceUnpublished = 123;
+
+    ModelsQueryRequest = 124;
+    ModelsQueryResponse = 125;
+
+    HistoricalDataRequest = 126;
+    HistoricalDataResponse = 127;
+
+    HistoricalOperationsRequest = 128;
+    HistoricalOperationsResponse = 129;
+
+    GetModelPermissionsRequest = 130;
+    GetModelPermissionsResponse = 131;
+
+    SetModelPermissionsRequest = 132;
+    SetModelPermissionsResponse = 133;
+
+    ModelPermissionsChanged = 134;
+
+    // Identity
+    UserLookUpRequest = 200;
+    UserSearchRequest = 201;
+    UserListResponse = 202;
+
+    UserGroupsRequest = 203;
+    UserGroupsResponse = 204;
+
+    UserGroupsForUsersRequest = 205;
+    UserGroupsForUsersResponse = 206;
+
+    // Activity
+    ActivityParticipantsRequest = 300;
+    ActivityParticipantsResponse = 301;
+
+    ActivityJoinRequest = 302;
+    ActivityJoinResponse = 303;
+
+    ActivityLeaveRequest = 304;
+    ActivityLeaveResponse = 305;
+
+    ActivitySessionJoined = 306;
+    ActivitySessionLeft = 307;
+
+    ActivityLocalStateSet = 308;
+    ActivityLocalStateRemoved = 309;
+    ActivityLocalStateCleared = 310;
+
+    ActivityRemoteStateSet = 311;
+    ActivityRemoteStateRemoved = 312;
+    ActivityRemoteStateCleared = 313;
+
+    // Presence
+    PresenceSetState = 400;
+    PresenceRemoveState = 401;
+    PresenceClearState = 402;
+
+    PresenceStateSet = 403;
+    PresenceStateRemoved = 404;
+    PresenceStateCleared = 405;
+
+    PresenceAvailabilityChanged = 406;
+
+    PresenceRequest = 407;
+    PresenceResponse = 408;
+
+    PresenceSubscribeRequest = 409;
+    PresenceSubscribeResponse = 410;
+    PresenceUnsubscribe = 411;
+
+    // Chat
+    CreateChatChannelRequest = 500;
+    CreateChatChannelResponse = 501;
+
+    RemoveChatChannelRequest = 502;
+    RemoveChatChannelResponse = 503;
+    ChatChannelRemoved = 504;
+
+    GetChatChannelsRequest = 505;
+    GetChatChannelsResponse = 506;
+
+    ChatChannelExistsRequest = 507;
+    ChatChannelExistsResponse = 508;
+
+    GetDirectChatChannelsRequest = 509;
+    GetDirectChatChannelsResponse = 510;
+
+    GetJoinedChatChannelsRequest = 511;
+    GetJoinedChatChannelsResponse = 512;
+
+    SearchChatChannelsRequest = 513;
+    SearchChatChannelsResponse = 514;
+
+    JoinChatChannelRequest = 515;
+    JoinChatChannelResponse = 516;
+    UserJoinedChatChannel = 517;
+
+    LeaveChatChannelRequest = 518;
+    LeaveChatChannelResponse = 519;
+    UserLeftChatChannel = 520;
+
+    AddUserToChatChannelRequest = 521;
+    AddUserToChatChannelResponse = 522;
+    UserAddedToChatChannel = 523;
+
+    RemoveUserFromChatChannelRequest = 524;
+    RemoveUserFromChatChannelResponse = 525;
+    UserRemovedFromChatChannel = 526;
+
+    SetChatChannelNameRequest = 527;
+    SetChatChannelNameResponse = 528;
+    ChatChannelNameChanged = 529;
+
+    SetChatChannelTopicRequest = 530;
+    SetChatChannelTopicResponse = 531;
+    ChatChannelTopicChanged = 532;
+
+    MarkChatChannelEventsSeenRequest = 533;
+    MarkChatChannelEventsSeenResponse = 534;
+    ChatChannelEventsMarkedSeen = 535;
+
+    PublishChatMessageRequest = 536;
+    PublishChatMessageResponse = 537;
+    RemoteChatMessage = 538;
+
+    GetChatChannelHistoryRequest = 539;
+    GetChatChannelHistoryResponse = 540;
+
+    // Permissions
+    GetClientPermissionsRequest = 601;
+    GetClientPermissionsResponse = 602;
+
+    AddPermissionsRequest = 603;
+    AddPermissionsResponse = 604;
+
+    RemovePermissionsRequest = 605;
+    RemovePermissionsResponse = 606;
+
+    SetPermissionsRequest = 607;
+    SetPermissionsResponse = 608;
+
+    GetWorldPermissionsRequest = 609;
+    GetWorldPermissionsResponse = 610;
+
+    GetAllUserPermissionsRequest = 611;
+    GetAllUserPermissionsResponse = 612;
+
+    GetUserPermissionsRequest = 613;
+    GetUserPermissionsResponse = 614;
+
+    GetAllGroupPermissionsRequest = 615;
+    GetAllGroupPermissionsResponse = 616;
+
+    GetGroupPermissionsRequest = 617;
+    GetGroupPermissionsResponse = 618;
+  }
+
+  MessageType messageType = 4;
+}

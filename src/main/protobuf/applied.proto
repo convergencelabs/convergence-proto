@@ -1,0 +1,152 @@
+syntax = "proto3";
+
+package convergence.protocol.operations;
+
+import "google/protobuf/timestamp.proto";
+import "operations.proto";
+
+message AppliedStringInsertOperationData {
+  string id = 1;
+  bool noOp = 2;
+  int32 index = 3;
+  string value = 4;
+}
+
+message AppliedStringRemoveOperationData {
+  string id = 1;
+  bool noOp = 2;
+  int32 index = 3;
+  int32 length = 4;
+  string oldValue = 5;
+}
+
+message AppliedStringSetOperationData {
+  string id = 1;
+  bool noOp = 2;
+  string value = 3;
+  string oldValue = 4;
+}
+
+message AppliedArrayInsertOperationData {
+  string id = 1;
+  bool noOp = 2;
+  int32 index = 3;
+  DataValue value = 4;
+}
+
+message AppliedArrayRemoveOperationData {
+  string id = 1;
+  bool noOp = 2;
+  int32 index = 3;
+  DataValue oldValue = 4;
+}
+
+message AppliedArrayReplaceOperationData {
+  string id = 1;
+  bool noOp = 2;
+  int32 index = 3;
+  DataValue value = 4;
+  DataValue oldValue = 5;
+}
+
+message AppliedArrayMoveOperationData {
+  string id = 1;
+  bool noOp = 2;
+  int32 fromIndex = 3;
+  int32 toIndex = 4;
+}
+
+message AppliedArraySetOperationData {
+  string id = 1;
+  bool noOp = 2;
+  repeated DataValue values = 3;
+  repeated DataValue oldValues = 4;
+}
+
+message AppliedObjectAddPropertyOperationData {
+  string id = 1;
+  bool noOp = 2;
+  string key = 3;
+  DataValue value = 4;
+}
+
+message AppliedObjectSetPropertyOperationData {
+  string id = 1;
+  bool noOp = 2;
+  string key = 3;
+  DataValue value = 4;
+  DataValue oldValue = 5;
+}
+
+message AppliedObjectRemovePropertyOperationData {
+  string id = 1;
+  bool noOp = 2;
+  string key = 3;
+  DataValue oldValue = 4;
+}
+
+message AppliedObjectSetOperationData {
+  string id = 1;
+  bool noOp = 2;
+  map<string, DataValue> values = 3;
+  map<string, DataValue> oldValues = 4;
+}
+
+message AppliedNumberAddOperationData {
+  string id = 1;
+  bool noOp = 2;
+  double value = 3;
+}
+
+message AppliedNumberSetOperationData {
+  string id = 1;
+  bool noOp = 2;
+  double value = 3;
+  double oldValue = 4;
+}
+
+message AppliedBooleanSetOperationData {
+  string id = 1;
+  bool noOp = 2;
+  bool value = 3;
+  bool oldValue = 4;
+}
+
+message AppliedDateSetOperationData {
+  string id = 1;
+  bool noOp = 2;
+  google.protobuf.Timestamp value = 3;
+  google.protobuf.Timestamp oldValue = 4;
+}
+
+message AppliedDiscreteOperationData {
+  oneof operation {
+    AppliedStringInsertOperationData stringInsertOperation = 1;
+    AppliedStringRemoveOperationData stringRemoveOperation = 2;
+    AppliedStringSetOperationData stringSetOperation = 3;
+    AppliedArrayInsertOperationData arrayInsertOperation = 4;
+    AppliedArrayRemoveOperationData arrayRemoveOperation = 5;
+    AppliedArrayReplaceOperationData arrayReplaceOperation = 6;
+    AppliedArrayMoveOperationData arrayMoveOperation = 7;
+    AppliedArraySetOperationData arraySetOperation = 8;
+    AppliedObjectAddPropertyOperationData objectAddPropertyOperation = 9;
+    AppliedObjectSetPropertyOperationData objectSetPropertyOperation = 10;
+    AppliedObjectRemovePropertyOperationData objectRemovePropertyOperation = 11;
+    AppliedObjectSetOperationData objectSetOperation = 12;
+    AppliedNumberAddOperationData numberAddOperation = 13;
+    AppliedNumberSetOperationData numberSetOperation = 14;
+    AppliedBooleanSetOperationData booleanSetOperation = 15;
+    AppliedDateSetOperationData dateSetOperation = 16;
+  }
+}
+
+message AppliedCompoundOperationData {
+  repeated AppliedDiscreteOperationData operations = 1;
+}
+
+message AppliedOperationData {
+  oneof operationData {
+    AppliedDiscreteOperationData discreteOperation = 1;
+    AppliedCompoundOperationData compoundOperation = 2;
+  }
+}

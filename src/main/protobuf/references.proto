@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package convergence.protocol;
+
+message Reference {
+  oneof value {
+    Range range = 1;
+    string key = 2;
+    int32 index = 3;
+  }
+}
+
+message ReferenceData {
+  string sessionId = 1;
+  string valueId = 2;
+  string key = 3;
+
+  Reference reference = 4;
+}
+
+message Range {
+  int32 fromIndex = 1;
+  int32 toIndex = 2;
+}
+
+message PublishReferenceMessage {
+  string resourceId = 1;
+  string id = 2;
+  string key = 3;
+  string refType = 4;
+  repeated Reference references = 5;
+  int32 version = 6;
+}
+
+message RemoteReferencePublishedMessage {
+  string resourceId = 1;
+  string sessionId = 2;
+  string id = 3;
+  string key = 4;
+  string refType = 5;
+  repeated Reference references = 6;
+}
+
+message UnpublishReferenceMessage {
+  string resourceId = 1;
+  string id = 2;
+  string key = 3;
+}
+
+message RemoteReferenceUnpublishedMessage {
+  string resourceId = 1;
+  string id = 2;
+  string key = 3;
+}
+
+message SetReferenceMessage {
+  string resourceId = 1;
+  string id = 2;
+  string key = 3;
+  string refType = 4;
+  repeated Reference references = 5;
+  int32 version = 6;
+}
+
+message ClearReferenceMessage {
+  string resourceId = 1;
+  string id = 2;
+  string key = 3;
+}

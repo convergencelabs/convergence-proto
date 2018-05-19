@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package convergence.protocol;
+
+message SessionKey {
+  string username = 1;
+  string sessionId = 2;
+}
+
+message PasswordAuthRequestMessage {
+  string username = 1;
+  string password = 2;
+}
+
+message TokenAuthRequestMessage {
+  string token = 1;
+}
+
+message ReconnectTokenAuthRequestMessage {
+  string token = 1;
+}
+
+message AnonymousAuthRequestMessage {
+  string displayName = 1;
+}
+
+message AuthenticationResponseMessage {
+  bool success = 1;
+  string username = 2;
+  SessionKey session = 3;
+  string reconnectToken = 4;
+  map<string, string> presenceState = 5 ;
+}

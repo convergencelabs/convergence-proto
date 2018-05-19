@@ -1,0 +1,157 @@
+syntax = "proto3";
+
+package convergence.protocol;
+
+import "google/protobuf/timestamp.proto";
+import "authentication.proto";
+import "operations.proto";
+import "applied.proto";
+
+message OpenRealtimeModelRequestMessage {
+  string modelId = 1;
+  string autoCreateId = 2;
+}
+
+message OpenModelData {
+  ObjectValue data = 1;
+  repeated SessionKey connectedClients = 8;
+}
+
+message ModelPermissionsData {
+  bool read = 1;
+  bool write = 2;
+  bool remove = 3;
+  bool manage = 4;
+}
+
+message OpenRealtimeModelResponseMessage {
+  string resourceId = 1;
+  string modelId = 2;
+  string collection = 3;
+  string valueIdPrefix = 4;
+  int32 version = 5;
+  google.protobuf.Timestamp createdTime = 6;
+  google.protobuf.Timestamp modifiedTime = 7;
+  OpenModelData data = 8;
+  ModelPermissionsData permissions = 9;
+}
+
+message CloseRealtimeModelRequestMessage {
+  string resourceId = 1;
+}
+
+message CreateRealtimeModelRequestMessage {
+  string collectionId = 1;
+  string modelId = 2;
+  ObjectValue data = 3;
+  bool overridePermissions = 4;
+  ModelPermissionsData worldPermissionsData = 5;
+  map<string, ModelPermissionsData> userPermissionsData = 6;
+}
+
+message CreateRealtimeModelSuccessMessage {
+  string modelId = 1;
+}
+
+message DeleteRealtimeModelRequestMessage {
+  string modelId = 1;
+}
+
+message GetModelPermissionsRequestMessage {
+  string modelId = 1;
+}
+
+message GetModelPermissionsResponseMessage {
+  bool overridesCollection = 1;
+  ModelPermissionsData mappedWorld = 2;
+  map<string, ModelPermissionsData> mappedUsers = 3;
+}
+
+message SetModelPermissionsRequestMessage {
+  string modelId = 1;
+  bool overridePermissions = 2;
+  ModelPermissionsData world = 3;
+  bool allUsers = 4;
+  map<string, ModelPermissionsData> users = 5;
+}
+
+message ModelPermissionsChangedMessage {
+  string resourceId = 1;
+  ModelPermissionsData permissions = 2;
+}
+
+message ModelsQueryRequestMessage  {
+  string query = 1;
+}
+
+message ModelResult {
+  string collectionId = 1;
+  string modelId = 2;
+  google.protobuf.Timestamp createdTime = 3;
+  google.protobuf.Timestamp modifiedTime = 4;
+  int32 version = 5;
+  ObjectValue data = 6;
+}
+
+message ModelsQueryResponseMessage {
+  repeated ModelResult models = 1;
+}
+
+message AutoCreateModelConfigRequestMessage {
+  string autoConfigId = 1;
+}
+
+message AutoCreateModelConfigResponseMessage {
+  string collection = 1;
+  ObjectValue data = 2;
+  bool overridePermissions = 3;
+  ModelPermissionsData worldPermissionsData = 4;
+  map<string, ModelPermissionsData> userPermissionsData = 5;
+  bool ephemeral = 6;
+}
+
+message RemoteClientClosedMessage {
+  string resourceId = 1;
+  string sessionId = 2;
+}
+
+message RemoteClientOpenedMessage {
+  string resourceId = 1;
+  string sessionId = 2;
+}
+
+message ModelForceCloseMessage {
+  string resourceId = 1;
+  string sessionId = 2;
+}
+
+message HistoricalDataRequestMessage {
+  string modelId = 1;
+}
+
+message HistoricalDataResponseMessage {
+  string collectionId  = 1;
+  ObjectValue data = 2;
+  int32 version = 3;
+  google.protobuf.Timestamp createdTime = 4;
+  google.protobuf.Timestamp modifiedTime = 5;
+}
+
+message HistoricalOperationRequestMessage {
+  string modelId = 1;
+  int32 first = 2;
+  int32 last = 3;
+}
+
+message ModelOperationData {
+  string modelId = 1;
+  int32 version = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  string username = 4;
+  string sessionId = 5;
+  convergence.protocol.operations.AppliedOperationData operation = 6;
+}
+
+message HistoricalOperationsResponseMessage {
+  repeated ModelOperationData operations = 1;
+}

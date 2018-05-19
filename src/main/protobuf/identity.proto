@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package convergence.protocol;
+
+message UserLookUpMessage {
+  int32 fieldCode = 1;
+  repeated string values = 2;
+}
+
+message UserSearchMessage {
+  repeated int32 fieldCodes = 1;
+  string value = 2;
+  int32 offset = 3;
+  int32 limit = 4;
+  int32 orderFieldCode = 5;
+  int32 sortCode = 6;
+
+}
+
+message DomainUserData {
+  string userType = 1;
+  string username = 2;
+  string firstName = 3;
+  string lastName = 4;
+  string displayName = 5;
+  string email = 6;
+}
+
+message UserGroupData {
+  string id = 1;
+  string description = 2;
+  repeated string members = 3;
+}
+
+message UserListMessage {
+  repeated DomainUserData userData = 1;
+}
+
+message UserGroupsRequestMessage {
+  repeated string ids = 1;
+}
+
+message UserGroupsResponseMessage {
+  repeated UserGroupData groupData  = 1;
+}
+
+message UserGroupsForUsersRequestMessage {
+  repeated string usernames = 1;
+}
+
+message UserGroupsForUsersResponseMessage {
+  message UserList {
+    repeated string users = 1;
+  }
+  map<string, UserList> groups = 1;
+}

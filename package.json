@@ -16,7 +16,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "gulp",
-    "timestamp": "gulp bump"
+    "timestamp": "gulp bump",
+    "build:proto": "mkdirp dist & pbjs -t static-module -w commonjs -o dist/convergence_protocol.js src/main/protobuf/test.proto",
+    "build:typings": "pbts -o compiled.d.ts dist/convergence_protocol.js"
   },
   "publishConfig": {
     "registry": "https://nexus.convergencelabs.tech/repository/convergence-npm/"
@@ -28,6 +30,7 @@
     "gulp-bump": "^2.4.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "protobufjs": "^6.8.6"
   }
 }
