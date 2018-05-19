@@ -2,9 +2,19 @@ syntax = "proto3";
 
 package convergence.protocol;
 
+import "authentication.proto";
+
+message ActivityState {
+  map<string, string> state = 1;
+}
+
 message ActivityJoinMessage {
   string activityId = 1;
   map<string, string> state = 2;
+}
+
+message ActivityJoinResponseMessage {
+  map<string, ActivityState> state = 1;
 }
 
 message ActivityLeaveMessage {
@@ -13,6 +23,21 @@ message ActivityLeaveMessage {
 
 message ActivityParticipantsRequestMessage {
   string activityId = 1;
+}
+
+message ActivityParticipantsResponseMessage {
+  map<string, ActivityState> state = 1;
+}
+
+message ActivitySessionJoinedMessage {
+  string activityId = 1;
+  SessionKey session = 2;
+  map<string, string> state = 3;
+}
+
+message ActivitySessionLeftMessage {
+  string activityId = 1;
+  SessionKey session = 2;
 }
 
 message ActivitySetStateMessage {
@@ -27,4 +52,21 @@ message ActivityRemoveStateMessage {
 
 message ActivityClearStateMessage {
   string activityId = 1;
+}
+
+message ActivityRemoteStateSetMessage {
+  string activityId = 1;
+  SessionKey session = 2;
+  map<string, string> state = 3;
+}
+
+message ActivityRemoteStateRemovedMessage {
+  string activityId = 1;
+  SessionKey session = 2;
+  repeated string keys = 3;
+}
+
+message ActivityRemoteStateClearedMessage {
+  string activityId = 1;
+  SessionKey session = 2;
 }

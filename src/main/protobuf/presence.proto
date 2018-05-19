@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package convergence.protocol;
+
+message PresenceRequestMessage {
+  repeated string usernames = 1;
+}
+
+message SubscribePresenceRequestMessage {
+  repeated string usernames = 1;
+}
+
+message UnsubscribePresenceMessage {
+  string usernames = 1;
+}
+
+message PresenceSetStateMessage {
+  map<string, string> state = 1;
+}
+
+message PresenceRemoveStateMessage {
+  repeated string keys = 1;
+}
+
+message PresenceStateSetMessage {
+  string username = 1;
+  map<string, string> state = 2;
+}
+
+message PresenceStateRemovedMessage {
+  string username = 1;
+  repeated string keys = 2;
+}
+
+message PresenceStateClearedMessage {
+  string username = 1;
+}
+
+message PresenceAvailabilityChangedMessage {
+  string username = 1;
+  bool available = 2;
+}
