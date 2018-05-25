@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package convergence.protocol;
+package com.convergencelabs.protocol;
 
 import "google/protobuf/timestamp.proto";
 import "authentication.proto";
@@ -149,7 +149,7 @@ message ModelOperationData {
   google.protobuf.Timestamp timestamp = 3;
   string username = 4;
   string sessionId = 5;
-  convergence.protocol.operations.AppliedOperationData operation = 6;
+  com.convergencelabs.protocol.operations.AppliedOperationData operation = 6;
 }
 
 message HistoricalOperationsResponseMessage {

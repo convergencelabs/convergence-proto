@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package convergence.protocol;
+package com.convergencelabs.protocol;
 
 message PermissionsSet {
   repeated string permissions = 1;

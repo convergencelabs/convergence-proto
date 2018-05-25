@@ -17,7 +17,7 @@
   "scripts": {
     "build": "gulp",
     "timestamp": "gulp bump",
-    "build:proto": "mkdirp dist & pbjs -t static-module -w commonjs -o dist/convergence_protocol.js -p src/main/protobuf/ activity.proto applied.proto authentication.proto chat.proto connection.proto identitiy.proto message.proto model.proto operations.proto permissions.proto presence.proto references.proto",
+    "build:proto": "mkdirp dist & pbjs -t json -o dist/convergence_protocol.json -p src/main/protobuf/ activity.proto applied.proto authentication.proto chat.proto connection.proto identity.proto message.proto model.proto operations.proto permissions.proto presence.proto references.proto",
     "build:typings": "pbts -o compiled.d.ts dist/convergence_protocol.js"
   },
   "publishConfig": {

@@ -1,14 +1,18 @@
 syntax = "proto3";
 
-package convergence.protocol;
+package com.convergencelabs.protocol;
 
 import "authentication.proto";
+import "scalapb/scalapb.proto";
 
 message ActivityState {
   map<string, string> state = 1;
 }
 
 message ActivityJoinMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Activity";
+
   string activityId = 1;
   map<string, string> state = 2;
 }
