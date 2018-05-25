@@ -1,0 +1,148 @@
+syntax = "proto3";
+
+package convergence.protocol;
+
+import "authentication.proto";
+
+message PublishChatRequestMessage {
+  string channelId = 1;
+  string message = 2;
+}
+
+message RemoteChatMessageMessage {
+  string channelId = 1;
+  int32 eventNo = 2;
+  Timestamp timestamp = 3;
+  SessionKey session = 4;
+  string message = 5;
+}
+
+message CreateChatChannelRequestMessage {
+  string channelId = 1;
+  string channelType = 2;
+  string name = 3;
+  string topic = 4;
+  string privateChannel = 5;
+  repeated string members = 6;
+}
+
+message CreateChatChannelResponseMessage {
+  string channelId = 1;
+}
+
+message RemoveChatChannelRequestMessage {
+  string channelId = 1;
+}
+
+message ChatChannelRemovedMessage {
+  string channelId = 1;
+}
+
+message JoinChatChannelRequestMessage {
+  string channelId = 1;
+}
+
+message ChatChannelInfoData {
+  string id = 1;
+  string channelType = 2;
+  string membership = 3;
+  string name = 4;
+  string topic = 5;
+  Date createdTime = 6;
+  Date lastEventTime = 7;
+  int32 lastEventNo = 8;
+  repeated string members = 9;
+}
+
+message JoinChatChannelResponseMessage {
+  ChatChannelInfoData channelInfo = 1;
+}
+
+message UserJoinedChatChannelMessage {
+  string channelId = 1;
+  int32 eventNumber = 2;
+  Date timestamp = 3;
+  string username = 4;
+}
+
+message AddUserToChatChannelRequestMessage {
+  string channelId = 1;
+  string userToAdd = 2;
+}
+
+message UserAddedToChatChannelMessage {
+  string channelId = 1;
+  int32 eventNumber = 2;
+  Date timestamp = 3;
+  string username = 4;
+  string addedBy = 5;
+}
+
+message ChatChannelJoinedMessage {
+  string channelId = 1;
+}
+
+message LeaveChatChannelRequestMessage {
+  string channelId = 1;
+}
+
+message UserLeftChatChannelMessage {
+  string channelId = 1;
+  int32 eventNumber = 2;
+  Date timestamp = 3;
+  string username = 4;
+}
+
+message RemoveUserFromChatChannelRequestMessage{
+  string channelId = 1;
+  string userToRemove = 2;
+}
+
+message UserRemovedFromChatChannelMessage {
+  string channelId = 1;
+  int32 eventNumber = 2;
+  Date timestamp = 3;
+  string username = 4;
+  string removedBy = 5;
+}
+
+message ChatChannelLeftMessage {
+  string channelId = 1;
+}
+
+message SetChatChannelNameRequestMessage {
+  string channelId = 1;
+  string name = 2;
+}
+
+message ChatChannelNameSetMessage {
+  string channelId = 1;
+  int32 eventNumber = 2;
+  Date timestamp = 3;
+  string setBy = 4;
+  string name = 5;
+}
+
+// Set Topic
+message SetChatChannelTopicRequestMessage {
+  string channelId = 1;
+  string topic = 2;
+}
+
+message ChatChannelTopicSetMessage {
+  string channelId = 1;
+  int32 eventNumber = 2;
+  Date timestamp = 3;
+  string setBy = 4;
+  string topic = 5;
+}
+
+message MarkChatChannelEventsSeenRequestMessage {
+  string channelId = 1;
+  int32 eventNumber = 2;
+}
+
+message ChatChannelEventsMarkedSeenMessage {
+  string channelId = 1;
+  int32 eventNumber = 2;
+}
