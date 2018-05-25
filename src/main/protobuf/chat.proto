@@ -146,3 +146,113 @@ message ChatChannelEventsMarkedSeenMessage {
   string channelId = 1;
   int32 eventNumber = 2;
 }
+
+// history
+message GetJoinedChatChannelsResponseMessage {
+  repeated ChatChannelInfoData chatChannelInfo = 1;
+}
+
+message GetChatChannelsRequestMessage {
+  repeated string ids = 1;
+}
+
+message GetChatChannelsResponseMessage {
+  repeated ChatChannelInfoData chatChannelInfo = 1;
+}
+
+message GetDirectChannelsRequestMessage {
+  repeated string usernames = 1;
+}
+
+message GetDirectChannelsResponseMessage {
+  repeated ChatChannelInfoData chatChannelInfo = 1;
+}
+
+message ChatChannelHistoryRequestMessage {
+  string channelId = 1;
+  int32 limit = 2;
+  int32 offset = 3;
+  bool forward = 4;
+  repeated int32 eventFilter = 5;
+}
+
+message ChatChannelHistoryResponseMessage {
+  repeated ChatChannelInfoData eventData = 1;
+}
+
+message ChatCreatedEventData {
+  string channel = 1;
+  int32 eventNo = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  string user = 4;
+  string name = 5;
+  string topic = 6;
+  repeated string members = 7;
+}
+
+message ChatMessageEventData {
+  string channel = 1;
+  int32 eventNo = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  string user = 4;
+  string message = 5;
+}
+
+message ChatUserJoinedEventData {
+  string channel = 1;
+  int32 eventNo = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  string user = 4;
+}
+
+message ChatUserLeftEventData {
+  string channel = 1;
+  int32 eventNo = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  string user = 4;
+}
+
+message ChatUserAddedEventData {
+  string channel = 1;
+  int32 eventNo = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  string addedUser = 4;
+  string user = 5;
+}
+
+message ChatUserRemovedEventData {
+  string channel = 1;
+  int32 eventNo = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  string removedUser = 4;
+  string user = 5;
+}
+
+message ChatNameChangedEventData {
+  string channel = 1;
+  int32 eventNo = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  string user = 4;
+  string name = 5;
+}
+
+message ChatTopicChangedEventData {
+  string channel = 1;
+  int32 eventNo = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  string user = 4;
+  string topic = 5;
+}
+
+message ChatChannelEventData {
+  oneof event {
+    ChatCreatedEventData created = 1;
+    ChatMessageEventData message = 2;
+    ChatUserJoinedEventData userJoined = 3;
+    ChatUserLeftEventData userLeft = 4;
+    ChatUserAddedEventData userAdded = 5;
+    ChatUserRemovedEventData userRemoved = 6;
+    ChatNameChangedEventData nameChanged = 7;
+    ChatTopicChangedEventData topicChanged = 8;
+  }
+}

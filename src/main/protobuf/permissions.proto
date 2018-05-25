@@ -10,24 +10,24 @@ message AddPermissionsRequestMessage {
   int32 idType = 1;
   string id = 2;
   repeated string world = 3;
-  map<String, PermissionsSet> user = 4;
-  map<String, PermissionsSet> group = 5;
+  map<string, PermissionsSet> user = 4;
+  map<string, PermissionsSet> group = 5;
 }
 
 message RemovePermissionsRequestMessage {
   int32 idType = 1;
   string id = 2;
   repeated string world = 3;
-  map<String, PermissionsSet> user = 4;
-  map<String, PermissionsSet> group = 5;
+  map<string, PermissionsSet> user = 4;
+  map<string, PermissionsSet> group = 5;
 }
 
 message SetPermissionsRequestMessage {
   int32 idType = 1;
   string id = 2;
   repeated string world = 3;
-  map<String, PermissionsSet> user = 4;
-  map<String, PermissionsSet> group = 5;
+  map<string, PermissionsSet> user = 4;
+  map<string, PermissionsSet> group = 5;
 }
 
 message GetClientPermissionsRequestMessage {
@@ -54,7 +54,7 @@ message GetAllUserPermissionsRequestMessage {
 }
 
 message GetAllUserPermissionsReponseMessage {
-  map<String, PermissionsSet> users = 1;
+  map<string, PermissionsSet> users = 1;
 }
 
 message GetAllGroupPermissionsRequestMessage {
@@ -63,7 +63,7 @@ message GetAllGroupPermissionsRequestMessage {
 }
 
 message GetAllGroupPermissionsReponseMessage {
-  map<String, PermissionsSet> groups = 1;
+  map<string, PermissionsSet> groups = 1;
 }
 
 message GetUserPermissionsRequestMessage {
