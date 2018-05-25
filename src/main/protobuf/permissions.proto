@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package convergence.protocol;
+
+message PermissionsSet {
+  repeated string permissions = 1;
+}
+
+message AddPermissionsRequestMessage {
+  int32 idType = 1;
+  string id = 2;
+  repeated string world = 3;
+  map<String, PermissionsSet> user = 4;
+  map<String, PermissionsSet> group = 5;
+}
+
+message RemovePermissionsRequestMessage {
+  int32 idType = 1;
+  string id = 2;
+  repeated string world = 3;
+  map<String, PermissionsSet> user = 4;
+  map<String, PermissionsSet> group = 5;
+}
+
+message SetPermissionsRequestMessage {
+  int32 idType = 1;
+  string id = 2;
+  repeated string world = 3;
+  map<String, PermissionsSet> user = 4;
+  map<String, PermissionsSet> group = 5;
+}
+
+message GetClientPermissionsRequestMessage {
+  int32 idType = 1;
+  string id = 2;
+}
+
+message GetClientPermissionsReponseMessage {
+  repeated string permissions = 1;
+}
+
+message GetWorldPermissionsRequestMessage {
+  int32 idType = 1;
+  string id = 2;
+}
+
+message GetWorldPermissionsReponseMessage {
+  repeated string permissions = 1;
+}
+
+message GetAllUserPermissionsRequestMessage {
+  int32 idType = 1;
+  string id = 2;
+}
+
+message GetAllUserPermissionsReponseMessage {
+  map<String, PermissionsSet> users = 1;
+}
+
+message GetAllGroupPermissionsRequestMessage {
+  int32 idType = 1;
+  string id = 2;
+}
+
+message GetAllGroupPermissionsReponseMessage {
+  map<String, PermissionsSet> groups = 1;
+}
+
+message GetUserPermissionsRequestMessage {
+  int32 idType = 1;
+  string id = 2;
+  string username = 3;
+}
+
+message GetUserPermissionsReponseMessage {
+  repeated string permissions = 1;
+}

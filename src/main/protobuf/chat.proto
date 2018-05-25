@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package convergence.protocol;
 
+import "google/protobuf/timestamp.proto";
 import "authentication.proto";
 
 message PublishChatRequestMessage {
@@ -12,7 +13,7 @@ message PublishChatRequestMessage {
 message RemoteChatMessageMessage {
   string channelId = 1;
   int32 eventNo = 2;
-  Timestamp timestamp = 3;
+  google.protobuf.Timestamp timestamp = 3;
   SessionKey session = 4;
   string message = 5;
 }
@@ -48,8 +49,8 @@ message ChatChannelInfoData {
   string membership = 3;
   string name = 4;
   string topic = 5;
-  Date createdTime = 6;
-  Date lastEventTime = 7;
+  google.protobuf.Timestamp createdTime = 6;
+  google.protobuf.Timestamp lastEventTime = 7;
   int32 lastEventNo = 8;
   repeated string members = 9;
 }
@@ -61,7 +62,7 @@ message JoinChatChannelResponseMessage {
 message UserJoinedChatChannelMessage {
   string channelId = 1;
   int32 eventNumber = 2;
-  Date timestamp = 3;
+  google.protobuf.Timestamp timestamp = 3;
   string username = 4;
 }
 
@@ -73,7 +74,7 @@ message AddUserToChatChannelRequestMessage {
 message UserAddedToChatChannelMessage {
   string channelId = 1;
   int32 eventNumber = 2;
-  Date timestamp = 3;
+  google.protobuf.Timestamp timestamp = 3;
   string username = 4;
   string addedBy = 5;
 }
@@ -89,7 +90,7 @@ message LeaveChatChannelRequestMessage {
 message UserLeftChatChannelMessage {
   string channelId = 1;
   int32 eventNumber = 2;
-  Date timestamp = 3;
+  google.protobuf.Timestamp timestamp = 3;
   string username = 4;
 }
 
@@ -101,7 +102,7 @@ message RemoveUserFromChatChannelRequestMessage{
 message UserRemovedFromChatChannelMessage {
   string channelId = 1;
   int32 eventNumber = 2;
-  Date timestamp = 3;
+  google.protobuf.Timestamp timestamp = 3;
   string username = 4;
   string removedBy = 5;
 }
@@ -118,12 +119,11 @@ message SetChatChannelNameRequestMessage {
 message ChatChannelNameSetMessage {
   string channelId = 1;
   int32 eventNumber = 2;
-  Date timestamp = 3;
+  google.protobuf.Timestamp timestamp = 3;
   string setBy = 4;
   string name = 5;
 }
 
-// Set Topic
 message SetChatChannelTopicRequestMessage {
   string channelId = 1;
   string topic = 2;
@@ -132,7 +132,7 @@ message SetChatChannelTopicRequestMessage {
 message ChatChannelTopicSetMessage {
   string channelId = 1;
   int32 eventNumber = 2;
-  Date timestamp = 3;
+  google.protobuf.Timestamp timestamp = 3;
   string setBy = 4;
   string topic = 5;
 }
