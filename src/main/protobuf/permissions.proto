@@ -75,3 +75,13 @@ message GetUserPermissionsRequestMessage {
 message GetUserPermissionsReponseMessage {
   repeated string permissions = 1;
 }
+
+message GetGroupPermissionsRequestMessage {
+  int32 idType = 1;
+  string id = 2;
+  string groupId = 3;
+}
+
+message GetGroupPermissionsReponseMessage {
+  repeated string permissions = 1;
+}
