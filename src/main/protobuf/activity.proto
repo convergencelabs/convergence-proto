@@ -10,7 +10,7 @@ message ActivityState {
 }
 
 message ActivityJoinMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
   option (scalapb.message).extends = "com.convergencelabs.protocol.Activity";
 
   string activityId = 1;
@@ -18,59 +18,95 @@ message ActivityJoinMessage {
 }
 
 message ActivityJoinResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Activity";
+
   map<string, ActivityState> state = 1;
 }
 
 message ActivityLeaveMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Activity";
+
   string activityId = 1;
 }
 
 message ActivityParticipantsRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Activity";
+
   string activityId = 1;
 }
 
 message ActivityParticipantsResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Activity";
+
   map<string, ActivityState> state = 1;
 }
 
 message ActivitySessionJoinedMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Activity";
+
   string activityId = 1;
   SessionKey session = 2;
   map<string, string> state = 3;
 }
 
 message ActivitySessionLeftMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Activity";
+
   string activityId = 1;
   SessionKey session = 2;
 }
 
 message ActivitySetStateMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Activity";
+
   string activityId = 1;
   map<string, string> state = 2;
 }
 
 message ActivityRemoveStateMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Activity";
+
   string activityId = 1;
   repeated string keys = 2;
 }
 
 message ActivityClearStateMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Activity";
+
   string activityId = 1;
 }
 
 message ActivityRemoteStateSetMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Activity";
+
   string activityId = 1;
   SessionKey session = 2;
   map<string, string> state = 3;
 }
 
 message ActivityRemoteStateRemovedMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Activity";
+
   string activityId = 1;
   SessionKey session = 2;
   repeated string keys = 3;
 }
 
 message ActivityRemoteStateClearedMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Activity";
+
   string activityId = 1;
   SessionKey session = 2;
 }

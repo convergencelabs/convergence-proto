@@ -1,42 +1,97 @@
 syntax = "proto3";
 
 package com.convergencelabs.protocol;
+import "scalapb/scalapb.proto";
+
+message UserPresence {
+  string username = 1;
+  bool available = 2;
+  map<string, string> state = 3;
+
+
+
+  //////// ????????? Do I need clients
+
+
+
+}
 
 message PresenceRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Presence";
+
   repeated string usernames = 1;
+}
+
+message PresenceResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Presence";
+
+  repeated UserPresence userPresences = 1;
 }
 
 message SubscribePresenceRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Presence";
+
   repeated string usernames = 1;
 }
 
+message SubscribePresenceResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Presence";
+
+  repeated UserPresence userPresences = 1;
+}
+
 message UnsubscribePresenceMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Presence";
+
   string usernames = 1;
 }
 
 message PresenceSetStateMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Presence";
+
   map<string, string> state = 1;
 }
 
 message PresenceRemoveStateMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Presence";
+
   repeated string keys = 1;
 }
 
 message PresenceStateSetMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Presence";
+
   string username = 1;
   map<string, string> state = 2;
 }
 
 message PresenceStateRemovedMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Presence";
+
   string username = 1;
   repeated string keys = 2;
 }
 
 message PresenceStateClearedMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Presence";
+
   string username = 1;
 }
 
 message PresenceAvailabilityChangedMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Presence";
+
   string username = 1;
   bool available = 2;
 }

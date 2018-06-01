@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package com.convergencelabs.protocol;
 
+import "authentication.proto";
+import "scalapb/scalapb.proto";
+
 message Reference {
   oneof value {
     Range range = 1;
@@ -11,7 +14,7 @@ message Reference {
 }
 
 message ReferenceData {
-  string sessionId = 1;
+  SessionKey session = 1;
   string valueId = 2;
   string key = 3;
 
@@ -24,6 +27,9 @@ message Range {
 }
 
 message PublishReferenceMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+
   string resourceId = 1;
   string id = 2;
   string key = 3;
@@ -33,8 +39,11 @@ message PublishReferenceMessage {
 }
 
 message RemoteReferencePublishedMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+
   string resourceId = 1;
-  string sessionId = 2;
+  SessionKey session = 2;
   string id = 3;
   string key = 4;
   string refType = 5;
@@ -42,18 +51,28 @@ message RemoteReferencePublishedMessage {
 }
 
 message UnpublishReferenceMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+
   string resourceId = 1;
   string id = 2;
   string key = 3;
 }
 
 message RemoteReferenceUnpublishedMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+
   string resourceId = 1;
-  string id = 2;
-  string key = 3;
+  SessionKey session = 2;
+  string id = 3;
+  string key = 4;
 }
 
 message SetReferenceMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+
   string resourceId = 1;
   string id = 2;
   string key = 3;
@@ -62,8 +81,33 @@ message SetReferenceMessage {
   int32 version = 6;
 }
 
+message RemoteReferenceSetMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+
+  string resourceId = 1;
+  SessionKey session = 2;
+  string id = 3;
+  string key = 4;
+  string refType = 5;
+  repeated Reference references = 6;
+}
+
 message ClearReferenceMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+
   string resourceId = 1;
   string id = 2;
   string key = 3;
+}
+
+message RemoteReferenceClearedMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+
+  string resourceId = 1;
+  SessionKey session = 2;
+  string id = 3;
+  string key = 4;
 }

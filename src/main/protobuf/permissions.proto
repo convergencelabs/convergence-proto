@@ -1,28 +1,48 @@
 syntax = "proto3";
 
 package com.convergencelabs.protocol;
+import "scalapb/scalapb.proto";
 
 message PermissionsSet {
   repeated string permissions = 1;
 }
 
 message AddPermissionsRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   int32 idType = 1;
   string id = 2;
   repeated string world = 3;
   map<string, PermissionsSet> user = 4;
   map<string, PermissionsSet> group = 5;
+}
+
+message AddPermissionsReponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
 }
 
 message RemovePermissionsRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   int32 idType = 1;
   string id = 2;
   repeated string world = 3;
   map<string, PermissionsSet> user = 4;
   map<string, PermissionsSet> group = 5;
+}
+
+message RemovePermissionsReponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
 }
 
 message SetPermissionsRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   int32 idType = 1;
   string id = 2;
   repeated string world = 3;
@@ -30,58 +50,99 @@ message SetPermissionsRequestMessage {
   map<string, PermissionsSet> group = 5;
 }
 
+message SetPermissionsReponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+}
+
 message GetClientPermissionsRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   int32 idType = 1;
   string id = 2;
 }
 
 message GetClientPermissionsReponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   repeated string permissions = 1;
 }
 
 message GetWorldPermissionsRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   int32 idType = 1;
   string id = 2;
 }
 
 message GetWorldPermissionsReponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   repeated string permissions = 1;
 }
 
 message GetAllUserPermissionsRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   int32 idType = 1;
   string id = 2;
 }
 
 message GetAllUserPermissionsReponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   map<string, PermissionsSet> users = 1;
 }
 
 message GetAllGroupPermissionsRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   int32 idType = 1;
   string id = 2;
 }
 
 message GetAllGroupPermissionsReponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   map<string, PermissionsSet> groups = 1;
 }
 
 message GetUserPermissionsRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   int32 idType = 1;
   string id = 2;
   string username = 3;
 }
 
 message GetUserPermissionsReponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   repeated string permissions = 1;
 }
 
 message GetGroupPermissionsRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   int32 idType = 1;
   string id = 2;
   string groupId = 3;
 }
 
 message GetGroupPermissionsReponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Permissions";
+
   repeated string permissions = 1;
 }

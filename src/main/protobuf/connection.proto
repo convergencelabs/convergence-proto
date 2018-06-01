@@ -2,22 +2,38 @@ syntax = "proto3";
 
 package com.convergencelabs.protocol;
 
-message PingMessage {}
+import "scalapb/scalapb.proto";
 
-message PongMessage {}
+message PingMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Protocol";
+}
+
+message PongMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Protocol";
+}
 
 message ErrorMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+
   string code = 1;
   string message = 2;
   map<string, string> details = 3;
 }
 
 message HandshakeRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Protocol";
+
   bool reconnect = 1;
   string reconnectToken = 2;
 }
 
 message HandshakeResponesMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Protocol";
+
   bool success = 1;
 
   message ErrorData {

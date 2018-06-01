@@ -2,12 +2,20 @@ syntax = "proto3";
 
 package com.convergencelabs.protocol;
 
+import "scalapb/scalapb.proto";
+
 message UserLookUpMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Identity";
+
   int32 fieldCode = 1;
   repeated string values = 2;
 }
 
 message UserSearchMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Identity";
+
   repeated int32 fieldCodes = 1;
   string value = 2;
   int32 offset = 3;
@@ -33,22 +41,37 @@ message UserGroupData {
 }
 
 message UserListMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Identity";
+
   repeated DomainUserData userData = 1;
 }
 
 message UserGroupsRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Identity";
+
   repeated string ids = 1;
 }
 
 message UserGroupsResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Identity";
+
   repeated UserGroupData groupData  = 1;
 }
 
 message UserGroupsForUsersRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Identity";
+
   repeated string usernames = 1;
 }
 
 message UserGroupsForUsersResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "com.convergencelabs.protocol.Identity";
+
   message UserList {
     repeated string users = 1;
   }

@@ -5,6 +5,7 @@ trait Outgoing
 trait Request
 trait Response
 
+trait Protocol
 trait Activity
 trait Authentication
 trait Chat
