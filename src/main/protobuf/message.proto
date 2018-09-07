@@ -1,222 +1,230 @@
 syntax = "proto3";
 
-package com.convergencelabs.protocol;
-
-import "google/protobuf/any.proto";
+package convergence.protocol;
 
 
+import "google/protobuf/wrappers.proto";
+
+import "activity.proto";
+import "authentication.proto";
+import "chat.proto";
+import "connection.proto";
+import "identity.proto";
+import "model.proto";
+import "operations.proto";
+import "permissions.proto";
+import "presence.proto";
+import "references.proto";
 
 message MessageEnvelope {
 
-  google.protobuf.Any body = 1;
-  string responseId = 2;
-  string requestId = 3;
+  google.protobuf.Int32Value responseId = 1;
+  google.protobuf.Int32Value requestId = 2;
 
-  enum MessageType {
-    Error = 0;
 
-    Ping = 1;
-    Pong = 2;
+  oneof body {
+    ErrorMessage error = 3;
 
-    HandshakeRequest = 3;
-    HandshakeResponse = 4;
+    PingMessage ping = 4;
+    PongMessage pong = 5;
 
-    PasswordAuthRequest = 5;
-    TokenAuthRequest = 6;
-    AnonymousAuthRequest = 7;
-    ReconnectAuthRequest = 8;
+    HandshakeRequestMessage handshakeRequest = 6;
+    HandshakeResponseMessage handshakeResponse = 7;
 
-    AuthenticationResponse = 10;
+    PasswordAuthRequestMessage passwordAuthRequest = 8;
+    TokenAuthRequestMessage tokenAuthRequest = 9;
+    AnonymousAuthRequestMessage anonymousAuthRequest = 10;
+    ReconnectTokenAuthRequestMessage reconnectAuthRequest = 11;
+
+    AuthenticationResponseMessage authenticationResponse = 12;
 
     // Models
-    OpenRealTimeModelRequest = 100;
-    OpenRealTimeModelResponse = 101;
+    OpenRealtimeModelRequestMessage openRealTimeModelRequest = 100;
+    OpenRealtimeModelResponseMessage openRealTimeModelResponse = 101;
 
-    CloseRealTimeModelRequest = 102;
-    CloseRealTimeModelResponse = 103;
+    CloseRealtimeModelRequestMessage closeRealTimeModelRequest = 102;
+    CloseRealTimeModelSuccessMessage closeRealTimeModelResponse = 103;
 
-    CreateRealTimeModelRequest = 104;
-    CreateRealTimeModelResponse = 105;
+    CreateRealtimeModelRequestMessage createRealTimeModelRequest = 104;
+    CreateRealtimeModelSuccessMessage createRealTimeModelResponse = 105;
 
-    DeleteRealtimeModelRequest = 106;
-    DeleteRealtimeModelResponse = 107;
+    DeleteRealtimeModelRequestMessage deleteRealtimeModelRequest = 106;
+    DeleteRealtimeModelSuccessMessage deleteRealtimeModelResponse = 107;
 
-    ForceCloseRealTimeModel = 108;
+    ModelForceCloseMessage forceCloseRealTimeModel = 108;
 
-    RemoteClientOpenedModel = 109;
-    RemoteClientClosedModel = 110;
+    RemoteClientOpenedMessage remoteClientOpenedModel = 109;
+    RemoteClientClosedMessage remoteClientClosedModel = 110;
 
-    ModelAutoCreateConfigRequest = 111;
-    ModelAutoCreateConfigResponse = 112;
+    AutoCreateModelConfigRequestMessage modelAutoCreateConfigRequest = 111;
+    AutoCreateModelConfigResponseMessage modelAutoCreateConfigResponse = 112;
 
-    RemoteOperation = 113;
+    RemoteOperationMessage remoteOperation = 113;
 
-    OperationSubmission = 114;
-    OperationAck = 115;
+    OperationSubmissionMessage operationSubmission = 114;
+    OperationAcknowledgementMessage operationAck = 115;
 
-    PublishReference = 116;
-    SetReference = 117;
-    ClearReference = 118;
-    UnpublishReference = 119;
+    PublishReferenceMessage publishReference = 116;
+    SetReferenceMessage setReference = 117;
+    ClearReferenceMessage clearReference = 118;
+    UnpublishReferenceMessage unpublishReference = 119;
 
-    ReferencePublished = 120;
-    ReferenceSet = 121;
-    ReferenceCleared = 122;
-    ReferenceUnpublished = 123;
+    RemoteReferencePublishedMessage referencePublished = 120;
+    RemoteReferenceSetMessage referenceSet = 121;
+    RemoteReferenceClearedMessage referenceCleared = 122;
+    RemoteReferenceUnpublishedMessage referenceUnpublished = 123;
 
-    ModelsQueryRequest = 124;
-    ModelsQueryResponse = 125;
+    ModelsQueryRequestMessage modelsQueryRequest = 124;
+    ModelsQueryResponseMessage modelsQueryResponse = 125;
 
-    HistoricalDataRequest = 126;
-    HistoricalDataResponse = 127;
+    HistoricalDataRequestMessage historicalDataRequest = 126;
+    HistoricalDataResponseMessage historicalDataResponse = 127;
 
-    HistoricalOperationsRequest = 128;
-    HistoricalOperationsResponse = 129;
+    HistoricalOperationRequestMessage historicalOperationsRequest = 128;
+    HistoricalOperationsResponseMessage historicalOperationsResponse = 129;
 
-    GetModelPermissionsRequest = 130;
-    GetModelPermissionsResponse = 131;
+    // GetModelPermissionsRequest = 130;
+    // GetModelPermissionsResponse = 131;
 
-    SetModelPermissionsRequest = 132;
-    SetModelPermissionsResponse = 133;
+    // SetModelPermissionsRequest = 132;
+    // SetModelPermissionsResponse = 133;
 
-    ModelPermissionsChanged = 134;
+    // ModelPermissionsChanged = 134;
 
     // Identity
-    UserLookUpRequest = 200;
-    UserSearchRequest = 201;
-    UserListResponse = 202;
+    UserLookUpMessage userLookUpRequest = 200;
+    UserSearchMessage userSearchRequest = 201;
+    UserListMessage userListResponse = 202;
 
-    UserGroupsRequest = 203;
-    UserGroupsResponse = 204;
+    UserGroupsRequestMessage userGroupsRequest = 203;
+    UserGroupsResponseMessage userGroupsResponse = 204;
 
-    UserGroupsForUsersRequest = 205;
-    UserGroupsForUsersResponse = 206;
+    UserGroupsForUsersRequestMessage userGroupsForUsersRequest = 205;
+    UserGroupsForUsersResponseMessage userGroupsForUsersResponse = 206;
 
     // Activity
-    ActivityParticipantsRequest = 300;
-    ActivityParticipantsResponse = 301;
+    ActivityParticipantsRequestMessage activityParticipantsRequest = 300;
+    ActivityParticipantsResponseMessage activityParticipantsResponse = 301;
 
-    ActivityJoinRequest = 302;
-    ActivityJoinResponse = 303;
+    ActivityJoinMessage activityJoinRequest = 302;
+    ActivityJoinResponseMessage activityJoinResponse = 303;
 
-    ActivityLeaveRequest = 304;
-    ActivityLeaveResponse = 305;
+    ActivityLeaveMessage activityLeaveRequest = 304;
+    // ActivityLeaveResponse = 305;
 
-    ActivitySessionJoined = 306;
-    ActivitySessionLeft = 307;
+    ActivitySessionJoinedMessage activitySessionJoined = 306;
+    ActivitySessionLeftMessage activitySessionLeft = 307;
 
-    ActivityLocalStateSet = 308;
-    ActivityLocalStateRemoved = 309;
-    ActivityLocalStateCleared = 310;
+    ActivitySetStateMessage activityLocalStateSet = 308;
+    ActivityRemoveStateMessage activityLocalStateRemoved = 309;
+    ActivityClearStateMessage activityLocalStateCleared = 310;
 
-    ActivityRemoteStateSet = 311;
-    ActivityRemoteStateRemoved = 312;
-    ActivityRemoteStateCleared = 313;
+    ActivityRemoteStateSetMessage activityRemoteStateSet = 311;
+    ActivityRemoteStateRemovedMessage activityRemoteStateRemoved = 312;
+    ActivityRemoteStateClearedMessage activityRemoteStateCleared = 313;
 
     // Presence
-    PresenceSetState = 400;
-    PresenceRemoveState = 401;
-    PresenceClearState = 402;
+    PresenceSetStateMessage presenceSetState = 400;
+    // PresenceRemoveState = 401;
+    PresenceClearStateMessage presenceClearState = 402;
 
-    PresenceStateSet = 403;
-    PresenceStateRemoved = 404;
-    PresenceStateCleared = 405;
+    PresenceStateSetMessage presenceStateSet = 403;
+    // PresenceStateRemoved = 404;
+    PresenceStateClearedMessage presenceStateCleared = 405;
 
-    PresenceAvailabilityChanged = 406;
+    // PresenceAvailabilityChanged = 406;
 
-    PresenceRequest = 407;
-    PresenceResponse = 408;
+    PresenceRequestMessage presenceRequest = 407;
+    PresenceResponseMessage presenceResponse = 408;
 
-    PresenceSubscribeRequest = 409;
-    PresenceSubscribeResponse = 410;
-    PresenceUnsubscribe = 411;
+    SubscribePresenceRequestMessage presenceSubscribeRequest = 409;
+    SubscribePresenceResponseMessage presenceSubscribeResponse = 410;
+    UnsubscribePresenceMessage presenceUnsubscribe = 411;
 
     // Chat
-    CreateChatChannelRequest = 500;
-    CreateChatChannelResponse = 501;
+    CreateChatChannelRequestMessage createChatChannelRequest = 500;
+    CreateChatChannelResponseMessage createChatChannelResponse = 501;
 
-    RemoveChatChannelRequest = 502;
-    RemoveChatChannelResponse = 503;
-    ChatChannelRemoved = 504;
+    RemoveChatChannelRequestMessage removeChatChannelRequest = 502;
+    RemoveChatChannelResponseMessage removeChatChannelResponse = 503;
+    // ChatChannelRemoved = 504;
 
-    GetChatChannelsRequest = 505;
-    GetChatChannelsResponse = 506;
+    GetChatChannelsRequestMessage getChatChannelsRequest = 505;
+    GetChatChannelsResponseMessage getChatChannelsResponse = 506;
 
-    ChatChannelExistsRequest = 507;
-    ChatChannelExistsResponse = 508;
+    ChatChannelsExistsRequestMessage chatChannelExistsRequest = 507;
+    ChatChannelsExistsResponseMessage chatChannelExistsResponse = 508;
 
-    GetDirectChatChannelsRequest = 509;
-    GetDirectChatChannelsResponse = 510;
+    GetDirectChannelsRequestMessage getDirectChatChannelsRequest = 509;
+    GetDirectChannelsResponseMessage getDirectChatChannelsResponse = 510;
 
-    GetJoinedChatChannelsRequest = 511;
-    GetJoinedChatChannelsResponse = 512;
+    GetJoinedChatChannelsRequestMessage getJoinedChatChannelsRequest = 511;
+    GetJoinedChatChannelsResponseMessage getJoinedChatChannelsResponse = 512;
 
-    SearchChatChannelsRequest = 513;
-    SearchChatChannelsResponse = 514;
+    // SearchChatChannelsRequest = 513;
+    // SearchChatChannelsResponse = 514;
 
-    JoinChatChannelRequest = 515;
-    JoinChatChannelResponse = 516;
-    UserJoinedChatChannel = 517;
+    JoinChatChannelRequestMessage joinChatChannelRequest = 515;
+    JoinChatChannelResponseMessage joinChatChannelResponse = 516;
+    UserJoinedChatChannelMessage userJoinedChatChannel = 517;
 
-    LeaveChatChannelRequest = 518;
-    LeaveChatChannelResponse = 519;
-    UserLeftChatChannel = 520;
+    LeaveChatChannelRequestMessage leaveChatChannelRequest = 518;
+    LeaveChatChannelResponseMessage leaveChatChannelResponse = 519;
+    UserLeftChatChannelMessage userLeftChatChannel = 520;
 
-    AddUserToChatChannelRequest = 521;
-    AddUserToChatChannelResponse = 522;
-    UserAddedToChatChannel = 523;
+    AddUserToChatChannelRequestMessage addUserToChatChannelRequest = 521;
+    AddUserToChatChannelResponseMessage addUserToChatChannelResponse = 522;
+    UserAddedToChatChannelMessage userAddedToChatChannel = 523;
 
-    RemoveUserFromChatChannelRequest = 524;
-    RemoveUserFromChatChannelResponse = 525;
-    UserRemovedFromChatChannel = 526;
+    RemoveUserFromChatChannelRequestMessage removeUserFromChatChannelRequest = 524;
+    RemoveUserFromChatChannelResponseMessage removeUserFromChatChannelResponse = 525;
+    UserRemovedFromChatChannelMessage userRemovedFromChatChannel = 526;
 
-    SetChatChannelNameRequest = 527;
-    SetChatChannelNameResponse = 528;
-    ChatChannelNameChanged = 529;
+    SetChatChannelNameRequestMessage setChatChannelNameRequest = 527;
+    SetChatChannelNameResponseMessage setChatChannelNameResponse = 528;
+    ChatChannelNameSetMessage chatChannelNameChanged = 529;
 
-    SetChatChannelTopicRequest = 530;
-    SetChatChannelTopicResponse = 531;
-    ChatChannelTopicChanged = 532;
+    SetChatChannelTopicRequestMessage setChatChannelTopicRequest = 530;
+    SetChatChannelTopicResponseMessage setChatChannelTopicResponse = 531;
+    ChatChannelTopicSetMessage chatChannelTopicChanged = 532;
 
-    MarkChatChannelEventsSeenRequest = 533;
-    MarkChatChannelEventsSeenResponse = 534;
-    ChatChannelEventsMarkedSeen = 535;
+    MarkChatChannelEventsSeenRequestMessage markChatChannelEventsSeenRequest = 533;
+    MarkChatChannelEventsSeenResponseMessage markChatChannelEventsSeenResponse = 534;
+    ChatChannelEventsMarkedSeenMessage chatChannelEventsMarkedSeen = 535;
 
-    PublishChatMessageRequest = 536;
-    PublishChatMessageResponse = 537;
-    RemoteChatMessage = 538;
+    PublishChatRequestMessage publishChatMessageRequest = 536;
+    PublishChatResponseMessage publishChatMessageResponse = 537;
+    RemoteChatMessageMessage remoteChatMessage = 538;
 
-    GetChatChannelHistoryRequest = 539;
-    GetChatChannelHistoryResponse = 540;
+    ChatChannelHistoryRequestMessage getChatChannelHistoryRequest = 539;
+    ChatChannelHistoryResponseMessage getChatChannelHistoryResponse = 540;
 
     // Permissions
-    GetClientPermissionsRequest = 601;
-    GetClientPermissionsResponse = 602;
+    GetClientPermissionsRequestMessage getClientPermissionsRequest = 601;
+    GetClientPermissionsReponseMessage getClientPermissionsResponse = 602;
 
-    AddPermissionsRequest = 603;
-    AddPermissionsResponse = 604;
+    AddPermissionsRequestMessage addPermissionsRequest = 603;
+    AddPermissionsReponseMessage addPermissionsResponse = 604;
 
-    RemovePermissionsRequest = 605;
-    RemovePermissionsResponse = 606;
+    RemovePermissionsRequestMessage removePermissionsRequest = 605;
+    RemovePermissionsReponseMessage removePermissionsResponse = 606;
 
-    SetPermissionsRequest = 607;
-    SetPermissionsResponse = 608;
+    SetPermissionsRequestMessage setPermissionsRequest = 607;
+    SetPermissionsReponseMessage setPermissionsResponse = 608;
 
-    GetWorldPermissionsRequest = 609;
-    GetWorldPermissionsResponse = 610;
+    GetWorldPermissionsRequestMessage getWorldPermissionsRequest = 609;
+    GetWorldPermissionsResponseMessage getWorldPermissionsResponse = 610;
 
-    GetAllUserPermissionsRequest = 611;
-    GetAllUserPermissionsResponse = 612;
+    GetAllUserPermissionsRequestMessage getAllUserPermissionsRequest = 611;
+    GetAllUserPermissionsReponseMessage getAllUserPermissionsResponse = 612;
 
-    GetUserPermissionsRequest = 613;
-    GetUserPermissionsResponse = 614;
+    GetUserPermissionsRequestMessage getUserPermissionsRequest = 613;
+    GetUserPermissionsReponseMessage getUserPermissionsResponse = 614;
 
-    GetAllGroupPermissionsRequest = 615;
-    GetAllGroupPermissionsResponse = 616;
+    GetAllGroupPermissionsRequestMessage getAllGroupPermissionsRequest = 615;
+    GetAllGroupPermissionsReponseMessage getAllGroupPermissionsResponse = 616;
 
-    GetGroupPermissionsRequest = 617;
-    GetGroupPermissionsResponse = 618;
+    GetGroupPermissionsRequestMessage getGroupPermissionsRequest = 617;
+    GetGroupPermissionsReponseMessage getGroupPermissionsResponse = 618;
   }
-
-  MessageType messageType = 4;
 }

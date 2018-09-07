@@ -1,7 +1,8 @@
 syntax = "proto3";
 
-package com.convergencelabs.protocol;
+package convergence.protocol;
 
+import "google/protobuf/wrappers.proto";
 import "authentication.proto";
 import "scalapb/scalapb.proto";
 
@@ -15,7 +16,7 @@ message Reference {
 
 message ReferenceData {
   SessionKey session = 1;
-  string valueId = 2;
+  google.protobuf.StringValue valueId = 2;
   string key = 3;
 
   Reference reference = 4;
@@ -27,54 +28,54 @@ message Range {
 }
 
 message PublishReferenceMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+  option (scalapb.message).extends = "convergence.protocol.Incoming";
+  option (scalapb.message).extends = "convergence.protocol.Model";
 
   string resourceId = 1;
-  string id = 2;
+  google.protobuf.StringValue id = 2;
   string key = 3;
   string refType = 4;
   repeated Reference references = 5;
-  int32 version = 6;
+  google.protobuf.Int32Value version = 6;
 }
 
 message RemoteReferencePublishedMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Model";
 
   string resourceId = 1;
   SessionKey session = 2;
-  string id = 3;
+  google.protobuf.StringValue id = 3;
   string key = 4;
   string refType = 5;
   repeated Reference references = 6;
 }
 
 message UnpublishReferenceMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+  option (scalapb.message).extends = "convergence.protocol.Incoming";
+  option (scalapb.message).extends = "convergence.protocol.Model";
 
   string resourceId = 1;
-  string id = 2;
+  google.protobuf.StringValue id = 2;
   string key = 3;
 }
 
 message RemoteReferenceUnpublishedMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Model";
 
   string resourceId = 1;
   SessionKey session = 2;
-  string id = 3;
+  google.protobuf.StringValue id = 3;
   string key = 4;
 }
 
 message SetReferenceMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+  option (scalapb.message).extends = "convergence.protocol.Incoming";
+  option (scalapb.message).extends = "convergence.protocol.Model";
 
   string resourceId = 1;
-  string id = 2;
+  google.protobuf.StringValue id = 2;
   string key = 3;
   string refType = 4;
   repeated Reference references = 5;
@@ -82,32 +83,32 @@ message SetReferenceMessage {
 }
 
 message RemoteReferenceSetMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Model";
 
   string resourceId = 1;
   SessionKey session = 2;
-  string id = 3;
+  google.protobuf.StringValue id = 3;
   string key = 4;
   string refType = 5;
   repeated Reference references = 6;
 }
 
 message ClearReferenceMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+  option (scalapb.message).extends = "convergence.protocol.Incoming";
+  option (scalapb.message).extends = "convergence.protocol.Model";
 
   string resourceId = 1;
-  string id = 2;
+  google.protobuf.StringValue id = 2;
   string key = 3;
 }
 
 message RemoteReferenceClearedMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Model";
 
   string resourceId = 1;
   SessionKey session = 2;
-  string id = 3;
+  google.protobuf.StringValue id = 3;
   string key = 4;
 }

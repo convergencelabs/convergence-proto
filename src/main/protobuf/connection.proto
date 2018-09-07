@@ -1,21 +1,22 @@
 syntax = "proto3";
 
-package com.convergencelabs.protocol;
+package convergence.protocol;
 
+import "google/protobuf/wrappers.proto";
 import "scalapb/scalapb.proto";
 
 message PingMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Protocol";
+  option (scalapb.message).extends = "convergence.protocol.Protocol";
 }
 
 message PongMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Protocol";
+  option (scalapb.message).extends = "convergence.protocol.Protocol";
 }
 
 message ErrorMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Incoming";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Response";
 
   string code = 1;
   string message = 2;
@@ -23,16 +24,16 @@ message ErrorMessage {
 }
 
 message HandshakeRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Protocol";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Protocol";
 
   bool reconnect = 1;
-  string reconnectToken = 2;
+  google.protobuf.StringValue reconnectToken = 2;
 }
 
-message HandshakeResponesMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Protocol";
+message HandshakeResponseMessage {
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Protocol";
 
   bool success = 1;
 
@@ -42,7 +43,7 @@ message HandshakeResponesMessage {
   }
 
   ErrorData error = 2;
-  bool retryOk = 3;
+  google.protobuf.BoolValue retryOk = 3;
 
   message ProtocolConfigData {
     bool heartbeatEnabled = 1;

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package com.convergencelabs.protocol.operations;
+package convergence.protocol.operations;
 
 import "google/protobuf/timestamp.proto";
 import "operations.proto";

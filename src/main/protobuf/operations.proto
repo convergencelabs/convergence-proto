@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package com.convergencelabs.protocol;
+package convergence.protocol;
 
 import "google/protobuf/timestamp.proto";
 import "authentication.proto";
@@ -181,8 +181,8 @@ message CompoundOperationData {
 }
 
 message OperationSubmissionMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Incoming";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+  option (scalapb.message).extends = "convergence.protocol.Incoming";
+  option (scalapb.message).extends = "convergence.protocol.Model";
 
   string resourceId = 1;
   string sequenceNumber = 2;
@@ -195,8 +195,8 @@ message OperationSubmissionMessage {
 }
 
 message OperationAcknowledgementMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Model";
 
   string resourceId = 1;
   int32 seqNo = 2;
@@ -205,8 +205,8 @@ message OperationAcknowledgementMessage {
 }
 
 message RemoteOperationMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Model";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Model";
 
   string resourceId = 1;
   SessionKey session = 2;

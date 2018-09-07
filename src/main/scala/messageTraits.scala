@@ -1,4 +1,4 @@
-package com.convergencelabs.protocol
+package convergence.protocol
 
 trait Incoming
 trait Outgoing

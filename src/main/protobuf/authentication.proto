@@ -1,7 +1,8 @@
 syntax = "proto3";
 
-package com.convergencelabs.protocol;
+package convergence.protocol;
 
+import "google/protobuf/wrappers.proto";
 import "scalapb/scalapb.proto";
 
 message SessionKey {
@@ -10,41 +11,41 @@ message SessionKey {
 }
 
 message PasswordAuthRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Authentication";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Authentication";
 
   string username = 1;
   string password = 2;
 }
 
 message TokenAuthRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Authentication";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Authentication";
 
   string token = 1;
 }
 
 message ReconnectTokenAuthRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Authentication";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Authentication";
 
   string token = 1;
 }
 
 message AnonymousAuthRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Authentication";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Authentication";
 
-  string displayName = 1;
+  google.protobuf.StringValue displayName = 1;
 }
 
 message AuthenticationResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Authentication";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Authentication";
 
   bool success = 1;
-  string username = 2;
+  google.protobuf.StringValue username = 2;
   SessionKey session = 3;
-  string reconnectToken = 4;
+  google.protobuf.StringValue reconnectToken = 4;
   map<string, string> presenceState = 5 ;
 }

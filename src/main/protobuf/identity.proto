@@ -1,37 +1,38 @@
 syntax = "proto3";
 
-package com.convergencelabs.protocol;
+package convergence.protocol;
 
+import "google/protobuf/wrappers.proto";
 import "scalapb/scalapb.proto";
 
 message UserLookUpMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Identity";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Identity";
 
   int32 fieldCode = 1;
   repeated string values = 2;
 }
 
 message UserSearchMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Identity";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Identity";
 
   repeated int32 fieldCodes = 1;
   string value = 2;
-  int32 offset = 3;
-  int32 limit = 4;
-  int32 orderFieldCode = 5;
-  int32 sortCode = 6;
+  google.protobuf.Int32Value offset = 3;
+  google.protobuf.Int32Value limit = 4;
+  google.protobuf.Int32Value orderFieldCode = 5;
+  google.protobuf.Int32Value sortCode = 6;
 
 }
 
 message DomainUserData {
   string userType = 1;
   string username = 2;
-  string firstName = 3;
-  string lastName = 4;
-  string displayName = 5;
-  string email = 6;
+  google.protobuf.StringValue firstName = 3;
+  google.protobuf.StringValue  lastName = 4;
+  google.protobuf.StringValue  displayName = 5;
+  google.protobuf.StringValue  email = 6;
 }
 
 message UserGroupData {
@@ -41,36 +42,36 @@ message UserGroupData {
 }
 
 message UserListMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Identity";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Identity";
 
   repeated DomainUserData userData = 1;
 }
 
 message UserGroupsRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Identity";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Identity";
 
   repeated string ids = 1;
 }
 
 message UserGroupsResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Identity";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Identity";
 
   repeated UserGroupData groupData  = 1;
 }
 
 message UserGroupsForUsersRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Identity";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Identity";
 
   repeated string usernames = 1;
 }
 
 message UserGroupsForUsersResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Identity";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Identity";
 
   message UserList {
     repeated string users = 1;

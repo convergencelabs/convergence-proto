@@ -1,27 +1,28 @@
 syntax = "proto3";
 
-package com.convergencelabs.protocol;
+package convergence.protocol;
 
+import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
 import "authentication.proto";
 import "scalapb/scalapb.proto";
 
 message PublishChatRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
   string message = 2;
 }
 
 message PublishChatResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 }
 
 message RemoteChatMessageMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
   int32 eventNo = 2;
@@ -31,46 +32,46 @@ message RemoteChatMessageMessage {
 }
 
 message CreateChatChannelRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
-  string channelId = 1;
+  google.protobuf.StringValue  channelId = 1;
   string channelType = 2;
   string name = 3;
-  string topic = 4;
-  string privateChannel = 5;
+  google.protobuf.StringValue  topic = 4;
+  google.protobuf.StringValue privateChannel = 5;
   repeated string members = 6;
 }
 
 message CreateChatChannelResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
 }
 
 message RemoveChatChannelRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
 }
 
 message RemoveChatChannelResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 }
 
 message ChatChannelRemovedMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
 }
 
 message JoinChatChannelRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
 }
@@ -88,15 +89,15 @@ message ChatChannelInfoData {
 }
 
 message JoinChatChannelResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   ChatChannelInfoData channelInfo = 1;
 }
 
 message UserJoinedChatChannelMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
   int32 eventNumber = 2;
@@ -105,21 +106,21 @@ message UserJoinedChatChannelMessage {
 }
 
 message AddUserToChatChannelRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
   string userToAdd = 2;
 }
 
 message AddUserToChatChannelResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 }
 
 message UserAddedToChatChannelMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
   int32 eventNumber = 2;
@@ -129,27 +130,27 @@ message UserAddedToChatChannelMessage {
 }
 
 message ChatChannelJoinedMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
 }
 
 message LeaveChatChannelRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
 }
 
 message LeaveChatChannelResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 }
 
 message UserLeftChatChannelMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
   int32 eventNumber = 2;
@@ -158,21 +159,21 @@ message UserLeftChatChannelMessage {
 }
 
 message RemoveUserFromChatChannelRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
   string userToRemove = 2;
 }
 
 message RemoveUserFromChatChannelResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 }
 
 message UserRemovedFromChatChannelMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
   int32 eventNumber = 2;
@@ -182,28 +183,28 @@ message UserRemovedFromChatChannelMessage {
 }
 
 message ChatChannelLeftMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
 }
 
 message SetChatChannelNameRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
   string name = 2;
 }
 
 message SetChatChannelNameResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 }
 
 message ChatChannelNameSetMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
   int32 eventNumber = 2;
@@ -213,21 +214,21 @@ message ChatChannelNameSetMessage {
 }
 
 message SetChatChannelTopicRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
   string topic = 2;
 }
 
 message SetChatChannelTopicResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 }
 
 message ChatChannelTopicSetMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
   int32 eventNumber = 2;
@@ -237,21 +238,21 @@ message ChatChannelTopicSetMessage {
 }
 
 message MarkChatChannelEventsSeenRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
   int32 eventNumber = 2;
 }
 
 message MarkChatChannelEventsSeenResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 }
 
 message ChatChannelEventsMarkedSeenMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Outgoing";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Outgoing";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
   int32 eventNumber = 2;
@@ -259,61 +260,75 @@ message ChatChannelEventsMarkedSeenMessage {
 
 // history
 message GetJoinedChatChannelsRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 }
 
 message GetJoinedChatChannelsResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   repeated ChatChannelInfoData chatChannelInfo = 1;
 }
 
 message GetChatChannelsRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   repeated string ids = 1;
 }
 
 message GetChatChannelsResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   repeated ChatChannelInfoData chatChannelInfo = 1;
 }
 
 message GetDirectChannelsRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   repeated string usernames = 1;
 }
 
 message GetDirectChannelsResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   repeated ChatChannelInfoData chatChannelInfo = 1;
 }
 
 message ChatChannelHistoryRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Request";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
   string channelId = 1;
-  int32 limit = 2;
-  int32 offset = 3;
-  bool forward = 4;
+  google.protobuf.Int32Value limit = 2;
+  google.protobuf.Int32Value offset = 3;
+  google.protobuf.BoolValue forward = 4;
   repeated int32 eventFilter = 5;
 }
 
 message ChatChannelHistoryResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Response";
-  option (scalapb.message).extends = "com.convergencelabs.protocol.Chat";
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
 
-  repeated ChatChannelInfoData eventData = 1;
+  repeated ChatChannelEventData eventData = 1;
+}
+
+message ChatChannelsExistsRequestMessage {
+  option (scalapb.message).extends = "convergence.protocol.Request";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
+
+  repeated string exists = 1;
+}
+
+message ChatChannelsExistsResponseMessage {
+  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "convergence.protocol.Chat";
+
+  repeated bool eventData = 1;
 }
 
 message ChatCreatedEventData {
