@@ -53,8 +53,6 @@ message DataValue {
 }
 
 message StringInsertOperationData {
-  option (scalapb.message).extends = "io.convergence.proto.DiscreteOperationData";
-
   string id = 1;
   bool noOp = 2;
   int32 index = 3;
@@ -62,8 +60,6 @@ message StringInsertOperationData {
 }
 
 message StringRemoveOperationData {
-  option (scalapb.message).extends = "io.convergence.proto.DiscreteOperationData";
-
   string id = 1;
   bool noOp = 2;
   int32 index = 3;
@@ -71,16 +67,12 @@ message StringRemoveOperationData {
 }
 
 message StringSetOperationData {
-  option (scalapb.message).extends = "io.convergence.proto.DiscreteOperationData";
-
   string id = 1;
   bool noOp = 2;
   string value = 3;
 }
 
 message ArrayInsertOperationData {
-  option (scalapb.message).extends = "io.convergence.proto.DiscreteOperationData";
-
   string id = 1;
   bool noOp = 2;
   int32 index = 3;
@@ -88,16 +80,12 @@ message ArrayInsertOperationData {
 }
 
 message ArrayRemoveOperationData {
-  option (scalapb.message).extends = "io.convergence.proto.DiscreteOperationData";
-
   string id = 1;
   bool noOp = 2;
   int32 index = 3;
 }
 
 message ArrayReplaceOperationData {
-  option (scalapb.message).extends = "io.convergence.proto.DiscreteOperationData";
-
   string id = 1;
   bool noOp = 2;
   int32 index = 3;
@@ -105,8 +93,6 @@ message ArrayReplaceOperationData {
 }
 
 message ArrayMoveOperationData {
-  option (scalapb.message).extends = "io.convergence.proto.DiscreteOperationData";
-
   string id = 1;
   bool noOp = 2;
   int32 fromIndex = 3;
@@ -114,16 +100,12 @@ message ArrayMoveOperationData {
 }
 
 message ArraySetOperationData {
-  option (scalapb.message).extends = "io.convergence.proto.DiscreteOperationData";
-
   string id = 1;
   bool noOp = 2;
   repeated DataValue values = 3;
 }
 
 message ObjectAddPropertyOperationData {
-  option (scalapb.message).extends = "io.convergence.proto.DiscreteOperationData";
-
   string id = 1;
   bool noOp = 2;
   string key = 3;
@@ -131,8 +113,6 @@ message ObjectAddPropertyOperationData {
 }
 
 message ObjectSetPropertyOperationData {
-  option (scalapb.message).extends = "io.convergence.proto.DiscreteOperationData";
-
   string id = 1;
   bool noOp = 2;
   string key = 3;
@@ -140,32 +120,24 @@ message ObjectSetPropertyOperationData {
 }
 
 message ObjectRemovePropertyOperationData {
-  option (scalapb.message).extends = "io.convergence.proto.DiscreteOperationData";
-
   string id = 1;
   bool noOp = 2;
   string key = 3;
 }
 
 message ObjectSetOperationData {
-  option (scalapb.message).extends = "io.convergence.proto.DiscreteOperationData";
-
   string id = 1;
   bool noOp = 2;
   map<string, DataValue> values = 3;
 }
 
 message NumberAddOperationData {
-  option (scalapb.message).extends = "io.convergence.proto.DiscreteOperationData";
-
   string id = 1;
   bool noOp = 2;
   double value = 3;
 }
 
 message NumberSetOperationData {
-  option (scalapb.message).extends = "io.convergence.proto.DiscreteOperationData";
-
   string id = 1;
   bool noOp = 2;
   double value = 3;
@@ -208,6 +180,13 @@ message CompoundOperationData {
   repeated DiscreteOperationData operations = 1;
 }
 
+message OperationData {
+  oneof operation {
+    DiscreteOperationData discreteOperation = 1;
+    CompoundOperationData compoundOperation = 2;
+  }
+}
+
 message OperationSubmissionMessage {
   option (scalapb.message).extends = "io.convergence.proto.Incoming";
   option (scalapb.message).extends = "io.convergence.proto.Model";
@@ -216,10 +195,7 @@ message OperationSubmissionMessage {
   string sequenceNumber = 2;
   string version = 3;
 
-  oneof operationData {
-    DiscreteOperationData discreteOperation = 4;
-    CompoundOperationData compoundOperation = 5;
-  }
+  OperationData operation = 4;
 }
 
 message OperationAcknowledgementMessage {

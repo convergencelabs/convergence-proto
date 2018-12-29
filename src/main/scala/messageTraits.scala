@@ -14,6 +14,3 @@ trait Identity
 trait Model
 trait Permissions
 trait Presence
-
-trait OperationData
-trait DiscreteOperationData extends OperationData
