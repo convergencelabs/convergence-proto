@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package convergence.protocol;
+package io.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
 import "scalapb/scalapb.proto";
@@ -11,37 +11,37 @@ message SessionKey {
 }
 
 message PasswordAuthRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Authentication";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Authentication";
 
   string username = 1;
   string password = 2;
 }
 
 message TokenAuthRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Authentication";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Authentication";
 
   string token = 1;
 }
 
 message ReconnectTokenAuthRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Authentication";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Authentication";
 
   string token = 1;
 }
 
 message AnonymousAuthRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Authentication";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Authentication";
 
   google.protobuf.StringValue displayName = 1;
 }
 
 message AuthenticationResponseMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Authentication";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Authentication";
 
   bool success = 1;
   google.protobuf.StringValue username = 2;

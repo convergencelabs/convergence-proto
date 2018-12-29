@@ -1,6 +1,6 @@
 
-scalaVersion := "2.11.8"
-organization := "com.convergencelabs"
+scalaVersion := "2.12.6"
+organization := "io.convergence"
 
 PB.targets in Compile := Seq(
   scalapb.gen() -> (sourceManaged in Compile).value

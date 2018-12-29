@@ -1,22 +1,22 @@
 syntax = "proto3";
 
-package convergence.protocol;
+package io.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
 import "scalapb/scalapb.proto";
 
 message PingMessage {
-  option (scalapb.message).extends = "convergence.protocol.Protocol";
+  option (scalapb.message).extends = "io.convergence.proto.Protocol";
 }
 
 message PongMessage {
-  option (scalapb.message).extends = "convergence.protocol.Protocol";
+  option (scalapb.message).extends = "io.convergence.proto.Protocol";
 }
 
 message ErrorMessage {
-  option (scalapb.message).extends = "convergence.protocol.Incoming";
-  option (scalapb.message).extends = "convergence.protocol.Outgoing";
-  option (scalapb.message).extends = "convergence.protocol.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
 
   string code = 1;
   string message = 2;
@@ -24,16 +24,16 @@ message ErrorMessage {
 }
 
 message HandshakeRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Protocol";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Protocol";
 
   bool reconnect = 1;
   google.protobuf.StringValue reconnectToken = 2;
 }
 
 message HandshakeResponseMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Protocol";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Protocol";
 
   bool success = 1;
 

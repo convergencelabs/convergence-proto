@@ -1,7 +1,7 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.convergencelabs</groupId>
-  <artifactId>convergence-messages</artifactId>
+  <groupId>io.convergence</groupId>
+  <artifactId>convergence-proto</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
   <distributionManagement>

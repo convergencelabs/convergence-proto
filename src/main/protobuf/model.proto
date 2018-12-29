@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package convergence.protocol;
+package io.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
@@ -10,8 +10,8 @@ import "applied.proto";
 import "scalapb/scalapb.proto";
 
 message OpenRealtimeModelRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   google.protobuf.StringValue modelId = 1;
   google.protobuf.Int32Value autoCreateId = 2;
@@ -30,8 +30,8 @@ message ModelPermissionsData {
 }
 
 message OpenRealtimeModelResponseMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
   string modelId = 2;
@@ -45,20 +45,20 @@ message OpenRealtimeModelResponseMessage {
 }
 
 message CloseRealtimeModelRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
 }
 
 message CloseRealTimeModelSuccessMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 }
 
 message CreateRealtimeModelRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string collectionId = 1;
   google.protobuf.StringValue modelId = 2;
@@ -69,34 +69,34 @@ message CreateRealtimeModelRequestMessage {
 }
 
 message CreateRealtimeModelSuccessMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string modelId = 1;
 }
 
 message DeleteRealtimeModelRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string modelId = 1;
 }
 
 message DeleteRealtimeModelSuccessMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 }
 
 message GetModelPermissionsRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string modelId = 1;
 }
 
 message GetModelPermissionsResponseMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   bool overridesCollection = 1;
   ModelPermissionsData mappedWorld = 2;
@@ -104,8 +104,8 @@ message GetModelPermissionsResponseMessage {
 }
 
 message SetModelPermissionsRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string modelId = 1;
   google.protobuf.BoolValue overridePermissions = 2;
@@ -115,21 +115,21 @@ message SetModelPermissionsRequestMessage {
 }
 
 message SetModelPermissionsResponseMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 }
 
 message ModelPermissionsChangedMessage {
-  option (scalapb.message).extends = "convergence.protocol.Outgoing";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
   ModelPermissionsData permissions = 2;
 }
 
 message ModelsQueryRequestMessage  {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string query = 1;
 }
@@ -144,22 +144,22 @@ message ModelResult {
 }
 
 message ModelsQueryResponseMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   repeated ModelResult models = 1;
 }
 
 message AutoCreateModelConfigRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string autoConfigId = 1;
 }
 
 message AutoCreateModelConfigResponseMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string collection = 1;
   ObjectValue data = 2;
@@ -170,39 +170,39 @@ message AutoCreateModelConfigResponseMessage {
 }
 
 message RemoteClientClosedMessage {
-  option (scalapb.message).extends = "convergence.protocol.Outgoing";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
   SessionKey session = 2;
 }
 
 message RemoteClientOpenedMessage {
-  option (scalapb.message).extends = "convergence.protocol.Outgoing";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
   SessionKey session = 2;
 }
 
 message ModelForceCloseMessage {
-  option (scalapb.message).extends = "convergence.protocol.Outgoing";
-  option (scalapb.message).extends = "convergence.protocol.Model";
+  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
   string reason = 2;
 }
 
 message HistoricalDataRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Historical";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Historical";
 
   string modelId = 1;
 }
 
 message HistoricalDataResponseMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Historical";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Historical";
 
   string collectionId  = 1;
   ObjectValue data = 2;
@@ -212,8 +212,8 @@ message HistoricalDataResponseMessage {
 }
 
 message HistoricalOperationRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Historical";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Historical";
 
   string modelId = 1;
   int32 first = 2;
@@ -226,12 +226,12 @@ message ModelOperationData {
   google.protobuf.Timestamp timestamp = 3;
   string username = 4;
   SessionKey session = 5;
-  convergence.protocol.operations.AppliedOperationData operation = 6;
+  io.convergence.proto.operations.AppliedOperationData operation = 6;
 }
 
 message HistoricalOperationsResponseMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Historical";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Historical";
 
   repeated ModelOperationData operations = 1;
 }

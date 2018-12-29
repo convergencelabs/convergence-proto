@@ -1,4 +1,4 @@
-package convergence.protocol
+package io.convergence.proto
 
 trait Incoming
 trait Outgoing
@@ -14,3 +14,6 @@ trait Identity
 trait Model
 trait Permissions
 trait Presence
+
+trait OperationData
+trait DiscreteOperationData extends OperationData

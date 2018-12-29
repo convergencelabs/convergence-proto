@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package convergence.protocol;
+package io.convergence.proto;
 
 import "authentication.proto";
 import "scalapb/scalapb.proto";
@@ -10,44 +10,44 @@ message ActivityState {
 }
 
 message ActivityJoinMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Activity";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
   map<string, string> state = 2;
 }
 
 message ActivityJoinResponseMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Activity";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   map<string, ActivityState> state = 1;
 }
 
 message ActivityLeaveMessage {
-  option (scalapb.message).extends = "convergence.protocol.Incoming";
-  option (scalapb.message).extends = "convergence.protocol.Activity";
+  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
 }
 
 message ActivityParticipantsRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Activity";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
 }
 
 message ActivityParticipantsResponseMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Activity";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   map<string, ActivityState> state = 1;
 }
 
 message ActivitySessionJoinedMessage {
-  option (scalapb.message).extends = "convergence.protocol.Outgoing";
-  option (scalapb.message).extends = "convergence.protocol.Activity";
+  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
   SessionKey session = 2;
@@ -55,39 +55,39 @@ message ActivitySessionJoinedMessage {
 }
 
 message ActivitySessionLeftMessage {
-  option (scalapb.message).extends = "convergence.protocol.Outgoing";
-  option (scalapb.message).extends = "convergence.protocol.Activity";
+  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
   SessionKey session = 2;
 }
 
 message ActivitySetStateMessage {
-  option (scalapb.message).extends = "convergence.protocol.Incoming";
-  option (scalapb.message).extends = "convergence.protocol.Activity";
+  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
   map<string, string> state = 2;
 }
 
 message ActivityRemoveStateMessage {
-  option (scalapb.message).extends = "convergence.protocol.Incoming";
-  option (scalapb.message).extends = "convergence.protocol.Activity";
+  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
   repeated string keys = 2;
 }
 
 message ActivityClearStateMessage {
-  option (scalapb.message).extends = "convergence.protocol.Incoming";
-  option (scalapb.message).extends = "convergence.protocol.Activity";
+  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
 }
 
 message ActivityRemoteStateSetMessage {
-  option (scalapb.message).extends = "convergence.protocol.Outgoing";
-  option (scalapb.message).extends = "convergence.protocol.Activity";
+  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
   SessionKey session = 2;
@@ -95,8 +95,8 @@ message ActivityRemoteStateSetMessage {
 }
 
 message ActivityRemoteStateRemovedMessage {
-  option (scalapb.message).extends = "convergence.protocol.Outgoing";
-  option (scalapb.message).extends = "convergence.protocol.Activity";
+  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
   SessionKey session = 2;
@@ -104,8 +104,8 @@ message ActivityRemoteStateRemovedMessage {
 }
 
 message ActivityRemoteStateClearedMessage {
-  option (scalapb.message).extends = "convergence.protocol.Outgoing";
-  option (scalapb.message).extends = "convergence.protocol.Activity";
+  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
   SessionKey session = 2;

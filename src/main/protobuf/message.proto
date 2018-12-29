@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package convergence.protocol;
+package io.convergence.proto;
 
 
 import "google/protobuf/wrappers.proto";

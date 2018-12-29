@@ -1,21 +1,21 @@
 syntax = "proto3";
 
-package convergence.protocol;
+package io.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
 import "scalapb/scalapb.proto";
 
 message UserLookUpMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Identity";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Identity";
 
   int32 fieldCode = 1;
   repeated string values = 2;
 }
 
 message UserSearchMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Identity";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Identity";
 
   repeated int32 fieldCodes = 1;
   string value = 2;
@@ -42,39 +42,39 @@ message UserGroupData {
 }
 
 message UserListMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Identity";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Identity";
 
   repeated DomainUserData userData = 1;
 }
 
 message UserGroupsRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Identity";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Identity";
 
   repeated string ids = 1;
 }
 
 message UserGroupsResponseMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Identity";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Identity";
 
   repeated UserGroupData groupData  = 1;
 }
 
 message UserGroupsForUsersRequestMessage {
-  option (scalapb.message).extends = "convergence.protocol.Request";
-  option (scalapb.message).extends = "convergence.protocol.Identity";
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Identity";
 
   repeated string usernames = 1;
 }
 
 message UserGroupsForUsersResponseMessage {
-  option (scalapb.message).extends = "convergence.protocol.Response";
-  option (scalapb.message).extends = "convergence.protocol.Identity";
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Identity";
 
-  message UserList {
-    repeated string users = 1;
+  message GroupList {
+    repeated string groups = 1;
   }
-  map<string, UserList> groups = 1;
+  map<string, GroupList> groups = 1;
 }
