@@ -1,5 +1,7 @@
 package io.convergence.proto
 
+import io.convergence.proto.permissions.PermissionType
+
 trait Incoming
 trait Outgoing
 trait Request
@@ -14,3 +16,7 @@ trait Identity
 trait Model
 trait Permissions
 trait Presence
+
+trait PermissionRequest extends Incoming with Request with Permissions  {
+  def idType: PermissionType
+}

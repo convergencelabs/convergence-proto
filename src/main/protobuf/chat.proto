@@ -5,6 +5,7 @@ package io.convergence.proto;
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
 import "authentication.proto";
+import "common.proto";
 import "scalapb/scalapb.proto";
 
 message PublishChatRequestMessage {
@@ -289,7 +290,7 @@ message GetDirectChannelsRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated string usernames = 1;
+  repeated StringList usernames = 1;
 }
 
 message GetDirectChannelsResponseMessage {

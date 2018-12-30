@@ -4,9 +4,11 @@ package io.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
 import "authentication.proto";
 import "operations.proto";
 import "applied.proto";
+import "references.proto";
 import "scalapb/scalapb.proto";
 
 message OpenRealtimeModelRequestMessage {
@@ -19,7 +21,8 @@ message OpenRealtimeModelRequestMessage {
 
 message OpenModelData {
   ObjectValue data = 1;
-  repeated SessionKey connectedClients = 8;
+  repeated SessionKey connectedClients = 2;
+  repeated ReferenceData references = 3;
 }
 
 message ModelPermissionsData {
@@ -64,8 +67,8 @@ message CreateRealtimeModelRequestMessage {
   google.protobuf.StringValue modelId = 2;
   ObjectValue data = 3;
   google.protobuf.BoolValue overridePermissions = 4;
-  ModelPermissionsData worldPermissionsData = 5;
-  map<string, ModelPermissionsData> userPermissionsData = 6;
+  ModelPermissionsData worldPermissions = 5;
+  map<string, ModelPermissionsData> userPermissions = 6;
 }
 
 message CreateRealtimeModelSuccessMessage {
@@ -99,8 +102,8 @@ message GetModelPermissionsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   bool overridesCollection = 1;
-  ModelPermissionsData mappedWorld = 2;
-  map<string, ModelPermissionsData> mappedUsers = 3;
+  ModelPermissionsData worldPermissions = 2;
+  map<string, ModelPermissionsData> userPermissions = 3;
 }
 
 message SetModelPermissionsRequestMessage {
@@ -108,10 +111,11 @@ message SetModelPermissionsRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string modelId = 1;
-  google.protobuf.BoolValue overridePermissions = 2;
-  ModelPermissionsData world = 3;
-  bool allUsers = 4;
-  map<string, ModelPermissionsData> users = 5;
+  google.protobuf.BoolValue overridesCollection = 2;
+  ModelPermissionsData worldPermissions = 3;
+  bool setAllUsers = 4;
+  map<string, ModelPermissionsData> addedUserPermissions = 5;
+  repeated string removedUserPermissions = 6;
 }
 
 message SetModelPermissionsResponseMessage {
@@ -140,7 +144,7 @@ message ModelResult {
   google.protobuf.Timestamp createdTime = 3;
   google.protobuf.Timestamp modifiedTime = 4;
   int32 version = 5;
-  ObjectValue data = 6;
+  google.protobuf.Struct data = 6;
 }
 
 message ModelsQueryResponseMessage {
@@ -154,7 +158,7 @@ message AutoCreateModelConfigRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
-  string autoConfigId = 1;
+  int32 autoConfigId = 1;
 }
 
 message AutoCreateModelConfigResponseMessage {

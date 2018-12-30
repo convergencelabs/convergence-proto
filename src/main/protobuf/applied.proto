@@ -145,7 +145,7 @@ message AppliedCompoundOperationData {
 }
 
 message AppliedOperationData {
-  oneof operationData {
+  oneof operation {
     AppliedDiscreteOperationData discreteOperation = 1;
     AppliedCompoundOperationData compoundOperation = 2;
   }

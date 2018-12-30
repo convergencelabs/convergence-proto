@@ -2,9 +2,7 @@ syntax = "proto3";
 
 package io.convergence.proto;
 
-
 import "google/protobuf/wrappers.proto";
-
 import "activity.proto";
 import "authentication.proto";
 import "chat.proto";
@@ -15,12 +13,12 @@ import "operations.proto";
 import "permissions.proto";
 import "presence.proto";
 import "references.proto";
+import "common.proto";
 
-message MessageEnvelope {
+message ConvergenceMessage {
 
-  google.protobuf.Int32Value responseId = 1;
-  google.protobuf.Int32Value requestId = 2;
-
+  google.protobuf.Int32Value requestId = 1;
+  google.protobuf.Int32Value responseId = 2;
 
   oneof body {
     ErrorMessage error = 3;
@@ -83,13 +81,13 @@ message MessageEnvelope {
     HistoricalOperationRequestMessage historicalOperationsRequest = 128;
     HistoricalOperationsResponseMessage historicalOperationsResponse = 129;
 
-    // GetModelPermissionsRequest = 130;
-    // GetModelPermissionsResponse = 131;
+    GetModelPermissionsRequestMessage getModelPermissionsRequest = 130;
+    GetModelPermissionsResponseMessage getModelPermissionsResponse = 131;
 
-    // SetModelPermissionsRequest = 132;
-    // SetModelPermissionsResponse = 133;
+    SetModelPermissionsRequestMessage setModelPermissionsRequest = 132;
+    SetModelPermissionsResponseMessage setModelPermissionsResponse = 133;
 
-    // ModelPermissionsChanged = 134;
+    ModelPermissionsChangedMessage modelPermissionsChanged = 134;
 
     // Identity
     UserLookUpMessage userLookUpRequest = 200;
@@ -201,30 +199,30 @@ message MessageEnvelope {
 
     // Permissions
     GetClientPermissionsRequestMessage getClientPermissionsRequest = 601;
-    GetClientPermissionsReponseMessage getClientPermissionsResponse = 602;
+    GetClientPermissionsResponseMessage getClientPermissionsResponse = 602;
 
     AddPermissionsRequestMessage addPermissionsRequest = 603;
-    AddPermissionsReponseMessage addPermissionsResponse = 604;
+    AddPermissionsResponseMessage addPermissionsResponse = 604;
 
     RemovePermissionsRequestMessage removePermissionsRequest = 605;
-    RemovePermissionsReponseMessage removePermissionsResponse = 606;
+    RemovePermissionsResponseMessage removePermissionsResponse = 606;
 
     SetPermissionsRequestMessage setPermissionsRequest = 607;
-    SetPermissionsReponseMessage setPermissionsResponse = 608;
+    SetPermissionsResponseMessage setPermissionsResponse = 608;
 
     GetWorldPermissionsRequestMessage getWorldPermissionsRequest = 609;
     GetWorldPermissionsResponseMessage getWorldPermissionsResponse = 610;
 
     GetAllUserPermissionsRequestMessage getAllUserPermissionsRequest = 611;
-    GetAllUserPermissionsReponseMessage getAllUserPermissionsResponse = 612;
+    GetAllUserPermissionsResponseMessage getAllUserPermissionsResponse = 612;
 
     GetUserPermissionsRequestMessage getUserPermissionsRequest = 613;
-    GetUserPermissionsReponseMessage getUserPermissionsResponse = 614;
+    GetUserPermissionsResponseMessage getUserPermissionsResponse = 614;
 
     GetAllGroupPermissionsRequestMessage getAllGroupPermissionsRequest = 615;
-    GetAllGroupPermissionsReponseMessage getAllGroupPermissionsResponse = 616;
+    GetAllGroupPermissionsResponseMessage getAllGroupPermissionsResponse = 616;
 
     GetGroupPermissionsRequestMessage getGroupPermissionsRequest = 617;
-    GetGroupPermissionsReponseMessage getGroupPermissionsResponse = 618;
+    GetGroupPermissionsResponseMessage getGroupPermissionsResponse = 618;
   }
 }

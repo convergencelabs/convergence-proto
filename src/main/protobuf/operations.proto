@@ -192,8 +192,8 @@ message OperationSubmissionMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  string sequenceNumber = 2;
-  string version = 3;
+  int32 sequenceNumber = 2;
+  int32 version = 3;
 
   OperationData operation = 4;
 }
@@ -216,8 +216,5 @@ message RemoteOperationMessage {
   SessionKey session = 2;
   int32 contextversion = 3;
   google.protobuf.Timestamp timestamp = 4;
-  oneof operationData {
-    DiscreteOperationData discreteOperation = 6;
-    CompoundOperationData compoundOperation = 7;
-  }
+  OperationData operation = 5;
 }

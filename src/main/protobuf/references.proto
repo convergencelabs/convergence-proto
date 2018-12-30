@@ -4,13 +4,15 @@ package io.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
 import "authentication.proto";
+import "common.proto";
 import "scalapb/scalapb.proto";
 
-message Reference {
-  oneof value {
-    Range range = 1;
-    string key = 2;
-    int32 index = 3;
+message ReferenceValues {
+  oneof values {
+    Int32List indices = 1;
+    IndexRangeList ranges = 2;
+    StringList properties = 3;
+    StringList elements = 4;
   }
 }
 
@@ -18,11 +20,14 @@ message ReferenceData {
   SessionKey session = 1;
   google.protobuf.StringValue valueId = 2;
   string key = 3;
-
-  Reference reference = 4;
+  ReferenceValues reference = 4;
 }
 
-message Range {
+message IndexRangeList {
+  repeated IndexRange values = 1;
+}
+
+message IndexRange {
   int32 fromIndex = 1;
   int32 toIndex = 2;
 }
@@ -34,9 +39,8 @@ message PublishReferenceMessage {
   string resourceId = 1;
   google.protobuf.StringValue id = 2;
   string key = 3;
-  string refType = 4;
-  repeated Reference references = 5;
-  google.protobuf.Int32Value version = 6;
+  ReferenceValues references = 4;
+  google.protobuf.Int32Value version = 5;
 }
 
 message RemoteReferencePublishedMessage {
@@ -47,8 +51,7 @@ message RemoteReferencePublishedMessage {
   SessionKey session = 2;
   google.protobuf.StringValue id = 3;
   string key = 4;
-  string refType = 5;
-  repeated Reference references = 6;
+  ReferenceValues references = 6;
 }
 
 message UnpublishReferenceMessage {
@@ -77,9 +80,8 @@ message SetReferenceMessage {
   string resourceId = 1;
   google.protobuf.StringValue id = 2;
   string key = 3;
-  string refType = 4;
-  repeated Reference references = 5;
-  int32 version = 6;
+  ReferenceValues references = 4;
+  int32 version = 5;
 }
 
 message RemoteReferenceSetMessage {
@@ -90,8 +92,7 @@ message RemoteReferenceSetMessage {
   SessionKey session = 2;
   google.protobuf.StringValue id = 3;
   string key = 4;
-  string refType = 5;
-  repeated Reference references = 6;
+  ReferenceValues references = 5;
 }
 
 message ClearReferenceMessage {

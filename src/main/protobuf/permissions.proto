@@ -3,67 +3,68 @@ syntax = "proto3";
 package io.convergence.proto;
 import "scalapb/scalapb.proto";
 
+enum PermissionType {
+  UNSET = 0;
+  CHAT = 1;
+}
+
 message PermissionsSet {
   repeated string permissions = 1;
 }
 
 message AddPermissionsRequestMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Permissions";
+  option (scalapb.message).extends = "io.convergence.proto.PermissionRequest";
 
-  int32 idType = 1;
+  PermissionType idType = 1;
   string id = 2;
   repeated string world = 3;
   map<string, PermissionsSet> user = 4;
   map<string, PermissionsSet> group = 5;
 }
 
-message AddPermissionsReponseMessage {
+message AddPermissionsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Permissions";
 }
 
 message RemovePermissionsRequestMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Permissions";
+  option (scalapb.message).extends = "io.convergence.proto.PermissionRequest";
 
-  int32 idType = 1;
+  PermissionType idType = 1;
   string id = 2;
   repeated string world = 3;
   map<string, PermissionsSet> user = 4;
   map<string, PermissionsSet> group = 5;
 }
 
-message RemovePermissionsReponseMessage {
+message RemovePermissionsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Permissions";
 }
 
 message SetPermissionsRequestMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Permissions";
+  option (scalapb.message).extends = "io.convergence.proto.PermissionRequest";
 
-  int32 idType = 1;
+  PermissionType idType = 1;
   string id = 2;
   repeated string world = 3;
   map<string, PermissionsSet> user = 4;
   map<string, PermissionsSet> group = 5;
 }
 
-message SetPermissionsReponseMessage {
+message SetPermissionsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Permissions";
 }
 
 message GetClientPermissionsRequestMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Permissions";
+  option (scalapb.message).extends = "io.convergence.proto.PermissionRequest";
 
-  int32 idType = 1;
+  PermissionType idType = 1;
   string id = 2;
 }
 
-message GetClientPermissionsReponseMessage {
+message GetClientPermissionsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Permissions";
 
@@ -71,10 +72,9 @@ message GetClientPermissionsReponseMessage {
 }
 
 message GetWorldPermissionsRequestMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Permissions";
+  option (scalapb.message).extends = "io.convergence.proto.PermissionRequest";
 
-  int32 idType = 1;
+  PermissionType idType = 1;
   string id = 2;
 }
 
@@ -86,14 +86,13 @@ message GetWorldPermissionsResponseMessage {
 }
 
 message GetAllUserPermissionsRequestMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Permissions";
+  option (scalapb.message).extends = "io.convergence.proto.PermissionRequest";
 
-  int32 idType = 1;
+  PermissionType idType = 1;
   string id = 2;
 }
 
-message GetAllUserPermissionsReponseMessage {
+message GetAllUserPermissionsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Permissions";
 
@@ -101,14 +100,13 @@ message GetAllUserPermissionsReponseMessage {
 }
 
 message GetAllGroupPermissionsRequestMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Permissions";
+  option (scalapb.message).extends = "io.convergence.proto.PermissionRequest";
 
-  int32 idType = 1;
+  PermissionType idType = 1;
   string id = 2;
 }
 
-message GetAllGroupPermissionsReponseMessage {
+message GetAllGroupPermissionsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Permissions";
 
@@ -116,15 +114,14 @@ message GetAllGroupPermissionsReponseMessage {
 }
 
 message GetUserPermissionsRequestMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Permissions";
+  option (scalapb.message).extends = "io.convergence.proto.PermissionRequest";
 
-  int32 idType = 1;
+  PermissionType idType = 1;
   string id = 2;
   string username = 3;
 }
 
-message GetUserPermissionsReponseMessage {
+message GetUserPermissionsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Permissions";
 
@@ -132,15 +129,14 @@ message GetUserPermissionsReponseMessage {
 }
 
 message GetGroupPermissionsRequestMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Permissions";
+  option (scalapb.message).extends = "io.convergence.proto.PermissionRequest";
 
-  int32 idType = 1;
+  PermissionType idType = 1;
   string id = 2;
   string groupId = 3;
 }
 
-message GetGroupPermissionsReponseMessage {
+message GetGroupPermissionsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Permissions";
 
