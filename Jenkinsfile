@@ -3,11 +3,11 @@ sbtPod { label ->
     container('sbt') {
       injectIvyCredentials()
 
-      stage('Compile') {
+      stage('SBT Compile') {
         sh 'sbt compile'
       }
 
-      stage('Publish') {
+      stage('SBT Publish') {
         sh 'sbt publish'
       }
     }
@@ -23,11 +23,11 @@ nodePod { label ->
         sh 'npm install'
       }
 
-      stage('Compile') {
+      stage('NPM Compile') {
         sh 'npm run dist'
       }
 
-      stage('Publish') {
+      stage('NPM Publish') {
         sh 'npm publish npm-dist'
       }
     }

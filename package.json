@@ -20,8 +20,10 @@
     "clean": "gulp clean"
   },
   "publishConfig": {
-    "registry": "https://nexus.convergencelabs.tech/repository/convergence-npm/"
+    "registry": "https://nexus.dev.int.convergencelabs.tech/repository/npm-convergence/"
   },
+  "main": "convergence-proto.js",
+  "types": "convergence-proto.d.ts",
   "dependencies": {
     "protobufjs": "6.8.8"
   },
