@@ -33,7 +33,7 @@ message IndexRange {
 }
 
 message PublishReferenceMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
@@ -44,7 +44,7 @@ message PublishReferenceMessage {
 }
 
 message RemoteReferencePublishedMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
@@ -55,7 +55,7 @@ message RemoteReferencePublishedMessage {
 }
 
 message UnpublishReferenceMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
@@ -64,7 +64,7 @@ message UnpublishReferenceMessage {
 }
 
 message RemoteReferenceUnpublishedMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
@@ -74,7 +74,7 @@ message RemoteReferenceUnpublishedMessage {
 }
 
 message SetReferenceMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
@@ -85,7 +85,7 @@ message SetReferenceMessage {
 }
 
 message RemoteReferenceSetMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
@@ -96,7 +96,7 @@ message RemoteReferenceSetMessage {
 }
 
 message ClearReferenceMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
@@ -105,7 +105,7 @@ message ClearReferenceMessage {
 }
 
 message RemoteReferenceClearedMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;

@@ -13,8 +13,7 @@ message Int32List {
 }
 
 message ErrorMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Incoming";
-  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Response";
 
   string code = 1;

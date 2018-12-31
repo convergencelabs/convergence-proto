@@ -40,33 +40,33 @@ message SubscribePresenceResponseMessage {
 }
 
 message UnsubscribePresenceMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Presence";
 
   string usernames = 1;
 }
 
 message PresenceSetStateMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Presence";
 
   map<string, string> state = 1;
 }
 
 message PresenceRemoveStateMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Presence";
 
   repeated string keys = 1;
 }
 
 message PresenceClearStateMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Presence";
 }
 
 message PresenceStateSetMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Presence";
 
   string username = 1;
@@ -74,7 +74,7 @@ message PresenceStateSetMessage {
 }
 
 message PresenceStateRemovedMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Presence";
 
   string username = 1;
@@ -82,14 +82,14 @@ message PresenceStateRemovedMessage {
 }
 
 message PresenceStateClearedMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Presence";
 
   string username = 1;
 }
 
 message PresenceAvailabilityChangedMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Presence";
 
   string username = 1;

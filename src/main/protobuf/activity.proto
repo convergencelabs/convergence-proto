@@ -25,7 +25,7 @@ message ActivityJoinResponseMessage {
 }
 
 message ActivityLeaveMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
@@ -46,7 +46,7 @@ message ActivityParticipantsResponseMessage {
 }
 
 message ActivitySessionJoinedMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
@@ -55,7 +55,7 @@ message ActivitySessionJoinedMessage {
 }
 
 message ActivitySessionLeftMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
@@ -63,7 +63,7 @@ message ActivitySessionLeftMessage {
 }
 
 message ActivitySetStateMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
@@ -71,7 +71,7 @@ message ActivitySetStateMessage {
 }
 
 message ActivityRemoveStateMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
@@ -79,14 +79,14 @@ message ActivityRemoveStateMessage {
 }
 
 message ActivityClearStateMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Incoming";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
 }
 
 message ActivityRemoteStateSetMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
@@ -95,7 +95,7 @@ message ActivityRemoteStateSetMessage {
 }
 
 message ActivityRemoteStateRemovedMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
@@ -104,7 +104,7 @@ message ActivityRemoteStateRemovedMessage {
 }
 
 message ActivityRemoteStateClearedMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Outgoing";
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
