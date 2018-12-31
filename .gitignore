@@ -5,3 +5,9 @@ target/
 
 dist/
 .idea
+/bin/
+.cache-main
+.classpath
+.project
+.settings
+npm-dist

@@ -1,10 +1,11 @@
 {
-  "name": "convergence-messages",
+  "name": "convergence-proto",
   "version": "1.0.0-SNAPSHOT",
-  "description": "Convergence Messages",
+  "description": "Convergence Protocol Buffers",
   "tags": [
-    "Convergence",
-    "Messages"
+    "convergence",
+    "protocol",
+    "protobuf"
   ],
   "author": "Convergence Labs",
   "homepage": "http://www.convergencelabs.com",
@@ -15,15 +16,15 @@
   "bugs": "https://gitlab.convergencelabs.tech/shared/convergence-messages/issues",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "gulp",
-    "timestamp": "gulp bump",
-    "build:proto": "mkdirp dist & pbjs -t json -o dist/convergence_protocol.json -p src/main/protobuf/ activity.proto applied.proto authentication.proto chat.proto connection.proto identity.proto message.proto model.proto operations.proto permissions.proto presence.proto references.proto",
-    "build:typings": "pbts -o compiled.d.ts dist/convergence_protocol.js"
+    "dist": "gulp dist",
+    "clean": "gulp clean"
   },
   "publishConfig": {
     "registry": "https://nexus.convergencelabs.tech/repository/convergence-npm/"
   },
-  "dependencies": {},
+  "dependencies": {
+    "protobufjs": "6.8.8"
+  },
   "devDependencies": {
     "@babel/core": "7.2.2",
     "@babel/preset-env": "7.2.3",
@@ -31,9 +32,6 @@
     "del": "3.0.0",
     "gulp": "4.0.0",
     "gulp-bump": "3.1.1",
-    "gulp-rename": "1.4.0",
-    "gulp-replace": "1.0.0",
-    "mkdirp": "0.5.1",
-    "protobufjs": "6.8.8"
+    "mkdirp": "0.5.1"
   }
 }
