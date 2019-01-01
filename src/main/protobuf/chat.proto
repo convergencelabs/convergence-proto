@@ -28,7 +28,7 @@ message RemoteChatMessageMessage {
   string channelId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  SessionKey session = 4;
+  string sessionId = 4;
   string message = 5;
 }
 
@@ -36,11 +36,11 @@ message CreateChatChannelRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  google.protobuf.StringValue  channelId = 1;
+  google.protobuf.StringValue channelId = 1;
   string channelType = 2;
-  string name = 3;
-  google.protobuf.StringValue  topic = 4;
-  google.protobuf.StringValue privateChannel = 5;
+  string channelMembership = 3;
+  string name = 4;
+  string topic = 5;
   repeated string members = 6;
 }
 
@@ -85,8 +85,9 @@ message ChatChannelInfoData {
   string topic = 5;
   google.protobuf.Timestamp createdTime = 6;
   google.protobuf.Timestamp lastEventTime = 7;
-  int64 lastEventNo = 8;
-  repeated string members = 9;
+  int64 lastEventNumber = 8;
+  int64 maxSeenEventNumber = 9;
+  repeated string members = 10;
 }
 
 message JoinChatChannelResponseMessage {
@@ -276,7 +277,7 @@ message GetChatChannelsRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated string ids = 1;
+  repeated string channelIds = 1;
 }
 
 message GetChatChannelsResponseMessage {
@@ -290,7 +291,7 @@ message GetDirectChannelsRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated StringList usernames = 1;
+  repeated string usernames = 1;
 }
 
 message GetDirectChannelsResponseMessage {
@@ -308,7 +309,7 @@ message ChatChannelHistoryRequestMessage {
   google.protobuf.Int32Value limit = 2;
   google.protobuf.Int64Value startEvent = 3;
   google.protobuf.BoolValue forward = 4;
-  repeated int32 eventFilter = 5;
+  repeated string eventFilter = 5;
 }
 
 message ChatChannelHistoryResponseMessage {
@@ -322,14 +323,14 @@ message ChatChannelsExistsRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated string exists = 1;
+  repeated string channelIds = 1;
 }
 
 message ChatChannelsExistsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated bool eventData = 1;
+  repeated bool exists = 1;
 }
 
 message ChatCreatedEventData {

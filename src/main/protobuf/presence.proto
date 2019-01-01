@@ -7,8 +7,6 @@ message UserPresence {
   string username = 1;
   bool available = 2;
   map<string, string> state = 3;
-
-  //////// ????????? Do I need clients
 }
 
 message PresenceRequestMessage {
@@ -43,7 +41,7 @@ message UnsubscribePresenceMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Presence";
 
-  string usernames = 1;
+  repeated string usernames = 1;
 }
 
 message PresenceSetStateMessage {

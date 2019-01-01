@@ -92,7 +92,7 @@ message AppliedObjectSetOperationData {
   map<string, DataValue> oldValues = 4;
 }
 
-message AppliedNumberAddOperationData {
+message AppliedNumberDeltaOperationData {
   string id = 1;
   bool noOp = 2;
   double value = 3;
@@ -133,7 +133,7 @@ message AppliedDiscreteOperationData {
     AppliedObjectSetPropertyOperationData objectSetPropertyOperation = 10;
     AppliedObjectRemovePropertyOperationData objectRemovePropertyOperation = 11;
     AppliedObjectSetOperationData objectSetOperation = 12;
-    AppliedNumberAddOperationData numberAddOperation = 13;
+    AppliedNumberDeltaOperationData numberDeltaOperation = 13;
     AppliedNumberSetOperationData numberSetOperation = 14;
     AppliedBooleanSetOperationData booleanSetOperation = 15;
     AppliedDateSetOperationData dateSetOperation = 16;

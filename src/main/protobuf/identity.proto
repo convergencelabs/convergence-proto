@@ -2,14 +2,24 @@ syntax = "proto3";
 
 package io.convergence.proto;
 
+import "common.proto";
 import "google/protobuf/wrappers.proto";
 import "scalapb/scalapb.proto";
+
+enum UserField {
+  UNSET = 0;
+  USERNAME = 1;
+  EMAIL =  2;
+  FIRST_NAME = 3;
+  LAST_NAME = 4;
+  DISPLAY_NAME = 5;
+}
 
 message UserLookUpMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Identity";
 
-  int32 fieldCode = 1;
+  UserField field = 1;
   repeated string values = 2;
 }
 
@@ -17,13 +27,12 @@ message UserSearchMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Identity";
 
-  repeated int32 fieldCodes = 1;
+  repeated UserField fields = 1;
   string value = 2;
   google.protobuf.Int32Value offset = 3;
   google.protobuf.Int32Value limit = 4;
-  google.protobuf.Int32Value orderFieldCode = 5;
-  google.protobuf.Int32Value sortCode = 6;
-
+  UserField orderField = 5;
+  bool ascending = 6;
 }
 
 message DomainUserData {
@@ -73,8 +82,5 @@ message UserGroupsForUsersResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Identity";
 
-  message GroupList {
-    repeated string groups = 1;
-  }
-  map<string, GroupList> groups = 1;
+  map<string, StringList> groups = 1;
 }

@@ -131,7 +131,7 @@ message ObjectSetOperationData {
   map<string, DataValue> values = 3;
 }
 
-message NumberAddOperationData {
+message NumberDeltaOperationData {
   string id = 1;
   bool noOp = 2;
   double value = 3;
@@ -169,7 +169,7 @@ message DiscreteOperationData {
     ObjectSetPropertyOperationData objectSetPropertyOperation = 10;
     ObjectRemovePropertyOperationData objectRemovePropertyOperation = 11;
     ObjectSetOperationData objectSetOperation = 12;
-    NumberAddOperationData numberAddOperation = 13;
+    NumberDeltaOperationData numberDeltaOperation = 13;
     NumberSetOperationData numberSetOperation = 14;
     BooleanSetOperationData booleanSetOperation = 15;
     DateSetOperationData dateSetOperation = 16;

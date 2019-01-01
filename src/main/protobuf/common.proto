@@ -5,7 +5,7 @@ package io.convergence.proto;
 import "scalapb/scalapb.proto";
 
 message StringList {
-  repeated string strings = 1;
+  repeated string values = 1;
 }
 
 message Int32List {

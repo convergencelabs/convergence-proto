@@ -9,7 +9,7 @@ message ActivityState {
   map<string, string> state = 1;
 }
 
-message ActivityJoinMessage {
+message ActivityJoinRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
@@ -50,7 +50,7 @@ message ActivitySessionJoinedMessage {
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
-  SessionKey session = 2;
+  string sessionId = 2;
   map<string, string> state = 3;
 }
 
@@ -59,7 +59,7 @@ message ActivitySessionLeftMessage {
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
-  SessionKey session = 2;
+  string sessionId = 2;
 }
 
 message ActivitySetStateMessage {
@@ -90,7 +90,7 @@ message ActivityRemoteStateSetMessage {
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
-  SessionKey session = 2;
+  string sessionId = 2;
   map<string, string> state = 3;
 }
 
@@ -99,7 +99,7 @@ message ActivityRemoteStateRemovedMessage {
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
-  SessionKey session = 2;
+  string sessionId = 2;
   repeated string keys = 3;
 }
 
@@ -108,5 +108,5 @@ message ActivityRemoteStateClearedMessage {
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
-  SessionKey session = 2;
+  string sessionId = 2;
 }

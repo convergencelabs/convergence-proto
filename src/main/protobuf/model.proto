@@ -19,12 +19,6 @@ message OpenRealtimeModelRequestMessage {
   google.protobuf.Int32Value autoCreateId = 2;
 }
 
-message OpenModelData {
-  ObjectValue data = 1;
-  repeated SessionKey connectedClients = 2;
-  repeated ReferenceData references = 3;
-}
-
 message ModelPermissionsData {
   bool read = 1;
   bool write = 2;
@@ -43,8 +37,10 @@ message OpenRealtimeModelResponseMessage {
   int64 version = 5;
   google.protobuf.Timestamp createdTime = 6;
   google.protobuf.Timestamp modifiedTime = 7;
-  OpenModelData data = 8;
-  ModelPermissionsData permissions = 9;
+  ObjectValue data = 8;
+  repeated string connectedClients = 9;
+  repeated ReferenceData references = 10;
+  ModelPermissionsData permissions = 11;
 }
 
 message CloseRealtimeModelRequestMessage {
@@ -66,7 +62,7 @@ message CreateRealtimeModelRequestMessage {
   string collectionId = 1;
   google.protobuf.StringValue modelId = 2;
   ObjectValue data = 3;
-  google.protobuf.BoolValue overridePermissions = 4;
+  bool overrideWorldPermissions = 4;
   ModelPermissionsData worldPermissions = 5;
   map<string, ModelPermissionsData> userPermissions = 6;
 }
@@ -111,10 +107,10 @@ message SetModelPermissionsRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string modelId = 1;
-  google.protobuf.BoolValue overridesCollection = 2;
+  bool overridesCollection = 2;
   ModelPermissionsData worldPermissions = 3;
-  bool setAllUsers = 4;
-  map<string, ModelPermissionsData> addedUserPermissions = 5;
+  bool removeAllUserPermissionsBeforeSet = 4;
+  map<string, ModelPermissionsData> setUserPermissions = 5;
   repeated string removedUserPermissions = 6;
 }
 
@@ -158,7 +154,7 @@ message AutoCreateModelConfigRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
-  int32 autoConfigId = 1;
+  int32 autoCreateId = 1;
 }
 
 message AutoCreateModelConfigResponseMessage {
@@ -167,10 +163,10 @@ message AutoCreateModelConfigResponseMessage {
 
   string collection = 1;
   ObjectValue data = 2;
-  google.protobuf.BoolValue overridePermissions = 3;
-  ModelPermissionsData worldPermissionsData = 4;
-  map<string, ModelPermissionsData> userPermissionsData = 5;
-  google.protobuf.BoolValue ephemeral = 6;
+  bool overridePermissions = 3;
+  ModelPermissionsData worldPermissions = 4;
+  map<string, ModelPermissionsData> userPermissions = 5;
+  bool ephemeral = 6;
 }
 
 message RemoteClientClosedMessage {
@@ -178,7 +174,7 @@ message RemoteClientClosedMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  SessionKey session = 2;
+  string sessionId = 2;
 }
 
 message RemoteClientOpenedMessage {
@@ -186,7 +182,7 @@ message RemoteClientOpenedMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  SessionKey session = 2;
+  string sessionId = 2;
 }
 
 message ModelForceCloseMessage {
@@ -228,9 +224,8 @@ message ModelOperationData {
   string modelId = 1;
   int64 version = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string username = 4;
-  SessionKey session = 5;
-  io.convergence.proto.operations.AppliedOperationData operation = 6;
+  string sessionId = 4;
+  io.convergence.proto.operations.AppliedOperationData operation = 5;
 }
 
 message HistoricalOperationsResponseMessage {

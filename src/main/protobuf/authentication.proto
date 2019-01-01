@@ -10,42 +10,52 @@ message SessionKey {
   string sessionId = 2;
 }
 
-message PasswordAuthRequestMessage {
+message AuthenticationRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Authentication";
 
+  oneof auth {
+    PasswordAuthRequestMessage password = 1;
+    JwtAuthRequestMessage jwt = 2;
+    AnonymousAuthRequestMessage anonymous = 3;
+    ReconnectTokenAuthRequestMessage reconnect = 4;
+  }
+}
+
+message PasswordAuthRequestMessage {
   string username = 1;
   string password = 2;
 }
 
-message TokenAuthRequestMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Authentication";
-
-  string token = 1;
+message JwtAuthRequestMessage {
+  string jwt = 1;
 }
 
 message ReconnectTokenAuthRequestMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Authentication";
-
   string token = 1;
 }
 
 message AnonymousAuthRequestMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Authentication";
-
   google.protobuf.StringValue displayName = 1;
+}
+
+message AuthSuccess {
+  string username = 1;
+  string sessionId = 2;
+  string reconnectToken = 3;
+  map<string, string> presenceState = 4;
+}
+
+message AuthFailure {
+  string message = 1;
 }
 
 message AuthenticationResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Authentication";
 
-  bool success = 1;
-  google.protobuf.StringValue username = 2;
-  SessionKey session = 3;
-  google.protobuf.StringValue reconnectToken = 4;
-  map<string, string> presenceState = 5 ;
+  oneof response {
+    AuthSuccess success = 1;
+    AuthFailure failure = 2;
+  }
 }

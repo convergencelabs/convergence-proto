@@ -29,12 +29,8 @@ message ConvergenceMessage {
     HandshakeRequestMessage handshakeRequest = 6;
     HandshakeResponseMessage handshakeResponse = 7;
 
-    PasswordAuthRequestMessage passwordAuthRequest = 8;
-    TokenAuthRequestMessage tokenAuthRequest = 9;
-    AnonymousAuthRequestMessage anonymousAuthRequest = 10;
-    ReconnectTokenAuthRequestMessage reconnectAuthRequest = 11;
-
-    AuthenticationResponseMessage authenticationResponse = 12;
+    AuthenticationRequestMessage authenticationRequest = 10;
+    AuthenticationResponseMessage authenticationResponse = 11;
 
     // Models
     OpenRealtimeModelRequestMessage openRealTimeModelRequest = 100;
@@ -104,7 +100,7 @@ message ConvergenceMessage {
     ActivityParticipantsRequestMessage activityParticipantsRequest = 300;
     ActivityParticipantsResponseMessage activityParticipantsResponse = 301;
 
-    ActivityJoinMessage activityJoinRequest = 302;
+    ActivityJoinRequestMessage activityJoinRequest = 302;
     ActivityJoinResponseMessage activityJoinResponse = 303;
 
     ActivityLeaveMessage activityLeaveRequest = 304;
@@ -123,14 +119,14 @@ message ConvergenceMessage {
 
     // Presence
     PresenceSetStateMessage presenceSetState = 400;
-    // PresenceRemoveState = 401;
+    PresenceRemoveStateMessage presenceRemoveState = 401;
     PresenceClearStateMessage presenceClearState = 402;
 
     PresenceStateSetMessage presenceStateSet = 403;
-    // PresenceStateRemoved = 404;
+    PresenceStateRemovedMessage presenceStateRemoved = 404;
     PresenceStateClearedMessage presenceStateCleared = 405;
 
-    // PresenceAvailabilityChanged = 406;
+    PresenceAvailabilityChangedMessage presenceAvailabilityChanged  = 406;
 
     PresenceRequestMessage presenceRequest = 407;
     PresenceResponseMessage presenceResponse = 408;
@@ -145,7 +141,7 @@ message ConvergenceMessage {
 
     RemoveChatChannelRequestMessage removeChatChannelRequest = 502;
     RemoveChatChannelResponseMessage removeChatChannelResponse = 503;
-    // ChatChannelRemoved = 504;
+    ChatChannelRemovedMessage chatChannelRemoved = 504;
 
     GetChatChannelsRequestMessage getChatChannelsRequest = 505;
     GetChatChannelsResponseMessage getChatChannelsResponse = 506;
