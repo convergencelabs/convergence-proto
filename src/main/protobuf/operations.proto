@@ -213,8 +213,8 @@ message RemoteOperationMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  SessionKey session = 2;
-  int64 contextversion = 3;
+  string sessionId = 2;
+  int64 contextVersion = 3;
   google.protobuf.Timestamp timestamp = 4;
   OperationData operation = 5;
 }

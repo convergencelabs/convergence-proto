@@ -5,11 +5,6 @@ package io.convergence.proto;
 import "google/protobuf/wrappers.proto";
 import "scalapb/scalapb.proto";
 
-message SessionKey {
-  string username = 1;
-  string sessionId = 2;
-}
-
 message AuthenticationRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Authentication";

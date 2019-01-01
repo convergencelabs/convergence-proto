@@ -4,7 +4,7 @@ package io.convergence.proto;
 import "scalapb/scalapb.proto";
 
 enum PermissionType {
-  UNSET = 0;
+  PERMISSION_TYPE_NOT_SET = 0;
   CHAT = 1;
 }
 

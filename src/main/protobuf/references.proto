@@ -3,7 +3,6 @@ syntax = "proto3";
 package io.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
-import "authentication.proto";
 import "common.proto";
 import "scalapb/scalapb.proto";
 
@@ -16,20 +15,13 @@ message ReferenceValues {
   }
 }
 
-message ReferenceData {
-  SessionKey session = 1;
-  google.protobuf.StringValue valueId = 2;
-  string key = 3;
-  ReferenceValues reference = 4;
-}
-
 message IndexRangeList {
   repeated IndexRange values = 1;
 }
 
 message IndexRange {
-  int32 fromIndex = 1;
-  int32 toIndex = 2;
+  int32 startIndex = 1;
+  int32 endIndex = 2;
 }
 
 message PublishReferenceMessage {
@@ -37,10 +29,10 @@ message PublishReferenceMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  google.protobuf.StringValue id = 2;
+  google.protobuf.StringValue valueId = 2;
   string key = 3;
   ReferenceValues references = 4;
-  google.protobuf.Int32Value version = 5;
+  int64 version = 5;
 }
 
 message RemoteReferencePublishedMessage {
@@ -48,10 +40,10 @@ message RemoteReferencePublishedMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  SessionKey session = 2;
-  google.protobuf.StringValue id = 3;
-  string key = 4;
-  ReferenceValues references = 6;
+  google.protobuf.StringValue valueId = 2;
+  string key = 3;
+  ReferenceValues references = 4;
+  string sessionId = 5;
 }
 
 message UnpublishReferenceMessage {
@@ -59,7 +51,7 @@ message UnpublishReferenceMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  google.protobuf.StringValue id = 2;
+  google.protobuf.StringValue valueId = 2;
   string key = 3;
 }
 
@@ -68,9 +60,9 @@ message RemoteReferenceUnpublishedMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  SessionKey session = 2;
-  google.protobuf.StringValue id = 3;
-  string key = 4;
+  google.protobuf.StringValue valueId = 2;
+  string key = 3;
+  string sessionId = 4;
 }
 
 message SetReferenceMessage {
@@ -78,10 +70,10 @@ message SetReferenceMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  google.protobuf.StringValue id = 2;
+  google.protobuf.StringValue valueId = 2;
   string key = 3;
   ReferenceValues references = 4;
-  int32 version = 5;
+  int64 version = 5;
 }
 
 message RemoteReferenceSetMessage {
@@ -89,10 +81,10 @@ message RemoteReferenceSetMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  SessionKey session = 2;
-  google.protobuf.StringValue id = 3;
-  string key = 4;
-  ReferenceValues references = 5;
+  google.protobuf.StringValue valueId = 2;
+  string key = 3;
+  ReferenceValues references = 4;
+  string sessionId = 5;
 }
 
 message ClearReferenceMessage {
@@ -100,7 +92,7 @@ message ClearReferenceMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  google.protobuf.StringValue id = 2;
+  google.protobuf.StringValue valueId = 2;
   string key = 3;
 }
 
@@ -109,7 +101,7 @@ message RemoteReferenceClearedMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  SessionKey session = 2;
-  google.protobuf.StringValue id = 3;
-  string key = 4;
+  google.protobuf.StringValue valueId = 2;
+  string key = 3;
+  string sessionId = 4;
 }

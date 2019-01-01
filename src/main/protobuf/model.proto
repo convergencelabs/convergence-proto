@@ -5,7 +5,6 @@ package io.convergence.proto;
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/struct.proto";
-import "authentication.proto";
 import "operations.proto";
 import "applied.proto";
 import "references.proto";
@@ -39,6 +38,15 @@ message OpenRealtimeModelResponseMessage {
   google.protobuf.Timestamp modifiedTime = 7;
   ObjectValue data = 8;
   repeated string connectedClients = 9;
+
+  message ReferenceData {
+    string sessionId = 1;
+    google.protobuf.StringValue valueId = 2;
+    string key = 3;
+    ReferenceValues reference = 4;
+  }
+
+
   repeated ReferenceData references = 10;
   ModelPermissionsData permissions = 11;
 }
