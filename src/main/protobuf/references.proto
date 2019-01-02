@@ -24,7 +24,7 @@ message IndexRange {
   int32 endIndex = 2;
 }
 
-message PublishReferenceMessage {
+message ShareReferenceMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
@@ -35,7 +35,7 @@ message PublishReferenceMessage {
   int64 version = 5;
 }
 
-message RemoteReferencePublishedMessage {
+message RemoteReferenceSharedMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
@@ -46,7 +46,7 @@ message RemoteReferencePublishedMessage {
   string sessionId = 5;
 }
 
-message UnpublishReferenceMessage {
+message UnshareReferenceMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
