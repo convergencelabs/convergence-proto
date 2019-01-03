@@ -46,7 +46,6 @@ message OpenRealtimeModelResponseMessage {
     ReferenceValues reference = 4;
   }
 
-
   repeated ReferenceData references = 10;
   ModelPermissionsData permissions = 11;
 }

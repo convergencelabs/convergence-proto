@@ -8,6 +8,11 @@ import "authentication.proto";
 import "common.proto";
 import "scalapb/scalapb.proto";
 
+message ChatChannelMemberData {
+  string username = 1;
+  int64 maxSeenEventNumber = 2;
+}
+
 message PublishChatRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
@@ -86,8 +91,7 @@ message ChatChannelInfoData {
   google.protobuf.Timestamp createdTime = 6;
   google.protobuf.Timestamp lastEventTime = 7;
   int64 lastEventNumber = 8;
-  int64 maxSeenEventNumber = 9;
-  repeated string members = 10;
+  repeated ChatChannelMemberData members = 9;
 }
 
 message JoinChatChannelResponseMessage {
@@ -257,7 +261,8 @@ message ChatChannelEventsMarkedSeenMessage {
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
   string channelId = 1;
-  int64 eventNumber = 2;
+  string username = 2;
+  int64 eventNumber = 3;
 }
 
 // history
@@ -291,7 +296,7 @@ message GetDirectChannelsRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated string usernames = 1;
+  repeated StringList usernameLists = 1;
 }
 
 message GetDirectChannelsResponseMessage {

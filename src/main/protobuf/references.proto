@@ -55,7 +55,7 @@ message UnshareReferenceMessage {
   string key = 3;
 }
 
-message RemoteReferenceUnpublishedMessage {
+message RemoteReferenceUnsharedMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 

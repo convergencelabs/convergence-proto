@@ -66,7 +66,7 @@ message ConvergenceMessage {
     RemoteReferenceSharedMessage referenceShared = 120;
     RemoteReferenceSetMessage referenceSet = 121;
     RemoteReferenceClearedMessage referenceCleared = 122;
-    RemoteReferenceUnpublishedMessage referenceUnshared = 123;
+    RemoteReferenceUnsharedMessage referenceUnshared = 123;
 
     ModelsQueryRequestMessage modelsQueryRequest = 124;
     ModelsQueryResponseMessage modelsQueryResponse = 125;
