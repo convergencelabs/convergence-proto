@@ -86,15 +86,17 @@ message ConvergenceMessage {
     ModelPermissionsChangedMessage modelPermissionsChanged = 134;
 
     // Identity
-    UserLookUpMessage userLookUpRequest = 200;
-    UserSearchMessage userSearchRequest = 201;
-    UserListMessage userListResponse = 202;
+    IdentityCacheUpdateMessage identityCacheUpdate = 200;
 
-    UserGroupsRequestMessage userGroupsRequest = 203;
-    UserGroupsResponseMessage userGroupsResponse = 204;
+    UserLookUpMessage userLookUpRequest = 201;
+    UserSearchMessage userSearchRequest = 202;
+    UserListMessage userListResponse = 203;
 
-    UserGroupsForUsersRequestMessage userGroupsForUsersRequest = 205;
-    UserGroupsForUsersResponseMessage userGroupsForUsersResponse = 206;
+    UserGroupsRequestMessage userGroupsRequest = 204;
+    UserGroupsResponseMessage userGroupsResponse = 205;
+
+    UserGroupsForUsersRequestMessage userGroupsForUsersRequest = 206;
+    UserGroupsForUsersResponseMessage userGroupsForUsersResponse = 207;
 
     // Activity
     ActivityParticipantsRequestMessage activityParticipantsRequest = 300;

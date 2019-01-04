@@ -39,9 +39,9 @@ message DomainUserData {
   string userType = 1;
   string username = 2;
   google.protobuf.StringValue firstName = 3;
-  google.protobuf.StringValue  lastName = 4;
-  google.protobuf.StringValue  displayName = 5;
-  google.protobuf.StringValue  email = 6;
+  google.protobuf.StringValue lastName = 4;
+  google.protobuf.StringValue displayName = 5;
+  google.protobuf.StringValue email = 6;
 }
 
 message UserGroupData {
@@ -83,4 +83,12 @@ message UserGroupsForUsersResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Identity";
 
   map<string, StringList> groups = 1;
+}
+
+message IdentityCacheUpdateMessage {
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
+  option (scalapb.message).extends = "io.convergence.proto.Identity";
+
+  map<string, string> sessions = 1;
+  repeated DomainUserData users = 2;
 }
