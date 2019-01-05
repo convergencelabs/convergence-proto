@@ -132,7 +132,7 @@ message UserAddedToChatChannelMessage {
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   string username = 4;
-  string addedBy = 5;
+  string addedUser = 5;
 }
 
 message ChatChannelJoinedMessage {
@@ -185,7 +185,7 @@ message UserRemovedFromChatChannelMessage {
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   string username = 4;
-  string removedBy = 5;
+  string removedUser = 5;
 }
 
 message ChatChannelLeftMessage {
@@ -215,7 +215,7 @@ message ChatChannelNameSetMessage {
   string channelId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string setBy = 4;
+  string username = 4;
   string name = 5;
 }
 
@@ -239,7 +239,7 @@ message ChatChannelTopicSetMessage {
   string channelId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string setBy = 4;
+  string username = 4;
   string topic = 5;
 }
 
@@ -275,7 +275,7 @@ message GetJoinedChatChannelsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated ChatChannelInfoData chatChannelInfo = 1;
+  repeated ChatChannelInfoData channelInfo = 1;
 }
 
 message GetChatChannelsRequestMessage {
@@ -289,7 +289,7 @@ message GetChatChannelsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated ChatChannelInfoData chatChannelInfo = 1;
+  repeated ChatChannelInfoData channelInfo = 1;
 }
 
 message GetDirectChannelsRequestMessage {
@@ -303,7 +303,7 @@ message GetDirectChannelsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated ChatChannelInfoData chatChannelInfo = 1;
+  repeated ChatChannelInfoData channelInfo = 1;
 }
 
 message ChatChannelHistoryRequestMessage {
@@ -342,7 +342,7 @@ message ChatCreatedEventData {
   string channel = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string user = 4;
+  string username = 4;
   string name = 5;
   string topic = 6;
   repeated string members = 7;
@@ -352,7 +352,7 @@ message ChatMessageEventData {
   string channel = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string user = 4;
+  string username = 4;
   string message = 5;
 }
 
@@ -360,14 +360,14 @@ message ChatUserJoinedEventData {
   string channel = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string user = 4;
+  string username = 4;
 }
 
 message ChatUserLeftEventData {
   string channel = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string user = 4;
+  string username = 4;
 }
 
 message ChatUserAddedEventData {
@@ -375,7 +375,7 @@ message ChatUserAddedEventData {
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   string addedUser = 4;
-  string user = 5;
+  string username = 5;
 }
 
 message ChatUserRemovedEventData {
@@ -383,14 +383,14 @@ message ChatUserRemovedEventData {
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   string removedUser = 4;
-  string user = 5;
+  string username = 5;
 }
 
 message ChatNameChangedEventData {
   string channel = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string user = 4;
+  string username = 4;
   string name = 5;
 }
 
@@ -398,7 +398,7 @@ message ChatTopicChangedEventData {
   string channel = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string user = 4;
+  string username = 4;
   string topic = 5;
 }
 
