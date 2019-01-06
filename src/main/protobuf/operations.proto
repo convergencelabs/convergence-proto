@@ -134,7 +134,7 @@ message ObjectSetOperationData {
 message NumberDeltaOperationData {
   string id = 1;
   bool noOp = 2;
-  double value = 3;
+  double delta = 3;
 }
 
 message NumberSetOperationData {
