@@ -3,7 +3,6 @@ syntax = "proto3";
 package io.convergence.proto;
 
 import "google/protobuf/timestamp.proto";
-import "authentication.proto";
 import "scalapb/scalapb.proto";
 
 message ObjectValue {

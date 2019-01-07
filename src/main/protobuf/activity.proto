@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package io.convergence.proto;
 
-import "authentication.proto";
 import "scalapb/scalapb.proto";
 
 message ActivityState {
