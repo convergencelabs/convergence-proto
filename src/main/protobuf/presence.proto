@@ -2,11 +2,12 @@ syntax = "proto3";
 
 package io.convergence.proto;
 import "scalapb/scalapb.proto";
+import "google/protobuf/struct.proto";
 
 message UserPresence {
   string username = 1;
   bool available = 2;
-  map<string, string> state = 3;
+  map<string, google.protobuf.Value> state = 3;
 }
 
 message PresenceRequestMessage {
@@ -48,7 +49,7 @@ message PresenceSetStateMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Presence";
 
-  map<string, string> state = 1;
+  map<string, google.protobuf.Value> state = 1;
 }
 
 message PresenceRemoveStateMessage {
@@ -68,7 +69,7 @@ message PresenceStateSetMessage {
   option (scalapb.message).extends = "io.convergence.proto.Presence";
 
   string username = 1;
-  map<string, string> state = 2;
+  map<string, google.protobuf.Value> state = 2;
 }
 
 message PresenceStateRemovedMessage {

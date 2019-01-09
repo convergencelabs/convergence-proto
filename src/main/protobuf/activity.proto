@@ -3,9 +3,10 @@ syntax = "proto3";
 package io.convergence.proto;
 
 import "scalapb/scalapb.proto";
+import "google/protobuf/struct.proto";
 
 message ActivityState {
-  map<string, string> state = 1;
+  map<string, google.protobuf.Value> state = 1;
 }
 
 message ActivityJoinRequestMessage {
@@ -13,7 +14,7 @@ message ActivityJoinRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
-  map<string, string> state = 2;
+  map<string, google.protobuf.Value> state = 2;
 }
 
 message ActivityJoinResponseMessage {
@@ -50,7 +51,7 @@ message ActivitySessionJoinedMessage {
 
   string activityId = 1;
   string sessionId = 2;
-  map<string, string> state = 3;
+  map<string, google.protobuf.Value> state = 3;
 }
 
 message ActivitySessionLeftMessage {
@@ -66,7 +67,7 @@ message ActivitySetStateMessage {
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
-  map<string, string> state = 2;
+  map<string, google.protobuf.Value> state = 2;
 }
 
 message ActivityRemoveStateMessage {
@@ -90,7 +91,7 @@ message ActivityRemoteStateSetMessage {
 
   string activityId = 1;
   string sessionId = 2;
-  map<string, string> state = 3;
+  map<string, google.protobuf.Value> state = 3;
 }
 
 message ActivityRemoteStateRemovedMessage {
