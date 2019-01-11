@@ -3,9 +3,9 @@ syntax = "proto3";
 package io.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
+import "google/protobuf/struct.proto";
 import "scalapb/scalapb.proto";
 import "identity.proto";
-import "google/protobuf/struct.proto";
 
 message AuthenticationRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
