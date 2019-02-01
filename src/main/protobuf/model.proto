@@ -9,6 +9,7 @@ import "operations.proto";
 import "applied.proto";
 import "references.proto";
 import "scalapb/scalapb.proto";
+import "identity.proto";
 
 message OpenRealtimeModelRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
@@ -23,6 +24,11 @@ message ModelPermissionsData {
   bool write = 2;
   bool remove = 3;
   bool manage = 4;
+}
+
+message UserModelPermissionsEntry {
+  DomainUserIdData user = 1;
+  ModelPermissionsData permissions = 2;
 }
 
 message OpenRealtimeModelResponseMessage {
@@ -71,7 +77,7 @@ message CreateRealtimeModelRequestMessage {
   ObjectValue data = 3;
   bool overrideWorldPermissions = 4;
   ModelPermissionsData worldPermissions = 5;
-  map<string, ModelPermissionsData> userPermissions = 6;
+  repeated UserModelPermissionsEntry userPermissions = 6;
 }
 
 message CreateRealtimeModelSuccessMessage {
@@ -106,7 +112,7 @@ message GetModelPermissionsResponseMessage {
 
   bool overridesCollection = 1;
   ModelPermissionsData worldPermissions = 2;
-  map<string, ModelPermissionsData> userPermissions = 3;
+  repeated UserModelPermissionsEntry userPermissions = 3;
 }
 
 message SetModelPermissionsRequestMessage {
@@ -117,8 +123,8 @@ message SetModelPermissionsRequestMessage {
   bool overridesCollection = 2;
   ModelPermissionsData worldPermissions = 3;
   bool removeAllUserPermissionsBeforeSet = 4;
-  map<string, ModelPermissionsData> setUserPermissions = 5;
-  repeated string removedUserPermissions = 6;
+  repeated UserModelPermissionsEntry setUserPermissions = 5;
+  repeated DomainUserIdData removedUserPermissions = 6;
 }
 
 message SetModelPermissionsResponseMessage {
@@ -172,7 +178,7 @@ message AutoCreateModelConfigResponseMessage {
   ObjectValue data = 2;
   bool overridePermissions = 3;
   ModelPermissionsData worldPermissions = 4;
-  map<string, ModelPermissionsData> userPermissions = 5;
+  repeated UserModelPermissionsEntry userPermissions = 5;
   bool ephemeral = 6;
 }
 

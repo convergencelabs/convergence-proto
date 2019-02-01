@@ -2,14 +2,20 @@ syntax = "proto3";
 
 package io.convergence.proto;
 import "scalapb/scalapb.proto";
+import "identity.proto";
 
 enum PermissionType {
   PERMISSION_TYPE_NOT_SET = 0;
   CHAT = 1;
 }
 
-message PermissionsSet {
-  repeated string permissions = 1;
+message UserPermissionsEntry {
+  DomainUserIdData user = 1;
+  repeated string permissions = 2;
+}
+
+message PermissionsList {
+  repeated string values = 1;
 }
 
 message AddPermissionsRequestMessage {
@@ -18,8 +24,8 @@ message AddPermissionsRequestMessage {
   PermissionType idType = 1;
   string id = 2;
   repeated string world = 3;
-  map<string, PermissionsSet> user = 4;
-  map<string, PermissionsSet> group = 5;
+  repeated UserPermissionsEntry user = 4;
+  map<string, PermissionsList> group = 5;
 }
 
 message AddPermissionsResponseMessage {
@@ -33,8 +39,8 @@ message RemovePermissionsRequestMessage {
   PermissionType idType = 1;
   string id = 2;
   repeated string world = 3;
-  map<string, PermissionsSet> user = 4;
-  map<string, PermissionsSet> group = 5;
+  repeated UserPermissionsEntry user = 4;
+  map<string, PermissionsList> group = 5;
 }
 
 message RemovePermissionsResponseMessage {
@@ -48,8 +54,8 @@ message SetPermissionsRequestMessage {
   PermissionType idType = 1;
   string id = 2;
   repeated string world = 3;
-  map<string, PermissionsSet> user = 4;
-  map<string, PermissionsSet> group = 5;
+  repeated UserPermissionsEntry user = 4;
+  map<string, PermissionsList> group = 5;
 }
 
 message SetPermissionsResponseMessage {
@@ -96,7 +102,7 @@ message GetAllUserPermissionsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Permissions";
 
-  map<string, PermissionsSet> users = 1;
+  repeated UserPermissionsEntry users = 1;
 }
 
 message GetAllGroupPermissionsRequestMessage {
@@ -110,7 +116,7 @@ message GetAllGroupPermissionsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Permissions";
 
-  map<string, PermissionsSet> groups = 1;
+  map<string, PermissionsList> groups = 1;
 }
 
 message GetUserPermissionsRequestMessage {
@@ -118,7 +124,7 @@ message GetUserPermissionsRequestMessage {
 
   PermissionType idType = 1;
   string id = 2;
-  string username = 3;
+  DomainUserIdData user = 3;
 }
 
 message GetUserPermissionsResponseMessage {

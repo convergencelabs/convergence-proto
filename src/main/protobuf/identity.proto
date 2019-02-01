@@ -15,12 +15,11 @@ enum UserField {
   DISPLAY_NAME = 5;
 }
 
-message UserLookUpMessage {
+message GetUsersMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Identity";
 
-  UserField field = 1;
-  repeated string values = 2;
+  repeated DomainUserIdData userIds = 1;
 }
 
 message UserSearchMessage {
@@ -35,19 +34,33 @@ message UserSearchMessage {
   bool ascending = 6;
 }
 
-message DomainUserData {
-  string userType = 1;
+enum DomainUserTypeData {
+  Normal = 0;
+  Convergence = 1;
+  Anonymous = 2;
+}
+
+message DomainUserIdData {
+  DomainUserTypeData userType = 1;
   string username = 2;
-  google.protobuf.StringValue firstName = 3;
-  google.protobuf.StringValue lastName = 4;
-  google.protobuf.StringValue displayName = 5;
-  google.protobuf.StringValue email = 6;
+}
+
+message DomainUserIdList {
+  repeated DomainUserIdData values = 1;
+}
+
+message DomainUserData {
+  DomainUserIdData userId = 1;
+  google.protobuf.StringValue firstName = 2;
+  google.protobuf.StringValue lastName = 3;
+  google.protobuf.StringValue displayName = 4;
+  google.protobuf.StringValue email = 5;
 }
 
 message UserGroupData {
   string id = 1;
   string description = 2;
-  repeated string members = 3;
+  repeated DomainUserIdData members = 3;
 }
 
 message UserListMessage {
@@ -75,20 +88,25 @@ message UserGroupsForUsersRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Identity";
 
-  repeated string usernames = 1;
+  repeated DomainUserIdData users = 1;
 }
 
 message UserGroupsForUsersResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Identity";
 
-  map<string, StringList> groups = 1;
+  repeated UserGroupsEntry userGroups = 1;
+}
+
+message UserGroupsEntry {
+  DomainUserIdData user = 1;
+  repeated string groups = 2;
 }
 
 message IdentityCacheUpdateMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Identity";
 
-  map<string, string> sessions = 1;
+  map<string, DomainUserIdData> sessions = 1;
   repeated DomainUserData users = 2;
 }

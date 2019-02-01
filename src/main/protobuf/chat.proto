@@ -6,9 +6,10 @@ import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
 import "common.proto";
 import "scalapb/scalapb.proto";
+import "identity.proto";
 
 message ChatChannelMemberData {
-  string username = 1;
+  DomainUserIdData user = 1;
   int64 maxSeenEventNumber = 2;
 }
 
@@ -45,7 +46,7 @@ message CreateChatChannelRequestMessage {
   string channelMembership = 3;
   string name = 4;
   string topic = 5;
-  repeated string members = 6;
+  repeated DomainUserIdData members = 6;
 }
 
 message CreateChatChannelResponseMessage {
@@ -107,7 +108,7 @@ message UserJoinedChatChannelMessage {
   string channelId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string username = 4;
+  DomainUserIdData user = 4;
 }
 
 message AddUserToChatChannelRequestMessage {
@@ -115,7 +116,7 @@ message AddUserToChatChannelRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
   string channelId = 1;
-  string userToAdd = 2;
+  DomainUserIdData userToAdd = 2;
 }
 
 message AddUserToChatChannelResponseMessage {
@@ -130,8 +131,8 @@ message UserAddedToChatChannelMessage {
   string channelId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string username = 4;
-  string addedUser = 5;
+  DomainUserIdData user = 4;
+  DomainUserIdData addedUser = 5;
 }
 
 message ChatChannelJoinedMessage {
@@ -160,7 +161,7 @@ message UserLeftChatChannelMessage {
   string channelId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string username = 4;
+  DomainUserIdData user = 4;
 }
 
 message RemoveUserFromChatChannelRequestMessage {
@@ -168,7 +169,7 @@ message RemoveUserFromChatChannelRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
   string channelId = 1;
-  string userToRemove = 2;
+  DomainUserIdData userToRemove = 2;
 }
 
 message RemoveUserFromChatChannelResponseMessage {
@@ -183,8 +184,8 @@ message UserRemovedFromChatChannelMessage {
   string channelId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string username = 4;
-  string removedUser = 5;
+  DomainUserIdData user = 4;
+  DomainUserIdData removedUser = 5;
 }
 
 message ChatChannelLeftMessage {
@@ -214,7 +215,7 @@ message ChatChannelNameSetMessage {
   string channelId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string username = 4;
+  DomainUserIdData user = 4;
   string name = 5;
 }
 
@@ -238,7 +239,7 @@ message ChatChannelTopicSetMessage {
   string channelId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string username = 4;
+  DomainUserIdData user = 4;
   string topic = 5;
 }
 
@@ -260,7 +261,7 @@ message ChatChannelEventsMarkedSeenMessage {
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
   string channelId = 1;
-  string username = 2;
+  DomainUserIdData user = 2;
   int64 eventNumber = 3;
 }
 
@@ -295,7 +296,7 @@ message GetDirectChannelsRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated StringList usernameLists = 1;
+  repeated DomainUserIdList userLists = 1;
 }
 
 message GetDirectChannelsResponseMessage {
@@ -341,17 +342,17 @@ message ChatCreatedEventData {
   string channel = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string username = 4;
+  DomainUserIdData user = 4;
   string name = 5;
   string topic = 6;
-  repeated string members = 7;
+  repeated DomainUserIdData members = 7;
 }
 
 message ChatMessageEventData {
   string channel = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string username = 4;
+  DomainUserIdData user = 4;
   string message = 5;
 }
 
@@ -359,37 +360,37 @@ message ChatUserJoinedEventData {
   string channel = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string username = 4;
+  DomainUserIdData user = 4;
 }
 
 message ChatUserLeftEventData {
   string channel = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string username = 4;
+  DomainUserIdData user = 4;
 }
 
 message ChatUserAddedEventData {
   string channel = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string addedUser = 4;
-  string username = 5;
+  DomainUserIdData user = 4;
+  DomainUserIdData addedUser = 5;
 }
 
 message ChatUserRemovedEventData {
   string channel = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string removedUser = 4;
-  string username = 5;
+  DomainUserIdData user = 4;
+  DomainUserIdData removedUser = 5;
 }
 
 message ChatNameChangedEventData {
   string channel = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string username = 4;
+  DomainUserIdData user = 4;
   string name = 5;
 }
 
@@ -397,7 +398,7 @@ message ChatTopicChangedEventData {
   string channel = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string username = 4;
+  DomainUserIdData user = 4;
   string topic = 5;
 }
 
