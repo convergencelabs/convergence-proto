@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package io.convergence.proto;
 
-import "common.proto";
 import "google/protobuf/wrappers.proto";
 import "scalapb/scalapb.proto";
 

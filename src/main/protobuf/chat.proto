@@ -4,7 +4,6 @@ package io.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
-import "common.proto";
 import "scalapb/scalapb.proto";
 import "identity.proto";
 
