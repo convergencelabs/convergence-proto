@@ -55,6 +55,9 @@ message DomainUserData {
   google.protobuf.StringValue lastName = 3;
   google.protobuf.StringValue displayName = 4;
   google.protobuf.StringValue email = 5;
+  bool disabled = 6;
+  bool deleted = 7;
+  google.protobuf.StringValue deletedUsername = 8;
 }
 
 message UserGroupData {
