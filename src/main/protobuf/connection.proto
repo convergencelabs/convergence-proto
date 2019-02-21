@@ -35,7 +35,12 @@ message HandshakeResponseMessage {
   ErrorData error = 2;
   bool retryOk = 3;
 
+  string namespace = 4;
+  string id = 5;
+
   message ProtocolConfigData {
     bool heartbeatEnabled = 1;
   }
+
+  ProtocolConfigData protocolConfig = 6;
 }
