@@ -19,6 +19,8 @@ message HandshakeRequestMessage {
 
   bool reconnect = 1;
   google.protobuf.StringValue reconnectToken = 2;
+  string client = 3;
+  string clientVersion = 4;
 }
 
 message HandshakeResponseMessage {

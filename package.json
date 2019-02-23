@@ -1,5 +1,5 @@
 {
-  "name": "@convergence/convergence-proto",
+  "name": "@convergence-internal/convergence-proto",
   "version": "1.0.0-SNAPSHOT",
   "description": "Convergence Protocol Buffers",
   "tags": [
