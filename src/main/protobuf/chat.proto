@@ -16,7 +16,7 @@ message PublishChatRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   string message = 2;
 }
 
@@ -29,61 +29,61 @@ message RemoteChatMessageMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   string sessionId = 4;
   string message = 5;
 }
 
-message CreateChatChannelRequestMessage {
+message CreateChatRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  google.protobuf.StringValue channelId = 1;
-  string channelType = 2;
-  string channelMembership = 3;
+  google.protobuf.StringValue chatId = 1;
+  string chatType = 2;
+  string membership = 3;
   string name = 4;
   string topic = 5;
   repeated DomainUserIdData members = 6;
 }
 
-message CreateChatChannelResponseMessage {
+message CreateChatResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
 }
 
-message RemoveChatChannelRequestMessage {
+message RemoveChatRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
 }
 
-message RemoveChatChannelResponseMessage {
+message RemoveChatResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 }
 
-message ChatChannelRemovedMessage {
+message ChatRemovedMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
 }
 
-message JoinChatChannelRequestMessage {
+message JoinChatRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
 }
 
-message ChatChannelInfoData {
+message ChatInfoData {
   string id = 1;
-  string channelType = 2;
+  string chatType = 2;
   string membership = 3;
   string name = 4;
   string topic = 5;
@@ -93,18 +93,18 @@ message ChatChannelInfoData {
   repeated ChatChannelMemberData members = 9;
 }
 
-message JoinChatChannelResponseMessage {
+message JoinChatResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  ChatChannelInfoData channelInfo = 1;
+  ChatInfoData channelInfo = 1;
 }
 
-message UserJoinedChatChannelMessage {
+message UserJoinedChatMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   DomainUserIdData user = 4;
@@ -114,7 +114,7 @@ message AddUserToChatChannelRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   DomainUserIdData userToAdd = 2;
 }
 
@@ -127,37 +127,37 @@ message UserAddedToChatChannelMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   DomainUserIdData user = 4;
   DomainUserIdData addedUser = 5;
 }
 
-message ChatChannelJoinedMessage {
+message ChatJoinedMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
 }
 
-message LeaveChatChannelRequestMessage {
+message LeaveChatRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
 }
 
-message LeaveChatChannelResponseMessage {
+message LeaveChatResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 }
 
-message UserLeftChatChannelMessage {
+message UserLeftChatMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   DomainUserIdData user = 4;
@@ -167,7 +167,7 @@ message RemoveUserFromChatChannelRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   DomainUserIdData userToRemove = 2;
 }
 
@@ -180,157 +180,157 @@ message UserRemovedFromChatChannelMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   DomainUserIdData user = 4;
   DomainUserIdData removedUser = 5;
 }
 
-message ChatChannelLeftMessage {
+message ChatLeftMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
 }
 
-message SetChatChannelNameRequestMessage {
+message SetChatNameRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   string name = 2;
 }
 
-message SetChatChannelNameResponseMessage {
+message SetChatNameResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 }
 
-message ChatChannelNameSetMessage {
+message ChatNameSetMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   DomainUserIdData user = 4;
   string name = 5;
 }
 
-message SetChatChannelTopicRequestMessage {
+message SetChatTopicRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   string topic = 2;
 }
 
-message SetChatChannelTopicResponseMessage {
+message SetChatTopicResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 }
 
-message ChatChannelTopicSetMessage {
+message ChatTopicSetMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   DomainUserIdData user = 4;
   string topic = 5;
 }
 
-message MarkChatChannelEventsSeenRequestMessage {
+message MarkChatEventsSeenRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
 }
 
-message MarkChatChannelEventsSeenResponseMessage {
+message MarkChatEventsSeenResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 }
 
-message ChatChannelEventsMarkedSeenMessage {
+message ChatEventsMarkedSeenMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   DomainUserIdData user = 2;
   int64 eventNumber = 3;
 }
 
-// history
-message GetJoinedChatChannelsRequestMessage {
+
+message GetJoinedChatsRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 }
 
-message GetJoinedChatChannelsResponseMessage {
+message GetJoinedChatsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated ChatChannelInfoData channelInfo = 1;
+  repeated ChatInfoData channelInfo = 1;
 }
 
-message GetChatChannelsRequestMessage {
+message GetChatsRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated string channelIds = 1;
+  repeated string chatIds = 1;
 }
 
-message GetChatChannelsResponseMessage {
+message GetChatsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated ChatChannelInfoData channelInfo = 1;
+  repeated ChatInfoData channelInfo = 1;
 }
 
-message GetDirectChannelsRequestMessage {
+message GetDirectChatsRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
   repeated DomainUserIdList userLists = 1;
 }
 
-message GetDirectChannelsResponseMessage {
+message GetDirectChatsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated ChatChannelInfoData channelInfo = 1;
+  repeated ChatInfoData channelInfo = 1;
 }
 
-message ChatChannelHistoryRequestMessage {
+message ChatHistoryRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  string channelId = 1;
+  string chatId = 1;
   google.protobuf.Int32Value limit = 2;
   google.protobuf.Int64Value startEvent = 3;
   google.protobuf.BoolValue forward = 4;
   repeated string eventFilter = 5;
 }
 
-message ChatChannelHistoryResponseMessage {
+message ChatHistoryResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
   repeated ChatChannelEventData eventData = 1;
 }
 
-message ChatChannelsExistsRequestMessage {
+message ChatsExistRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated string channelIds = 1;
+  repeated string chatIds = 1;
 }
 
-message ChatChannelsExistsResponseMessage {
+message ChatsExistResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
@@ -338,7 +338,7 @@ message ChatChannelsExistsResponseMessage {
 }
 
 message ChatCreatedEventData {
-  string channel = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   DomainUserIdData user = 4;
@@ -348,7 +348,7 @@ message ChatCreatedEventData {
 }
 
 message ChatMessageEventData {
-  string channel = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   DomainUserIdData user = 4;
@@ -356,21 +356,21 @@ message ChatMessageEventData {
 }
 
 message ChatUserJoinedEventData {
-  string channel = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   DomainUserIdData user = 4;
 }
 
 message ChatUserLeftEventData {
-  string channel = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   DomainUserIdData user = 4;
 }
 
 message ChatUserAddedEventData {
-  string channel = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   DomainUserIdData user = 4;
@@ -378,7 +378,7 @@ message ChatUserAddedEventData {
 }
 
 message ChatUserRemovedEventData {
-  string channel = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   DomainUserIdData user = 4;
@@ -386,7 +386,7 @@ message ChatUserRemovedEventData {
 }
 
 message ChatNameChangedEventData {
-  string channel = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   DomainUserIdData user = 4;
@@ -394,7 +394,7 @@ message ChatNameChangedEventData {
 }
 
 message ChatTopicChangedEventData {
-  string channel = 1;
+  string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
   DomainUserIdData user = 4;

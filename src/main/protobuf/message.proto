@@ -138,35 +138,35 @@ message ConvergenceMessage {
     UnsubscribePresenceMessage presenceUnsubscribe = 411;
 
     // Chat
-    CreateChatChannelRequestMessage createChatChannelRequest = 500;
-    CreateChatChannelResponseMessage createChatChannelResponse = 501;
+    CreateChatRequestMessage createChatRequest = 500;
+    CreateChatResponseMessage createChatResponse = 501;
 
-    RemoveChatChannelRequestMessage removeChatChannelRequest = 502;
-    RemoveChatChannelResponseMessage removeChatChannelResponse = 503;
-    ChatChannelRemovedMessage chatChannelRemoved = 504;
+    RemoveChatRequestMessage removeChatRequest = 502;
+    RemoveChatResponseMessage removeChatResponse = 503;
+    ChatRemovedMessage chatRemoved = 504;
 
-    GetChatChannelsRequestMessage getChatChannelsRequest = 505;
-    GetChatChannelsResponseMessage getChatChannelsResponse = 506;
+    GetChatsRequestMessage getChatsRequest = 505;
+    GetChatsResponseMessage getChatsResponse = 506;
 
-    ChatChannelsExistsRequestMessage chatChannelExistsRequest = 507;
-    ChatChannelsExistsResponseMessage chatChannelExistsResponse = 508;
+    ChatsExistRequestMessage chatsExistRequest = 507;
+    ChatsExistResponseMessage chatsExistResponse = 508;
 
-    GetDirectChannelsRequestMessage getDirectChatChannelsRequest = 509;
-    GetDirectChannelsResponseMessage getDirectChatChannelsResponse = 510;
+    GetDirectChatsRequestMessage getDirectChatsRequest = 509;
+    GetDirectChatsResponseMessage getDirectChatsResponse = 510;
 
-    GetJoinedChatChannelsRequestMessage getJoinedChatChannelsRequest = 511;
-    GetJoinedChatChannelsResponseMessage getJoinedChatChannelsResponse = 512;
+    GetJoinedChatsRequestMessage getJoinedChatsRequest = 511;
+    GetJoinedChatsResponseMessage getJoinedChatsResponse = 512;
 
     // SearchChatChannelsRequest = 513;
     // SearchChatChannelsResponse = 514;
 
-    JoinChatChannelRequestMessage joinChatChannelRequest = 515;
-    JoinChatChannelResponseMessage joinChatChannelResponse = 516;
-    UserJoinedChatChannelMessage userJoinedChatChannel = 517;
+    JoinChatRequestMessage joinChatRequest = 515;
+    JoinChatResponseMessage joinChatResponse = 516;
+    UserJoinedChatMessage userJoinedChat = 517;
 
-    LeaveChatChannelRequestMessage leaveChatChannelRequest = 518;
-    LeaveChatChannelResponseMessage leaveChatChannelResponse = 519;
-    UserLeftChatChannelMessage userLeftChatChannel = 520;
+    LeaveChatRequestMessage leaveChatRequest = 518;
+    LeaveChatResponseMessage leaveChatResponse = 519;
+    UserLeftChatMessage userLeftChat = 520;
 
     AddUserToChatChannelRequestMessage addUserToChatChannelRequest = 521;
     AddUserToChatChannelResponseMessage addUserToChatChannelResponse = 522;
@@ -176,24 +176,24 @@ message ConvergenceMessage {
     RemoveUserFromChatChannelResponseMessage removeUserFromChatChannelResponse = 525;
     UserRemovedFromChatChannelMessage userRemovedFromChatChannel = 526;
 
-    SetChatChannelNameRequestMessage setChatChannelNameRequest = 527;
-    SetChatChannelNameResponseMessage setChatChannelNameResponse = 528;
-    ChatChannelNameSetMessage chatChannelNameChanged = 529;
+    SetChatNameRequestMessage setChatNameRequest = 527;
+    SetChatNameResponseMessage setChatNameResponse = 528;
+    ChatNameSetMessage chatNameChanged = 529;
 
-    SetChatChannelTopicRequestMessage setChatChannelTopicRequest = 530;
-    SetChatChannelTopicResponseMessage setChatChannelTopicResponse = 531;
-    ChatChannelTopicSetMessage chatChannelTopicChanged = 532;
+    SetChatTopicRequestMessage setChatTopicRequest = 530;
+    SetChatTopicResponseMessage setChatTopicResponse = 531;
+    ChatTopicSetMessage chatTopicChanged = 532;
 
-    MarkChatChannelEventsSeenRequestMessage markChatChannelEventsSeenRequest = 533;
-    MarkChatChannelEventsSeenResponseMessage markChatChannelEventsSeenResponse = 534;
-    ChatChannelEventsMarkedSeenMessage chatChannelEventsMarkedSeen = 535;
+    MarkChatEventsSeenRequestMessage markChatEventsSeenRequest = 533;
+    MarkChatEventsSeenResponseMessage markChatEventsSeenResponse = 534;
+    ChatEventsMarkedSeenMessage chatEventsMarkedSeen = 535;
 
     PublishChatRequestMessage publishChatMessageRequest = 536;
     PublishChatResponseMessage publishChatMessageResponse = 537;
     RemoteChatMessageMessage remoteChatMessage = 538;
 
-    ChatChannelHistoryRequestMessage getChatChannelHistoryRequest = 539;
-    ChatChannelHistoryResponseMessage getChatChannelHistoryResponse = 540;
+    ChatHistoryRequestMessage getChatHistoryRequest = 539;
+    ChatHistoryResponseMessage getChatHistoryResponse = 540;
 
     // Permissions
     GetClientPermissionsRequestMessage getClientPermissionsRequest = 601;
