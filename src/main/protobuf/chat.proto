@@ -97,7 +97,7 @@ message JoinChatResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  ChatInfoData channelInfo = 1;
+  ChatInfoData chatInfo = 1;
 }
 
 message UserJoinedChatMessage {
@@ -274,7 +274,7 @@ message GetJoinedChatsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated ChatInfoData channelInfo = 1;
+  repeated ChatInfoData chatInfo = 1;
 }
 
 message GetChatsRequestMessage {
@@ -288,7 +288,7 @@ message GetChatsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated ChatInfoData channelInfo = 1;
+  repeated ChatInfoData chatInfo = 1;
 }
 
 message GetDirectChatsRequestMessage {
@@ -302,7 +302,7 @@ message GetDirectChatsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated ChatInfoData channelInfo = 1;
+  repeated ChatInfoData chatInfo = 1;
 }
 
 message ChatHistoryRequestMessage {
