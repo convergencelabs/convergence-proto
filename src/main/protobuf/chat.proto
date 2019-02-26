@@ -7,7 +7,7 @@ import "google/protobuf/timestamp.proto";
 import "scalapb/scalapb.proto";
 import "identity.proto";
 
-message ChatChannelMemberData {
+message ChatMemberData {
   DomainUserIdData user = 1;
   int64 maxSeenEventNumber = 2;
 }
@@ -90,7 +90,7 @@ message ChatInfoData {
   google.protobuf.Timestamp createdTime = 6;
   google.protobuf.Timestamp lastEventTime = 7;
   int64 lastEventNumber = 8;
-  repeated ChatChannelMemberData members = 9;
+  repeated ChatMemberData members = 9;
 }
 
 message JoinChatResponseMessage {
@@ -320,7 +320,7 @@ message ChatHistoryResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
 
-  repeated ChatChannelEventData eventData = 1;
+  repeated ChatEventData eventData = 1;
 }
 
 message ChatsExistRequestMessage {
@@ -401,7 +401,7 @@ message ChatTopicChangedEventData {
   string topic = 5;
 }
 
-message ChatChannelEventData {
+message ChatEventData {
   oneof event {
     ChatCreatedEventData created = 1;
     ChatMessageEventData message = 2;
