@@ -1,17 +1,23 @@
 import {src, dest, series} from 'gulp';
 import bump from 'gulp-bump';
-
-import del from 'del';
-import fs from 'fs';
-
+import fs from 'fs-extra';
 import pbjs from "protobufjs/cli/pbjs";
 import pbts from "protobufjs/cli/pbts";
 
-const packageJson = () => {
+
+const mkDist = (cb) => {
+  fs.ensureDirSync("npm-dist");
+  cb();
+}
+
+const packageJson = (cb) => {
   const pkgJson = JSON.parse(fs.readFileSync('./package.json'));
   if (pkgJson.version.endsWith("SNAPSHOT")) {
     return src('./package.json')
       .pipe(bump({version: pkgJson.version + '.' + new Date().getTime()}))
+      .pipe(dest('npm-dist/'));
+  } else {
+    return src('./package.json')
       .pipe(dest('npm-dist/'));
   }
 };
@@ -54,9 +60,12 @@ const compileProtoTypeDefs = (cb) => {
   });
 };
 
-const dist = series(packageJson, createProtoJson, compileProtoJavaScript, compileProtoTypeDefs);
+const dist = series(mkDist, packageJson, createProtoJson, compileProtoJavaScript, compileProtoTypeDefs);
 
-const clean = () => del(["dist"]);
+const clean = (cb) => {
+  fs.removeSync("npm-dist");
+  cb();
+}
 
 export {
   clean,
