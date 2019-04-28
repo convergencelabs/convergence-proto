@@ -161,6 +161,8 @@ message ModelsQueryResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   repeated ModelResult models = 1;
+  int64 offset = 2;
+  int64 totalResults = 3;
 }
 
 message AutoCreateModelConfigRequestMessage {
