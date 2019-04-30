@@ -8,7 +8,7 @@ PB.targets in Compile := Seq(
 )
 
 publishTo := {
-  val nexus = "https://nexus.dev.int.convergencelabs.tech/repository/"
+  val nexus = "https://nexus.dev.convergencelabs.tech/repository/"
   if (isSnapshot.value)
     Some("snapshots" at nexus + "maven-convergence-snapshots")
   else
