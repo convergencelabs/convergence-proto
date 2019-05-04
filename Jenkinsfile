@@ -1,4 +1,4 @@
-sbtPod { label ->
+sbtNodePod { label ->
   runInNode(label) {
     container('sbt') {
       injectIvyCredentials()
@@ -11,11 +11,7 @@ sbtPod { label ->
         sh 'sbt publish'
       }
     }
-  }
-}
 
-nodePod { label ->
-  runInNode(label) {
     container('node') {
       npmLogin()
 
