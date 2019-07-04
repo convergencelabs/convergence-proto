@@ -111,13 +111,9 @@ message ConvergenceMessage {
     ActivitySessionJoinedMessage activitySessionJoined = 306;
     ActivitySessionLeftMessage activitySessionLeft = 307;
 
-    ActivitySetStateMessage activityLocalStateSet = 308;
-    ActivityRemoveStateMessage activityLocalStateRemoved = 309;
-    ActivityClearStateMessage activityLocalStateCleared = 310;
+    ActivityUpdateStateMessage activityUpdateState = 308;
+    ActivityStateUpdatedMessage activityStateUpdated = 309;
 
-    ActivityRemoteStateSetMessage activityRemoteStateSet = 311;
-    ActivityRemoteStateRemovedMessage activityRemoteStateRemoved = 312;
-    ActivityRemoteStateClearedMessage activityRemoteStateCleared = 313;
 
     // Presence
     PresenceSetStateMessage presenceSetState = 400;

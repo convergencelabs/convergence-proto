@@ -62,51 +62,23 @@ message ActivitySessionLeftMessage {
   string sessionId = 2;
 }
 
-message ActivitySetStateMessage {
+message ActivityUpdateStateMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
-  map<string, google.protobuf.Value> state = 2;
+  map<string, google.protobuf.Value> set = 2;
+  bool complete = 3;
+  repeated string removed = 4;
 }
 
-message ActivityRemoveStateMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Normal";
-  option (scalapb.message).extends = "io.convergence.proto.Activity";
-
-  string activityId = 1;
-  repeated string keys = 2;
-}
-
-message ActivityClearStateMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Normal";
-  option (scalapb.message).extends = "io.convergence.proto.Activity";
-
-  string activityId = 1;
-}
-
-message ActivityRemoteStateSetMessage {
+message ActivityStateUpdatedMessage {
   option (scalapb.message).extends = "io.convergence.proto.Normal";
   option (scalapb.message).extends = "io.convergence.proto.Activity";
 
   string activityId = 1;
   string sessionId = 2;
-  map<string, google.protobuf.Value> state = 3;
-}
-
-message ActivityRemoteStateRemovedMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Normal";
-  option (scalapb.message).extends = "io.convergence.proto.Activity";
-
-  string activityId = 1;
-  string sessionId = 2;
-  repeated string keys = 3;
-}
-
-message ActivityRemoteStateClearedMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Normal";
-  option (scalapb.message).extends = "io.convergence.proto.Activity";
-
-  string activityId = 1;
-  string sessionId = 2;
+  map<string, google.protobuf.Value> set = 3;
+  bool complete = 4;
+  repeated string removed = 5;
 }
