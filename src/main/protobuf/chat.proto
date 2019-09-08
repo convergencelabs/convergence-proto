@@ -264,7 +264,6 @@ message ChatEventsMarkedSeenMessage {
   int64 eventNumber = 3;
 }
 
-
 message GetJoinedChatsRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Chat";
