@@ -17,6 +17,16 @@ message OpenRealtimeModelRequestMessage {
 
   google.protobuf.StringValue modelId = 1;
   google.protobuf.Int32Value autoCreateId = 2;
+  bool reconnect = 3;
+  int64 contextVersion = 4;
+}
+
+message ModelStatePathRejoined {
+  string modelId = 1;
+}
+
+message ModelReconnectComplete {
+  string modelId = 1;
 }
 
 message ModelPermissionsData {
@@ -40,10 +50,11 @@ message OpenRealtimeModelResponseMessage {
   string collection = 3;
   string valueIdPrefix = 4;
   int64 version = 5;
-  google.protobuf.Timestamp createdTime = 6;
-  google.protobuf.Timestamp modifiedTime = 7;
-  ObjectValue data = 8;
-  repeated string connectedClients = 9;
+  bool reconnecting = 6;
+  google.protobuf.Timestamp createdTime = 7;
+  google.protobuf.Timestamp modifiedTime = 8;
+  ObjectValue data = 9;
+  repeated string connectedClients = 10;
 
   message ReferenceData {
     string sessionId = 1;
@@ -52,8 +63,8 @@ message OpenRealtimeModelResponseMessage {
     ReferenceValues reference = 4;
   }
 
-  repeated ReferenceData references = 10;
-  ModelPermissionsData permissions = 11;
+  repeated ReferenceData references = 11;
+  ModelPermissionsData permissions = 12;
 }
 
 message CloseRealtimeModelRequestMessage {
@@ -248,22 +259,4 @@ message HistoricalOperationsResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Historical";
 
   repeated ModelOperationData operations = 1;
-}
-
-message ModelReconnectRequest {
-  string modelId = 1;
-  int64 contextVersion = 2;
-}
-
-message ModelReconnectOperation {
-  string modelId = 1;
-  ModelOperationData operation = 2;
-}
-
-message ModelStatePathRejoined {
-  string modelId = 1;
-}
-
-message ModelReconnectComplete {
-  string modelId = 1;
 }
