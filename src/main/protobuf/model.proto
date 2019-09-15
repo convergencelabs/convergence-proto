@@ -17,8 +17,8 @@ message OpenRealtimeModelRequestMessage {
 
   google.protobuf.StringValue modelId = 1;
   google.protobuf.Int32Value autoCreateId = 2;
-  bool reconnect = 3;
-  int64 contextVersion = 4;
+  google.protobuf.StringValue reconnectSessionId = 3;
+  google.protobuf.Int64Value reconnectContextVersion = 4;
 }
 
 message ModelStatePathRejoined {
