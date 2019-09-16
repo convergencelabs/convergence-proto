@@ -5,10 +5,12 @@ package io.convergence.proto;
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/struct.proto";
+
+import "scalapb/scalapb.proto";
+
 import "operations.proto";
 import "applied.proto";
 import "references.proto";
-import "scalapb/scalapb.proto";
 import "identity.proto";
 
 message OpenRealtimeModelRequestMessage {
@@ -17,8 +19,12 @@ message OpenRealtimeModelRequestMessage {
 
   google.protobuf.StringValue modelId = 1;
   google.protobuf.Int32Value autoCreateId = 2;
-  google.protobuf.StringValue reconnectSessionId = 3;
-  google.protobuf.Int64Value reconnectContextVersion = 4;
+  ReconnectRequestData reconnect = 3;
+}
+
+message ReconnectRequestData {
+  string sessionId = 1;
+  int64 contextVersion = 2;
 }
 
 message ModelStatePathRejoined {
