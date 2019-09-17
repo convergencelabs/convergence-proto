@@ -85,8 +85,9 @@ message ConvergenceMessage {
 
     ModelPermissionsChangedMessage modelPermissionsChanged = 134;
 
-    ModelStatePathRejoined modelStatePathRejoined = 135;
-    ModelReconnectComplete modelReconnectCompleted = 136;
+//    ModelReconnectRequestMessage modelReconnectRequest = 135;
+//    ModelReconnectResponseMessage modelReconnectResponse = 136;
+//    ModelReconnectCompleteMessage modelReconnectComplete = 137;
 
     // Identity
     IdentityCacheUpdateMessage identityCacheUpdate = 200;

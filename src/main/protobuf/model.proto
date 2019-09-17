@@ -19,20 +19,33 @@ message OpenRealtimeModelRequestMessage {
 
   google.protobuf.StringValue modelId = 1;
   google.protobuf.Int32Value autoCreateId = 2;
-  ReconnectRequestData reconnect = 3;
 }
 
-message ReconnectRequestData {
-  string sessionId = 1;
-  int64 contextVersion = 2;
-}
+message ModelReconnectRequestMessage {
+  option (scalapb.message).extends = "io.convergence.proto.Request";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
-message ModelStatePathRejoined {
   string modelId = 1;
+  string previousSessionId = 2;
+  int64 contextVersion = 3;
 }
 
-message ModelReconnectComplete {
-  string modelId = 1;
+message ModelReconnectResponseMessage {
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
+
+  int64 currentVersion = 3;
+}
+
+message ModelReconnectCompleteMessage {
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
+
+  string resourceId = 1;
+  string valueIdPrefix = 2;
+  repeated string connectedClients = 3;
+  repeated ReferenceData references = 4;
+  ModelPermissionsData permissions = 5;
 }
 
 message ModelPermissionsData {
@@ -56,21 +69,19 @@ message OpenRealtimeModelResponseMessage {
   string collection = 3;
   string valueIdPrefix = 4;
   int64 version = 5;
-  bool reconnecting = 6;
-  google.protobuf.Timestamp createdTime = 7;
-  google.protobuf.Timestamp modifiedTime = 8;
-  ObjectValue data = 9;
-  repeated string connectedClients = 10;
+  google.protobuf.Timestamp createdTime = 6;
+  google.protobuf.Timestamp modifiedTime = 7;
+  ObjectValue data = 8;
+  repeated string connectedClients = 9;
+  repeated ReferenceData references = 10;
+  ModelPermissionsData permissions = 11;
+}
 
-  message ReferenceData {
-    string sessionId = 1;
-    google.protobuf.StringValue valueId = 2;
-    string key = 3;
-    ReferenceValues reference = 4;
-  }
-
-  repeated ReferenceData references = 11;
-  ModelPermissionsData permissions = 12;
+message ReferenceData {
+  string sessionId = 1;
+  google.protobuf.StringValue valueId = 2;
+  string key = 3;
+  ReferenceValues reference = 4;
 }
 
 message CloseRealtimeModelRequestMessage {

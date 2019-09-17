@@ -192,8 +192,7 @@ message OperationSubmissionMessage {
 
   string resourceId = 1;
   int32 sequenceNumber = 2;
-  int64 version = 3;
-
+  int64 contextVersion = 3;
   OperationData operation = 4;
 }
 
@@ -202,7 +201,7 @@ message OperationAcknowledgementMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  int32 seqNo = 2;
+  int32 sequenceNumber = 2;
   int64 version = 3;
   google.protobuf.Timestamp timestamp = 4;
 }
@@ -213,7 +212,7 @@ message RemoteOperationMessage {
 
   string resourceId = 1;
   string sessionId = 2;
-  int64 contextVersion = 3;
+  int64 version = 3;
   google.protobuf.Timestamp timestamp = 4;
   OperationData operation = 5;
 }
