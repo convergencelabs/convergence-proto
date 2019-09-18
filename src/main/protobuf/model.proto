@@ -34,7 +34,8 @@ message ModelReconnectResponseMessage {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
-  int64 currentVersion = 3;
+  string resourceId = 1;
+  int64 currentVersion = 2;
 }
 
 message ModelReconnectCompleteMessage {
@@ -42,7 +43,6 @@ message ModelReconnectCompleteMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  string valueIdPrefix = 2;
   repeated string connectedClients = 3;
   repeated ReferenceData references = 4;
   ModelPermissionsData permissions = 5;
