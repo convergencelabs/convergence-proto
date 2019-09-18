@@ -212,7 +212,7 @@ message RemoteOperationMessage {
 
   string resourceId = 1;
   string sessionId = 2;
-  int64 version = 3;
+  int64 contextVersion = 3;
   google.protobuf.Timestamp timestamp = 4;
   OperationData operation = 5;
 }

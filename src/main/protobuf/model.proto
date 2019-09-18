@@ -42,9 +42,9 @@ message ModelReconnectCompleteMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string resourceId = 1;
-  repeated string connectedClients = 3;
-  repeated ReferenceData references = 4;
-  ModelPermissionsData permissions = 5;
+  repeated string connectedClients = 2;
+  repeated ReferenceData references = 3;
+  ModelPermissionsData permissions = 4;
 }
 
 message ModelPermissionsData {
