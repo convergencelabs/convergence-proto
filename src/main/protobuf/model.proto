@@ -26,7 +26,6 @@ message ModelReconnectRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string modelId = 1;
-  string previousSessionId = 2;
   int64 contextVersion = 3;
 }
 
