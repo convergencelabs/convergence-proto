@@ -233,6 +233,7 @@ message ModelForceCloseMessage {
 
   string resourceId = 1;
   string reason = 2;
+  int32 reasonCode = 3;
 }
 
 message HistoricalDataRequestMessage {

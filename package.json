@@ -8,7 +8,7 @@
     "protobuf"
   ],
   "author": "Convergence Labs",
-  "homepage": "http://www.convergencelabs.com",
+  "homepage": "https://convergence.io",
   "repository": {
     "type": "git",
     "url": "https://gitlab.convergencelabs.tech/shared/convergence-messages.git"
