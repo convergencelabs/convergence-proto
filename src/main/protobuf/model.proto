@@ -147,7 +147,7 @@ message SetModelPermissionsRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string modelId = 1;
-  bool overridesCollection = 2;
+  google.protobuf.BoolValue overrideCollection = 2;
   ModelPermissionsData worldPermissions = 3;
   bool removeAllUserPermissionsBeforeSet = 4;
   repeated UserModelPermissionsEntry setUserPermissions = 5;
