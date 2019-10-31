@@ -24,7 +24,7 @@ sbtNodePod { label ->
       }
 
       stage('NPM Publish') {
-        sh 'npm publish npm-dist'
+        sh 'npm --registry=https://nexus.dev.convergencelabs.tech/repository/npm-convergence publish npm-dist'
       }
     }
   }
