@@ -20,3 +20,7 @@ message ErrorMessage {
   string message = 2;
   map<string, string> details = 3;
 }
+
+message OkResponse {
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+}

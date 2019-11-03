@@ -236,6 +236,38 @@ message ModelForceCloseMessage {
   int32 reasonCode = 3;
 }
 
+message ModelDeleted {
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Historical";
+
+  string  resourceId = 1;
+}
+
+//
+// Offline
+//
+message ModelOfflineSubscriptionChangeRequest {
+  option (scalapb.message).extends = "io.convergence.proto.Response";
+  option (scalapb.message).extends = "io.convergence.proto.Historical";
+
+  repeated string  added = 1;
+  repeated string  removed = 2;
+  bool  all = 3;
+}
+
+message OfflineModelUpdated {
+  string modelId = 1;
+  string collection = 2;
+  int64 version = 3;
+  google.protobuf.Timestamp createdTime = 4;
+  google.protobuf.Timestamp modifiedTime = 5;
+  ObjectValue data = 6;
+}
+
+//
+// Historical Models
+//
+
 message HistoricalDataRequestMessage {
   option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Historical";

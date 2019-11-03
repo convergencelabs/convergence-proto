@@ -21,16 +21,18 @@ message ConvergenceMessage {
   google.protobuf.Int32Value responseId = 2;
 
   oneof body {
-    ErrorMessage error = 3;
+    OkResponse ok = 3;
+    ErrorMessage error = 4;
 
-    PingMessage ping = 4;
-    PongMessage pong = 5;
+    PingMessage ping = 5;
+    PongMessage pong = 6;
 
-    HandshakeRequestMessage handshakeRequest = 6;
-    HandshakeResponseMessage handshakeResponse = 7;
+    HandshakeRequestMessage handshakeRequest = 7;
+    HandshakeResponseMessage handshakeResponse = 8;
 
-    AuthenticationRequestMessage authenticationRequest = 10;
-    AuthenticationResponseMessage authenticationResponse = 11;
+    AuthenticationRequestMessage authenticationRequest = 9;
+    AuthenticationResponseMessage authenticationResponse = 10;
+
 
     // Models
     OpenRealtimeModelRequestMessage openRealTimeModelRequest = 100;
@@ -71,23 +73,29 @@ message ConvergenceMessage {
     ModelsQueryRequestMessage modelsQueryRequest = 124;
     ModelsQueryResponseMessage modelsQueryResponse = 125;
 
-    HistoricalDataRequestMessage historicalDataRequest = 126;
-    HistoricalDataResponseMessage historicalDataResponse = 127;
+    GetModelPermissionsRequestMessage getModelPermissionsRequest = 126;
+    GetModelPermissionsResponseMessage getModelPermissionsResponse = 127;
 
-    HistoricalOperationRequestMessage historicalOperationsRequest = 128;
-    HistoricalOperationsResponseMessage historicalOperationsResponse = 129;
+    SetModelPermissionsRequestMessage setModelPermissionsRequest = 128;
+    SetModelPermissionsResponseMessage setModelPermissionsResponse = 129;
 
-    GetModelPermissionsRequestMessage getModelPermissionsRequest = 130;
-    GetModelPermissionsResponseMessage getModelPermissionsResponse = 131;
+    ModelPermissionsChangedMessage modelPermissionsChanged = 130;
 
-    SetModelPermissionsRequestMessage setModelPermissionsRequest = 132;
-    SetModelPermissionsResponseMessage setModelPermissionsResponse = 133;
+    ModelDeleted modelDeleted = 131;
 
-    ModelPermissionsChangedMessage modelPermissionsChanged = 134;
+    ModelReconnectRequestMessage modelReconnectRequest = 132;
+    ModelReconnectResponseMessage modelReconnectResponse = 133;
+    ModelReconnectCompleteMessage modelReconnectComplete = 134;
 
-    ModelReconnectRequestMessage modelReconnectRequest = 135;
-    ModelReconnectResponseMessage modelReconnectResponse = 136;
-    ModelReconnectCompleteMessage modelReconnectComplete = 137;
+    ModelOfflineSubscriptionChangeRequest modelOfflineSubscriptionChangeRequest = 135;
+    OfflineModelUpdated modelOfflineUpdated = 136;
+
+    HistoricalDataRequestMessage historicalDataRequest = 137;
+    HistoricalDataResponseMessage historicalDataResponse = 138;
+
+    HistoricalOperationRequestMessage historicalOperationsRequest = 139;
+    HistoricalOperationsResponseMessage historicalOperationsResponse = 140;
+
 
     // Identity
     IdentityCacheUpdateMessage identityCacheUpdate = 200;
@@ -101,6 +109,7 @@ message ConvergenceMessage {
 
     UserGroupsForUsersRequestMessage userGroupsForUsersRequest = 206;
     UserGroupsForUsersResponseMessage userGroupsForUsersResponse = 207;
+
 
     // Activity
     ActivityParticipantsRequestMessage activityParticipantsRequest = 300;
