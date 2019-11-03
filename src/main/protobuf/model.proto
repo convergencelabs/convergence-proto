@@ -250,9 +250,14 @@ message ModelOfflineSubscriptionChangeRequest {
   option (scalapb.message).extends = "io.convergence.proto.Response";
   option (scalapb.message).extends = "io.convergence.proto.Historical";
 
-  repeated string  added = 1;
-  repeated string  removed = 2;
-  bool  all = 3;
+  repeated ModelOfflineSubscriptionData subscribe = 1;
+  repeated string unsubscribe = 2;
+  bool all = 3;
+}
+
+message ModelOfflineSubscriptionData {
+  string modelId = 1;
+  int64 currentVersion = 2;
 }
 
 message OfflineModelUpdated {
