@@ -246,9 +246,9 @@ message ModelDeleted {
 //
 // Offline
 //
-message ModelOfflineSubscriptionChangeRequest {
-  option (scalapb.message).extends = "io.convergence.proto.Response";
-  option (scalapb.message).extends = "io.convergence.proto.Historical";
+message ModelOfflineSubscriptionChangeMessage {
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
 
   repeated ModelOfflineSubscriptionData subscribe = 1;
   repeated string unsubscribe = 2;
@@ -260,7 +260,10 @@ message ModelOfflineSubscriptionData {
   int64 currentVersion = 2;
 }
 
-message OfflineModelUpdated {
+message OfflineModelUpdatedMessage {
+  option (scalapb.message).extends = "io.convergence.proto.Normal";
+  option (scalapb.message).extends = "io.convergence.proto.Model";
+
   string modelId = 1;
   string collection = 2;
   int64 version = 3;
