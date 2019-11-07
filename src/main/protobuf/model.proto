@@ -246,8 +246,8 @@ message ModelDeleted {
 //
 // Offline
 //
-message ModelOfflineSubscriptionChangeMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Normal";
+message ModelOfflineSubscriptionChangeRequestMessage {
+  option (scalapb.message).extends = "io.convergence.proto.Request";
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   repeated ModelOfflineSubscriptionData subscribe = 1;

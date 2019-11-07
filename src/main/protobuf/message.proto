@@ -87,7 +87,7 @@ message ConvergenceMessage {
     ModelReconnectResponseMessage modelReconnectResponse = 133;
     ModelReconnectCompleteMessage modelReconnectComplete = 134;
 
-    ModelOfflineSubscriptionChangeMessage modelOfflineSubscriptionChange = 135;
+    ModelOfflineSubscriptionChangeRequestMessage modelOfflineSubscriptionChange = 135;
     OfflineModelUpdatedMessage modelOfflineUpdated = 136;
 
     HistoricalDataRequestMessage historicalDataRequest = 137;
