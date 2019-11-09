@@ -269,11 +269,11 @@ message OfflineModelUpdatedMessage {
   oneof action {
     bool deleted  = 2;
     bool permissionRevoked  = 3;
-    OfflineModelUpdate updated = 4;
+    OfflineModelUpdateData updated = 4;
   }
 }
 
-message OfflineModelUpdate {
+message OfflineModelUpdateData {
   ModelUpdateData model = 1;
   ModelPermissionsData permissions = 2;
 }
