@@ -265,11 +265,24 @@ message OfflineModelUpdatedMessage {
   option (scalapb.message).extends = "io.convergence.proto.Model";
 
   string modelId = 1;
-  string collection = 2;
-  int64 version = 3;
-  google.protobuf.Timestamp createdTime = 4;
-  google.protobuf.Timestamp modifiedTime = 5;
-  ObjectValue data = 6;
+
+  oneof action {
+    bool deleted  = 2;
+    bool permissionRevoked  = 3;
+    OfflineModelUpdate updated = 4;
+  }
+}
+
+message OfflineModelUpdate {
+  ModelUpdateData model = 1;
+  ModelPermissionsData permissions = 2;
+}
+
+message ModelUpdateData {
+  int64 version = 1;
+  google.protobuf.Timestamp createdTime = 2;
+  google.protobuf.Timestamp modifiedTime = 3;
+  ObjectValue data = 4;
 }
 
 //
