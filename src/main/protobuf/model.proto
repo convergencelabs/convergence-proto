@@ -258,6 +258,7 @@ message ModelOfflineSubscriptionChangeRequestMessage {
 message ModelOfflineSubscriptionData {
   string modelId = 1;
   int64 currentVersion = 2;
+  ModelPermissionsData currentPermissions = 3;
 }
 
 message OfflineModelUpdatedMessage {
