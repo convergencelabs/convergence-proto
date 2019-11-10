@@ -4,7 +4,6 @@ import fs from 'fs-extra';
 import pbjs from "protobufjs/cli/pbjs";
 import pbts from "protobufjs/cli/pbts";
 
-
 const mkDist = (cb) => {
   fs.ensureDirSync("npm-dist");
   cb();
@@ -26,7 +25,7 @@ const createProtoJson = (cb) => {
   pbjs.main([
     "--target", "json",
     "-o", "npm-dist/convergence-proto.json",
-    "./src/main/protobuf/message.proto"], function (err, output) {
+    "./src/main/protobuf/convergence-protocol.proto"], function (err, output) {
     if (err) {
       throw err;
     }
@@ -39,7 +38,7 @@ const compileProtoJavaScript = (cb) => {
   pbjs.main([
     "--target", "static",
     "-o", "npm-dist/convergence-proto.js",
-    "src/main/protobuf/message.proto"], function (err, output) {
+    "src/main/protobuf/convergence-protocol.proto"], function (err, output) {
     if (err) {
       throw err;
     }

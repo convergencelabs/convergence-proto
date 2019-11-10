@@ -1,10 +1,16 @@
+/*
+ * Copyright (C) Convergence Labs, Inc - All Rights Reserved
+ *
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE.txt', which is part of this source code package.
+ */
 syntax = "proto3";
 
 package io.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
-import "common.proto";
 import "scalapb/scalapb.proto";
+import "core/common.proto";
 
 message ReferenceValues {
   oneof values {
