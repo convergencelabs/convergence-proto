@@ -50,3 +50,8 @@ message ConvergenceMessage {
 The body field will contain a specific message sent or received. WebSockets are an asynchronous, bi-directional streaming communication channel. However, Convergence has several request / response style exchanges. The ConvergenceMessage structure implements a correlation id strategy to enable request / response behavior over WebSockets.
 
 The best way to understand the protocol is to simply view the `.proto` files in the [src/main/protobuf](src/main/protobuf) directory.
+
+## License
+The Convergence Protocol is licensed under the [Apache 2.0](LICENSE.txt). Refer to the [LICENSE.txt](LICENSE.txt) for the specific terms and conditions of the license.
+
+The Convergence Protocol is also available under a Commercial License. If you are interested in a non-open source license please contact us at [Convergence Labs](https://convergencelabs.com).
