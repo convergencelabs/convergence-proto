@@ -15,16 +15,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.convergencelabs.tech/shared/convergence-messages.git"
+    "url": "https://github.com/convergencelabs/convergence-proto.git"
   },
-  "bugs": "https://gitlab.convergencelabs.tech/shared/convergence-messages/issues",
+  "bugs": "https://github.com/convergencelabs/convergence-proto/issues",
   "license": "Apache-2.0",
   "scripts": {
     "dist": "node scripts/dist.js",
     "clean": "node scripts/clean.js"
-  },
-  "publishConfig": {
-    "registry": "https://nexus.dev.convergencelabs.tech/repository/npm-convergence/"
   },
   "main": "convergence-proto.js",
   "types": "convergence-proto.d.ts",
