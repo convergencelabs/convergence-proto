@@ -1,3 +1,5 @@
+<img align="right" alt="Convergence Logo" height="64" src="assets/convergence-logo.png" />
+
 # Convergence Protocol
 This repository defines the Convergence client-server, realtime, WebSocket protocol.  The protocol is specified using [Google Protocol Buffers](https://developers.google.com/protocol-buffers) version 3 messages. The protocol itself can be found in the [src/main/protobuf](src/main/protobuf) directory. 
 
