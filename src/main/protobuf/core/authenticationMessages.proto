@@ -16,51 +16,54 @@ import "scalapb/scalapb.proto";
 import "core/identityData.proto";
 
 message AuthenticationRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Authentication";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.AuthenticationMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+
+  message PasswordAuthRequestData {
+    string username = 1;
+    string password = 2;
+  }
+
+  message JwtAuthRequestData {
+    string jwt = 1;
+  }
+
+  message ReconnectTokenAuthRequestData {
+    string token = 1;
+  }
+
+  message AnonymousAuthRequestData {
+    google.protobuf.StringValue displayName = 1;
+  }
 
   oneof auth {
-    PasswordAuthRequestMessage password = 1;
-    JwtAuthRequestMessage jwt = 2;
-    AnonymousAuthRequestMessage anonymous = 3;
-    ReconnectTokenAuthRequestMessage reconnect = 4;
+    PasswordAuthRequestData password = 1;
+    JwtAuthRequestData jwt = 2;
+    AnonymousAuthRequestData anonymous = 3;
+    ReconnectTokenAuthRequestData reconnect = 4;
   }
 }
 
-message PasswordAuthRequestMessage {
-  string username = 1;
-  string password = 2;
-}
-
-message JwtAuthRequestMessage {
-  string jwt = 1;
-}
-
-message ReconnectTokenAuthRequestMessage {
-  string token = 1;
-}
-
-message AnonymousAuthRequestMessage {
-  google.protobuf.StringValue displayName = 1;
-}
 
 message AuthenticationResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Authentication";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.AuthenticationMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  message AuthSuccess {
+  message AuthSuccessData {
     DomainUserData user = 1;
     string sessionId = 2;
     string reconnectToken = 3;
     map<string, google.protobuf.Value> presenceState = 4;
   }
 
-  message AuthFailure {
+  message AuthFailureData {
     string message = 1;
   }
 
   oneof response {
-    AuthSuccess success = 1;
-    AuthFailure failure = 2;
+    AuthSuccessData success = 1;
+    AuthFailureData failure = 2;
   }
 }

@@ -25,16 +25,18 @@ import "core/identityData.proto";
 // Open Close
 //
 message OpenRealtimeModelRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   google.protobuf.StringValue modelId = 1;
   google.protobuf.Int32Value autoCreateId = 2;
 }
 
 message OpenRealtimeModelResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string resourceId = 1;
   string modelId = 2;
@@ -50,27 +52,31 @@ message OpenRealtimeModelResponseMessage {
 }
 
 message CloseRealtimeModelRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string resourceId = 1;
 }
 
 message CloseRealTimeModelResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 }
 
 message AutoCreateModelConfigRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   int32 autoCreateId = 1;
 }
 
 message AutoCreateModelConfigResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string collection = 1;
   ObjectValue data = 2;
@@ -81,24 +87,27 @@ message AutoCreateModelConfigResponseMessage {
 }
 
 message RemoteClientClosedMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string resourceId = 1;
   string sessionId = 2;
 }
 
 message RemoteClientOpenedMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string resourceId = 1;
   string sessionId = 2;
 }
 
 message ModelForceCloseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string resourceId = 1;
   string reason = 2;
@@ -110,8 +119,9 @@ message ModelForceCloseMessage {
 //
 
 message CreateRealtimeModelRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string collectionId = 1;
   google.protobuf.StringValue modelId = 2;
@@ -121,23 +131,26 @@ message CreateRealtimeModelRequestMessage {
   repeated UserModelPermissionsData userPermissions = 6;
 }
 
-message CreateRealtimeModelSuccessMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+message CreateRealtimeModelResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string modelId = 1;
 }
 
 message DeleteRealtimeModelRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string modelId = 1;
 }
 
-message DeleteRealtimeModelSuccessMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+message DeleteRealtimeModelResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 }
 
 //
@@ -145,24 +158,27 @@ message DeleteRealtimeModelSuccessMessage {
 //
 
 message ModelReconnectRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string modelId = 1;
   int64 contextVersion = 2;
 }
 
 message ModelReconnectResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string resourceId = 1;
   int64 currentVersion = 2;
 }
 
 message ModelReconnectCompleteMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string resourceId = 1;
   repeated string connectedClients = 2;
@@ -175,15 +191,17 @@ message ModelReconnectCompleteMessage {
 //
 
 message GetModelPermissionsRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string modelId = 1;
 }
 
 message GetModelPermissionsResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   bool overridesCollection = 1;
   ModelPermissionsData worldPermissions = 2;
@@ -191,8 +209,9 @@ message GetModelPermissionsResponseMessage {
 }
 
 message SetModelPermissionsRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string modelId = 1;
   google.protobuf.BoolValue overrideCollection = 2;
@@ -203,13 +222,15 @@ message SetModelPermissionsRequestMessage {
 }
 
 message SetModelPermissionsResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 }
 
 message ModelPermissionsChangedMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string resourceId = 1;
   ModelPermissionsData permissions = 2;
@@ -219,24 +240,26 @@ message ModelPermissionsChangedMessage {
 // Query
 //
 message ModelsQueryRequestMessage  {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string query = 1;
 }
 
-message ModelResult {
-  string collectionId = 1;
-  string modelId = 2;
-  google.protobuf.Timestamp createdTime = 3;
-  google.protobuf.Timestamp modifiedTime = 4;
-  int64 version = 5;
-  google.protobuf.Struct data = 6;
-}
-
 message ModelsQueryResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+
+  message ModelResult {
+    string collectionId = 1;
+    string modelId = 2;
+    google.protobuf.Timestamp createdTime = 3;
+    google.protobuf.Timestamp modifiedTime = 4;
+    int64 version = 5;
+    google.protobuf.Struct data = 6;
+  }
 
   repeated ModelResult models = 1;
   int64 offset = 2;
@@ -248,8 +271,9 @@ message ModelsQueryResponseMessage {
 // Operations
 //
 message OperationSubmissionMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string resourceId = 1;
   int32 sequenceNumber = 2;
@@ -258,8 +282,9 @@ message OperationSubmissionMessage {
 }
 
 message OperationAcknowledgementMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string resourceId = 1;
   int32 sequenceNumber = 2;
@@ -268,8 +293,9 @@ message OperationAcknowledgementMessage {
 }
 
 message RemoteOperationMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string resourceId = 1;
   string sessionId = 2;
@@ -282,8 +308,9 @@ message RemoteOperationMessage {
 // References
 //
 message ShareReferenceMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string resourceId = 1;
   google.protobuf.StringValue valueId = 2;
@@ -293,8 +320,9 @@ message ShareReferenceMessage {
 }
 
 message RemoteReferenceSharedMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string resourceId = 1;
   google.protobuf.StringValue valueId = 2;
@@ -304,8 +332,9 @@ message RemoteReferenceSharedMessage {
 }
 
 message UnshareReferenceMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string resourceId = 1;
   google.protobuf.StringValue valueId = 2;
@@ -313,8 +342,9 @@ message UnshareReferenceMessage {
 }
 
 message RemoteReferenceUnsharedMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string resourceId = 1;
   google.protobuf.StringValue valueId = 2;
@@ -323,8 +353,9 @@ message RemoteReferenceUnsharedMessage {
 }
 
 message SetReferenceMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string resourceId = 1;
   google.protobuf.StringValue valueId = 2;
@@ -334,8 +365,9 @@ message SetReferenceMessage {
 }
 
 message RemoteReferenceSetMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string resourceId = 1;
   google.protobuf.StringValue valueId = 2;
@@ -345,8 +377,9 @@ message RemoteReferenceSetMessage {
 }
 
 message ClearReferenceMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string resourceId = 1;
   google.protobuf.StringValue valueId = 2;
@@ -354,8 +387,9 @@ message ClearReferenceMessage {
 }
 
 message RemoteReferenceClearedMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string resourceId = 1;
   google.protobuf.StringValue valueId = 2;
@@ -367,23 +401,37 @@ message RemoteReferenceClearedMessage {
 // Offline
 //
 message ModelOfflineSubscriptionChangeRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+
+  message ModelOfflineSubscriptionData {
+    string modelId = 1;
+    int64 currentVersion = 2;
+    ModelPermissionsData currentPermissions = 3;
+  }
 
   repeated ModelOfflineSubscriptionData subscribe = 1;
   repeated string unsubscribe = 2;
   bool all = 3;
 }
 
-message ModelOfflineSubscriptionData {
-  string modelId = 1;
-  int64 currentVersion = 2;
-  ModelPermissionsData currentPermissions = 3;
-}
-
 message OfflineModelUpdatedMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Model";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+
+  message OfflineModelUpdateData {
+    ModelUpdateData model = 1;
+    ModelPermissionsData permissions = 2;
+  }
+
+  message ModelUpdateData {
+    int64 version = 1;
+    google.protobuf.Timestamp createdTime = 2;
+    google.protobuf.Timestamp modifiedTime = 3;
+    ObjectValue data = 4;
+  }
 
   string modelId = 1;
 
@@ -394,32 +442,23 @@ message OfflineModelUpdatedMessage {
   }
 }
 
-message OfflineModelUpdateData {
-  ModelUpdateData model = 1;
-  ModelPermissionsData permissions = 2;
-}
-
-message ModelUpdateData {
-  int64 version = 1;
-  google.protobuf.Timestamp createdTime = 2;
-  google.protobuf.Timestamp modifiedTime = 3;
-  ObjectValue data = 4;
-}
 
 //
 // Historical Models
 //
 
 message HistoricalDataRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Historical";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string modelId = 1;
 }
 
 message HistoricalDataResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Historical";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string collectionId  = 1;
   ObjectValue data = 2;
@@ -429,25 +468,27 @@ message HistoricalDataResponseMessage {
 }
 
 message HistoricalOperationRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Historical";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string modelId = 1;
   int64 first = 2;
   int64 last = 3;
 }
 
-message ModelOperationData {
-  string modelId = 1;
-  int64 version = 2;
-  google.protobuf.Timestamp timestamp = 3;
-  string sessionId = 4;
-  AppliedOperationData operation = 5;
-}
-
 message HistoricalOperationsResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Historical";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+
+  message ModelOperationData {
+    string modelId = 1;
+    int64 version = 2;
+    google.protobuf.Timestamp timestamp = 3;
+    string sessionId = 4;
+    AppliedOperationData operation = 5;
+  }
 
   repeated ModelOperationData operations = 1;
 }

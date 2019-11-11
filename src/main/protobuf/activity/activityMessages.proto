@@ -15,44 +15,50 @@ import "scalapb/scalapb.proto";
 import "activity/activityData.proto";
 
 message ActivityJoinRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Activity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string activityId = 1;
   map<string, google.protobuf.Value> state = 2;
 }
 
 message ActivityJoinResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Activity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   map<string, ActivityStateData> state = 1;
 }
 
 message ActivityLeaveMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Activity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string activityId = 1;
 }
 
 message ActivityParticipantsRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Activity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string activityId = 1;
 }
 
 message ActivityParticipantsResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Activity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   map<string, ActivityStateData> state = 1;
 }
 
 message ActivitySessionJoinedMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Activity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string activityId = 1;
   string sessionId = 2;
@@ -60,16 +66,18 @@ message ActivitySessionJoinedMessage {
 }
 
 message ActivitySessionLeftMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Activity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string activityId = 1;
   string sessionId = 2;
 }
 
 message ActivityUpdateStateMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Activity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string activityId = 1;
   map<string, google.protobuf.Value> set = 2;
@@ -78,8 +86,9 @@ message ActivityUpdateStateMessage {
 }
 
 message ActivityStateUpdatedMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Activity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string activityId = 1;
   string sessionId = 2;

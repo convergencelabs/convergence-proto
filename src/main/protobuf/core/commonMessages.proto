@@ -1,0 +1,28 @@
+/*
+ * Copyright (C) Convergence Labs, Inc
+ *
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE.txt', which is part of this source code package.
+ */
+syntax = "proto3";
+
+package com.convergencelabs.convergence.proto.core;
+
+import "scalapb/scalapb.proto";
+
+
+message ErrorMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+
+  string code = 1;
+  string message = 2;
+  map<string, string> details = 3;
+}
+
+message OkResponse {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+}

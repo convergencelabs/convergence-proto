@@ -8,25 +8,10 @@ syntax = "proto3";
 
 package com.convergencelabs.convergence.proto.core;
 
-import "scalapb/scalapb.proto";
-
 message StringList {
   repeated string values = 1;
 }
 
 message Int32List {
   repeated int32 values = 1;
-}
-
-message ErrorMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-
-  string code = 1;
-  string message = 2;
-  map<string, string> details = 3;
-}
-
-message OkResponse {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
 }

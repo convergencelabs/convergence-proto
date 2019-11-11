@@ -11,19 +11,19 @@ import com.convergencelabs.convergence.proto.core.PermissionType
 trait ServerMessage
 trait ClientMessage
 
-trait Normal
-trait Request
-trait Response
+trait NormalMessage
+trait RequestMessage
+trait ResponseMessage
 
-trait Protocol
-trait Activity
-trait Authentication
-trait Chat
-trait Historical
-trait Identity
-trait Model
-trait Permissions
-trait Presence
+trait ProtocolMessage
+trait ActivityMessage
+trait AuthenticationMessage
+trait ChatMessage
+trait HistoricalMessage
+trait IdentityMessage
+trait ModelMessage
+trait PermissionsMessage
+trait PresenceMessage
 
 trait PermissionRequest extends Request with Permissions  {
   def idType: PermissionType

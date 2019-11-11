@@ -14,7 +14,7 @@ import "google/protobuf/wrappers.proto";
 import "core/authenticationMessages.proto";
 import "core/connectionMessages.proto";
 import "core/permissions.proto";
-import "core/commonData.proto";
+import "core/commonMessages.proto";
 
 import "activity/activityMessages.proto";
 import "chat/chatMessages.proto";
@@ -93,10 +93,10 @@ message ConvergenceMessage {
     model.CloseRealTimeModelResponseMessage closeRealTimeModelResponse = 103;
 
     model.CreateRealtimeModelRequestMessage createRealTimeModelRequest = 104;
-    model.CreateRealtimeModelSuccessMessage createRealTimeModelResponse = 105;
+    model.CreateRealtimeModelResponseMessage createRealTimeModelResponse = 105;
 
     model.DeleteRealtimeModelRequestMessage deleteRealtimeModelRequest = 106;
-    model.DeleteRealtimeModelSuccessMessage deleteRealtimeModelResponse = 107;
+    model.DeleteRealtimeModelResponseMessage deleteRealtimeModelResponse = 107;
 
     model.ModelForceCloseMessage forceCloseRealTimeModel = 108;
 

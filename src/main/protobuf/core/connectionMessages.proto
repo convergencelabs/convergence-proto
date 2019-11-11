@@ -12,16 +12,21 @@ import "google/protobuf/wrappers.proto";
 import "scalapb/scalapb.proto";
 
 message PingMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Protocol";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ProtocolMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 }
 
 message PongMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Protocol";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ProtocolMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 }
 
 message HandshakeRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Protocol";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ProtocolMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   bool reconnect = 1;
   google.protobuf.StringValue reconnectToken = 2;
@@ -30,8 +35,9 @@ message HandshakeRequestMessage {
 }
 
 message HandshakeResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Protocol";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ProtocolMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   bool success = 1;
 

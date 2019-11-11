@@ -17,15 +17,15 @@ import "core/identityData.proto";
 
 
 message GetUsersMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
   repeated com.convergencelabs.convergence.proto.core.DomainUserIdData userIds = 1;
 }
 
 message UserSearchMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
   repeated UserField fields = 1;
   string value = 2;
@@ -36,43 +36,43 @@ message UserSearchMessage {
 }
 
 message UserListMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
   repeated com.convergencelabs.convergence.proto.core.DomainUserData userData = 1;
 }
 
 message UserGroupsRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
   repeated string ids = 1;
 }
 
 message UserGroupsResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
   repeated UserGroupData groupData  = 1;
 }
 
 message UserGroupsForUsersRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
   repeated com.convergencelabs.convergence.proto.core.DomainUserIdData users = 1;
 }
 
 message UserGroupsForUsersResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
   repeated UserGroupsEntry userGroups = 1;
 }
 
 message IdentityCacheUpdateMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
   map<string, com.convergencelabs.convergence.proto.core.DomainUserIdData> sessions = 1;
   repeated com.convergencelabs.convergence.proto.core.DomainUserData users = 2;
