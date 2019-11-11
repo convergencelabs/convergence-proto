@@ -2,7 +2,7 @@ name := "convergence-proto"
 description := "Convergence Protocol Scala Bindings"
 homepage := Some(url("https://convergence.io"))
 
-organization := "com.convergencelabs.convergence"
+organization := "com.convergencelabs"
 organizationName := "Convergence Labs, Inc."
 organizationHomepage := Some(url("http://convergencelabs.com"))
 
