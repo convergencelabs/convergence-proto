@@ -1,0 +1,15 @@
+/*
+ * Copyright (C) Convergence Labs, Inc
+ *
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE.txt', which is part of this source code package.
+ */
+syntax = "proto3";
+
+package com.convergencelabs.convergence.proto.activity;
+
+import "google/protobuf/struct.proto";
+
+message ActivityStateData {
+  map<string, google.protobuf.Value> state = 1;
+}

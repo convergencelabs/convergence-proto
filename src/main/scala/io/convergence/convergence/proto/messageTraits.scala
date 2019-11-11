@@ -1,12 +1,13 @@
 /*
- * Copyright (C) Convergence Labs, Inc - All Rights Reserved
+ * Copyright (C) Convergence Labs, Inc
  *
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE.txt', which is part of this source code package.
  */
-package io.convergence.proto
+package com.convergencelabs.convergence.proto
 
-import io.convergence.proto.permissions.PermissionType
+trait ServerMessage
+trait ClientMessage
 
 trait Normal
 trait Request

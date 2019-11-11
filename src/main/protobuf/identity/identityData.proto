@@ -1,12 +1,12 @@
 /*
- * Copyright (C) Convergence Labs, Inc - All Rights Reserved
+ * Copyright (C) Convergence Labs, Inc
  *
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE.txt', which is part of this source code package.
  */
 syntax = "proto3";
 
-package io.convergence.proto;
+package com.convergencelabs.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
 import "scalapb/scalapb.proto";
@@ -21,15 +21,15 @@ enum UserField {
 }
 
 message GetUsersMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
 
   repeated DomainUserIdData userIds = 1;
 }
 
 message UserSearchMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
 
   repeated UserField fields = 1;
   string value = 2;
@@ -72,36 +72,36 @@ message UserGroupData {
 }
 
 message UserListMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Response";
-  option (scalapb.message).extends = "io.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
 
   repeated DomainUserData userData = 1;
 }
 
 message UserGroupsRequestMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
 
   repeated string ids = 1;
 }
 
 message UserGroupsResponseMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Response";
-  option (scalapb.message).extends = "io.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
 
   repeated UserGroupData groupData  = 1;
 }
 
 message UserGroupsForUsersRequestMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Request";
-  option (scalapb.message).extends = "io.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
 
   repeated DomainUserIdData users = 1;
 }
 
 message UserGroupsForUsersResponseMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Response";
-  option (scalapb.message).extends = "io.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
 
   repeated UserGroupsEntry userGroups = 1;
 }
@@ -112,8 +112,8 @@ message UserGroupsEntry {
 }
 
 message IdentityCacheUpdateMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Normal";
-  option (scalapb.message).extends = "io.convergence.proto.Identity";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
 
   map<string, DomainUserIdData> sessions = 1;
   repeated DomainUserData users = 2;

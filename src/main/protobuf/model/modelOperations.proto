@@ -1,61 +1,17 @@
 /*
- * Copyright (C) Convergence Labs, Inc - All Rights Reserved
+ * Copyright (C) Convergence Labs, Inc
  *
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE.txt', which is part of this source code package.
  */
 syntax = "proto3";
 
-package io.convergence.proto;
+package com.convergencelabs.convergence.proto.model;
 
 import "google/protobuf/timestamp.proto";
 import "scalapb/scalapb.proto";
 
-message ObjectValue {
-  string id = 1;
-  map<string, DataValue> children = 2;
-}
-
-message ArrayValue {
-  string id = 1;
-  repeated DataValue children = 2;
-}
-
-message BooleanValue {
-  string id = 1;
-  bool value = 2;
-}
-
-message DoubleValue {
-  string id = 1;
-  double value = 2;
-}
-
-message NullValue {
-  string id = 1;
-}
-
-message StringValue {
-  string id = 1;
-  string value = 2;
-}
-
-message DateValue {
-  string id = 1;
-  google.protobuf.Timestamp value = 2;
-}
-
-message DataValue {
-  oneof value {
-    ObjectValue objectValue = 1;
-    ArrayValue arrayValue = 2;
-    BooleanValue booleanValue = 3;
-    DoubleValue doubleValue = 4;
-    NullValue nullValue = 5;
-    StringValue stringValue = 6;
-    DateValue dateValue = 7;
-  }
-}
+import "model/modelDataValue.proto";
 
 message StringInsertOperationData {
   string id = 1;
@@ -190,35 +146,4 @@ message OperationData {
     DiscreteOperationData discreteOperation = 1;
     CompoundOperationData compoundOperation = 2;
   }
-}
-
-message OperationSubmissionMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Normal";
-  option (scalapb.message).extends = "io.convergence.proto.Model";
-
-  string resourceId = 1;
-  int32 sequenceNumber = 2;
-  int64 contextVersion = 3;
-  OperationData operation = 4;
-}
-
-message OperationAcknowledgementMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Normal";
-  option (scalapb.message).extends = "io.convergence.proto.Model";
-
-  string resourceId = 1;
-  int32 sequenceNumber = 2;
-  int64 version = 3;
-  google.protobuf.Timestamp timestamp = 4;
-}
-
-message RemoteOperationMessage {
-  option (scalapb.message).extends = "io.convergence.proto.Normal";
-  option (scalapb.message).extends = "io.convergence.proto.Model";
-
-  string resourceId = 1;
-  string sessionId = 2;
-  int64 contextVersion = 3;
-  google.protobuf.Timestamp timestamp = 4;
-  OperationData operation = 5;
 }

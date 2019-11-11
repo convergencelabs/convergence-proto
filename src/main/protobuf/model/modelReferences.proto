@@ -1,0 +1,38 @@
+/*
+ * Copyright (C) Convergence Labs, Inc
+ *
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE.txt', which is part of this source code package.
+ */
+syntax = "proto3";
+
+package com.convergencelabs.convergence.proto.model;
+
+import "google/protobuf/wrappers.proto";
+
+import "core/common.proto";
+
+message IndexRange {
+  int32 startIndex = 1;
+  int32 endIndex = 2;
+}
+
+message IndexRangeList {
+  repeated IndexRange values = 1;
+}
+
+message ReferenceValues {
+  oneof values {
+    Int32List indices = 1;
+    IndexRangeList ranges = 2;
+    StringList properties = 3;
+    StringList elements = 4;
+  }
+}
+
+message ReferenceData {
+  string sessionId = 1;
+  google.protobuf.StringValue valueId = 2;
+  string key = 3;
+  ReferenceValues reference = 4;
+}

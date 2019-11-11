@@ -1,26 +1,26 @@
 /*
- * Copyright (C) Convergence Labs, Inc - All Rights Reserved
+ * Copyright (C) Convergence Labs, Inc
  *
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE.txt', which is part of this source code package.
  */
 syntax = "proto3";
 
-package io.convergence.proto;
+package com.convergencelabs.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
 
-import "activity/activity.proto";
+
 import "core/authentication.proto";
-import "core/common.proto";
-import "core/permissions.proto";
 import "core/connection.proto";
+import "core/permissions.proto";
+import "core/common.proto";
+
+import "activity/activityMessages.proto";
 import "chat/chat.proto";
-import "identity/identity.proto";
-import "model/model.proto";
-import "model/operations.proto";
-import "model/references.proto";
-import "presence/presence.proto";
+import "identity/identityMessages.proto";
+import "model/modelMessages.proto";
+import "presence/presenceMessages.proto";
 
 message ConvergenceMessage {
 
@@ -42,66 +42,64 @@ message ConvergenceMessage {
 
 
     // Models
-    OpenRealtimeModelRequestMessage openRealTimeModelRequest = 100;
-    OpenRealtimeModelResponseMessage openRealTimeModelResponse = 101;
+    model.OpenRealtimeModelRequestMessage openRealTimeModelRequest = 100;
+    model.OpenRealtimeModelResponseMessage openRealTimeModelResponse = 101;
 
-    CloseRealtimeModelRequestMessage closeRealTimeModelRequest = 102;
-    CloseRealTimeModelSuccessMessage closeRealTimeModelResponse = 103;
+    model.CloseRealtimeModelRequestMessage closeRealTimeModelRequest = 102;
+    model.CloseRealTimeModelResponseMessage closeRealTimeModelResponse = 103;
 
-    CreateRealtimeModelRequestMessage createRealTimeModelRequest = 104;
-    CreateRealtimeModelSuccessMessage createRealTimeModelResponse = 105;
+    model.CreateRealtimeModelRequestMessage createRealTimeModelRequest = 104;
+    model.CreateRealtimeModelSuccessMessage createRealTimeModelResponse = 105;
 
-    DeleteRealtimeModelRequestMessage deleteRealtimeModelRequest = 106;
-    DeleteRealtimeModelSuccessMessage deleteRealtimeModelResponse = 107;
+    model.DeleteRealtimeModelRequestMessage deleteRealtimeModelRequest = 106;
+    model.DeleteRealtimeModelSuccessMessage deleteRealtimeModelResponse = 107;
 
-    ModelForceCloseMessage forceCloseRealTimeModel = 108;
+    model.ModelForceCloseMessage forceCloseRealTimeModel = 108;
 
-    RemoteClientOpenedMessage remoteClientOpenedModel = 109;
-    RemoteClientClosedMessage remoteClientClosedModel = 110;
+    model.RemoteClientOpenedMessage remoteClientOpenedModel = 109;
+    model.RemoteClientClosedMessage remoteClientClosedModel = 110;
 
-    AutoCreateModelConfigRequestMessage modelAutoCreateConfigRequest = 111;
-    AutoCreateModelConfigResponseMessage modelAutoCreateConfigResponse = 112;
+    model.AutoCreateModelConfigRequestMessage modelAutoCreateConfigRequest = 111;
+    model.AutoCreateModelConfigResponseMessage modelAutoCreateConfigResponse = 112;
 
-    RemoteOperationMessage remoteOperation = 113;
+    model.RemoteOperationMessage remoteOperation = 113;
 
-    OperationSubmissionMessage operationSubmission = 114;
-    OperationAcknowledgementMessage operationAck = 115;
+    model.OperationSubmissionMessage operationSubmission = 114;
+    model.OperationAcknowledgementMessage operationAck = 115;
 
-    ShareReferenceMessage shareReference = 116;
-    SetReferenceMessage setReference = 117;
-    ClearReferenceMessage clearReference = 118;
-    UnshareReferenceMessage unshareReference = 119;
+    model.ShareReferenceMessage shareReference = 116;
+    model.SetReferenceMessage setReference = 117;
+    model.ClearReferenceMessage clearReference = 118;
+    model.UnshareReferenceMessage unshareReference = 119;
 
-    RemoteReferenceSharedMessage referenceShared = 120;
-    RemoteReferenceSetMessage referenceSet = 121;
-    RemoteReferenceClearedMessage referenceCleared = 122;
-    RemoteReferenceUnsharedMessage referenceUnshared = 123;
+    model.RemoteReferenceSharedMessage referenceShared = 120;
+    model.RemoteReferenceSetMessage referenceSet = 121;
+    model.RemoteReferenceClearedMessage referenceCleared = 122;
+    model.RemoteReferenceUnsharedMessage referenceUnshared = 123;
 
-    ModelsQueryRequestMessage modelsQueryRequest = 124;
-    ModelsQueryResponseMessage modelsQueryResponse = 125;
+    model.ModelsQueryRequestMessage modelsQueryRequest = 124;
+    model.ModelsQueryResponseMessage modelsQueryResponse = 125;
 
-    GetModelPermissionsRequestMessage getModelPermissionsRequest = 126;
-    GetModelPermissionsResponseMessage getModelPermissionsResponse = 127;
+    model.GetModelPermissionsRequestMessage getModelPermissionsRequest = 126;
+    model.GetModelPermissionsResponseMessage getModelPermissionsResponse = 127;
 
-    SetModelPermissionsRequestMessage setModelPermissionsRequest = 128;
-    SetModelPermissionsResponseMessage setModelPermissionsResponse = 129;
+    model.SetModelPermissionsRequestMessage setModelPermissionsRequest = 128;
+    model.SetModelPermissionsResponseMessage setModelPermissionsResponse = 129;
 
-    ModelPermissionsChangedMessage modelPermissionsChanged = 130;
+    model.ModelPermissionsChangedMessage modelPermissionsChanged = 130;
 
-    ModelDeleted modelDeleted = 131;
+    model.ModelReconnectRequestMessage modelReconnectRequest = 131;
+    model.ModelReconnectResponseMessage modelReconnectResponse = 132;
+    model.ModelReconnectCompleteMessage modelReconnectComplete = 133;
 
-    ModelReconnectRequestMessage modelReconnectRequest = 132;
-    ModelReconnectResponseMessage modelReconnectResponse = 133;
-    ModelReconnectCompleteMessage modelReconnectComplete = 134;
+    model.ModelOfflineSubscriptionChangeRequestMessage modelOfflineSubscriptionChange = 134;
+    model.OfflineModelUpdatedMessage modelOfflineUpdated = 135;
 
-    ModelOfflineSubscriptionChangeRequestMessage modelOfflineSubscriptionChange = 135;
-    OfflineModelUpdatedMessage modelOfflineUpdated = 136;
+    model.HistoricalDataRequestMessage historicalDataRequest = 136;
+    model.HistoricalDataResponseMessage historicalDataResponse = 137;
 
-    HistoricalDataRequestMessage historicalDataRequest = 137;
-    HistoricalDataResponseMessage historicalDataResponse = 138;
-
-    HistoricalOperationRequestMessage historicalOperationsRequest = 139;
-    HistoricalOperationsResponseMessage historicalOperationsResponse = 140;
+    model.HistoricalOperationRequestMessage historicalOperationsRequest = 138;
+    model.HistoricalOperationsResponseMessage historicalOperationsResponse = 139;
 
 
     // Identity
@@ -119,39 +117,40 @@ message ConvergenceMessage {
 
 
     // Activity
-    ActivityParticipantsRequestMessage activityParticipantsRequest = 300;
-    ActivityParticipantsResponseMessage activityParticipantsResponse = 301;
+    activity.ActivityParticipantsRequestMessage activityParticipantsRequest = 300;
+    activity.ActivityParticipantsResponseMessage activityParticipantsResponse = 301;
 
-    ActivityJoinRequestMessage activityJoinRequest = 302;
-    ActivityJoinResponseMessage activityJoinResponse = 303;
+    activity.ActivityJoinRequestMessage activityJoinRequest = 302;
+    activity.ActivityJoinResponseMessage activityJoinResponse = 303;
 
-    ActivityLeaveMessage activityLeaveRequest = 304;
+    activity.ActivityLeaveMessage activityLeaveRequest = 304;
     // ActivityLeaveResponse = 305;
 
-    ActivitySessionJoinedMessage activitySessionJoined = 306;
-    ActivitySessionLeftMessage activitySessionLeft = 307;
+    activity.ActivitySessionJoinedMessage activitySessionJoined = 306;
+    activity.ActivitySessionLeftMessage activitySessionLeft = 307;
 
-    ActivityUpdateStateMessage activityUpdateState = 308;
-    ActivityStateUpdatedMessage activityStateUpdated = 309;
+    activity.ActivityUpdateStateMessage activityUpdateState = 308;
+    activity.ActivityStateUpdatedMessage activityStateUpdated = 309;
 
 
     // Presence
-    PresenceSetStateMessage presenceSetState = 400;
-    PresenceRemoveStateMessage presenceRemoveState = 401;
-    PresenceClearStateMessage presenceClearState = 402;
+    presence.PresenceSetStateMessage presenceSetState = 400;
+    presence.PresenceRemoveStateMessage presenceRemoveState = 401;
+    presence.PresenceClearStateMessage presenceClearState = 402;
 
-    PresenceStateSetMessage presenceStateSet = 403;
-    PresenceStateRemovedMessage presenceStateRemoved = 404;
-    PresenceStateClearedMessage presenceStateCleared = 405;
+    presence.PresenceStateSetMessage presenceStateSet = 403;
+    presence.PresenceStateRemovedMessage presenceStateRemoved = 404;
+    presence.PresenceStateClearedMessage presenceStateCleared = 405;
 
-    PresenceAvailabilityChangedMessage presenceAvailabilityChanged  = 406;
+    presence.PresenceAvailabilityChangedMessage presenceAvailabilityChanged  = 406;
 
-    PresenceRequestMessage presenceRequest = 407;
-    PresenceResponseMessage presenceResponse = 408;
+    presence.PresenceRequestMessage presenceRequest = 407;
+    presence.PresenceResponseMessage presenceResponse = 408;
 
-    SubscribePresenceRequestMessage presenceSubscribeRequest = 409;
-    SubscribePresenceResponseMessage presenceSubscribeResponse = 410;
-    UnsubscribePresenceMessage presenceUnsubscribe = 411;
+    presence.SubscribePresenceRequestMessage presenceSubscribeRequest = 409;
+    presence.SubscribePresenceResponseMessage presenceSubscribeResponse = 410;
+    presence.UnsubscribePresenceMessage presenceUnsubscribe = 411;
+
 
     // Chat
     CreateChatRequestMessage createChatRequest = 500;

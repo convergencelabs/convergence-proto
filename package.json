@@ -1,7 +1,7 @@
 {
   "name": "@convergence/convergence-proto",
   "version": "1.0.0-SNAPSHOT",
-  "description": "Convergence Protocol Buffers",
+  "description": "Convergence Protocol",
   "tags": [
     "convergence",
     "protocol",
@@ -16,8 +16,8 @@
   "bugs": "https://gitlab.convergencelabs.tech/shared/convergence-messages/issues",
   "license": "UNLICENSED",
   "scripts": {
-    "dist": "gulp dist",
-    "clean": "gulp clean"
+    "dist": "node scripts/dist.js",
+    "clean": "node scripts/clean.js"
   },
   "publishConfig": {
     "registry": "https://nexus.dev.convergencelabs.tech/repository/npm-convergence/"
@@ -28,12 +28,7 @@
     "protobufjs": "6.8.8"
   },
   "devDependencies": {
-    "@babel/core": "7.6.0",
-    "@babel/preset-env": "7.6.0",
-    "@babel/register": "7.6.0",
-    "gulp": "4.0.2",
-    "gulp-bump": "3.1.3",
-    "fs-extra": "8.1.0",
-    "jsdoc": "3.6.3"
+    "bump-regex": "4.0.0",
+    "fs-extra": "8.1.0"
   }
 }

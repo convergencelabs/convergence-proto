@@ -1,0 +1,18 @@
+/*
+ * Copyright (C) Convergence Labs, Inc
+ *
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE.txt', which is part of this source code package.
+ */
+syntax = "proto3";
+
+package com.convergencelabs.convergence.proto.presence;
+
+import "google/protobuf/struct.proto";
+import "identity/identityMessages.proto";
+
+message UserPresenceData {
+  DomainUserIdData user = 1;
+  bool available = 2;
+  map<string, google.protobuf.Value> state = 3;
+}
