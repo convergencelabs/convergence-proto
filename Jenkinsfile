@@ -4,11 +4,11 @@ sbtNodePod { label ->
       injectIvyCredentials()
 
       stage('SBT Compile') {
-        sh 'sbt -J-Xmx3G -J-XssM compile'
+        sh 'sbt -J-Xmx3G -J-Xss5M compile'
       }
 
       stage('SBT Publish') {
-        sh 'sbt -J-Xmx3G -J-XssM publish'
+        sh 'sbt -J-Xmx3G -J-Xss5M publish'
       }
     }
 
