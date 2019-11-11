@@ -25,6 +25,6 @@ trait ModelMessage
 trait PermissionsMessage
 trait PresenceMessage
 
-trait PermissionRequest extends Request with Permissions  {
+trait PermissionRequest extends RequestMessage with PermissionsMessage  {
   def idType: PermissionType
 }

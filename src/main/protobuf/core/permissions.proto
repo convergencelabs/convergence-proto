@@ -39,7 +39,7 @@ message AddPermissionsRequestMessage {
 
 message AddPermissionsResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Permissions";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionsMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 }
 
@@ -56,7 +56,7 @@ message RemovePermissionsRequestMessage {
 
 message RemovePermissionsResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Permissions";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionsMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 }
 
@@ -73,7 +73,7 @@ message SetPermissionsRequestMessage {
 
 message SetPermissionsResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Permissions";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionsMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 }
 
@@ -87,7 +87,7 @@ message GetClientPermissionsRequestMessage {
 
 message GetClientPermissionsResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Permissions";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionsMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   repeated string permissions = 1;
@@ -103,7 +103,7 @@ message GetWorldPermissionsRequestMessage {
 
 message GetWorldPermissionsResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Permissions";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionsMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   repeated string permissions = 1;
@@ -119,7 +119,7 @@ message GetAllUserPermissionsRequestMessage {
 
 message GetAllUserPermissionsResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Permissions";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionsMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   repeated UserPermissionsEntry users = 1;
@@ -135,7 +135,7 @@ message GetAllGroupPermissionsRequestMessage {
 
 message GetAllGroupPermissionsResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Permissions";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionsMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   map<string, PermissionsList> groups = 1;
@@ -152,7 +152,7 @@ message GetUserPermissionsRequestMessage {
 
 message GetUserPermissionsResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Permissions";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionsMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   repeated string permissions = 1;
@@ -169,7 +169,7 @@ message GetGroupPermissionsRequestMessage {
 
 message GetGroupPermissionsResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Permissions";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionsMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   repeated string permissions = 1;

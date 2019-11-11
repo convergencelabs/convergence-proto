@@ -449,7 +449,7 @@ message OfflineModelUpdatedMessage {
 
 message HistoricalDataRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Historical";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.HistoricalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string modelId = 1;
@@ -457,7 +457,7 @@ message HistoricalDataRequestMessage {
 
 message HistoricalDataResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Historical";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.HistoricalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   string collectionId  = 1;
@@ -469,7 +469,7 @@ message HistoricalDataResponseMessage {
 
 message HistoricalOperationRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Historical";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.HistoricalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string modelId = 1;
@@ -479,7 +479,7 @@ message HistoricalOperationRequestMessage {
 
 message HistoricalOperationsResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Historical";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.HistoricalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   message ModelOperationData {
