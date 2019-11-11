@@ -52,6 +52,6 @@ The body field will contain a specific message sent or received. WebSockets are 
 The best way to understand the protocol is to simply view the `.proto` files in the [src/main/protobuf](src/main/protobuf) directory.
 
 ## License
-The Convergence Protocol is licensed under the [Apache 2.0](LICENSE.txt). Refer to the [LICENSE.txt](LICENSE.txt) for the specific terms and conditions of the license.
+The Convergence Protocol is licensed under the [Apache 2.0](LICENSE.txt) license. Refer to the [LICENSE.txt](LICENSE.txt) for the specific terms and conditions of the license.
 
 The Convergence Protocol is also available under a Commercial License. If you are interested in a non-open source license please contact us at [Convergence Labs](https://convergencelabs.com).
