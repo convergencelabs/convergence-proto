@@ -6,12 +6,14 @@
  */
 syntax = "proto3";
 
-package com.convergencelabs.convergence.proto;
+package com.convergencelabs.convergence.proto.core;
 
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/struct.proto";
+
 import "scalapb/scalapb.proto";
-import "identity/identityMessages.proto";
+
+import "core/identityData.proto";
 
 message AuthenticationRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
@@ -42,20 +44,20 @@ message AnonymousAuthRequestMessage {
   google.protobuf.StringValue displayName = 1;
 }
 
-message AuthSuccess {
-  DomainUserData user = 1;
-  string sessionId = 2;
-  string reconnectToken = 3;
-  map<string, google.protobuf.Value> presenceState = 4;
-}
-
-message AuthFailure {
-  string message = 1;
-}
-
 message AuthenticationResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Authentication";
+
+  message AuthSuccess {
+    DomainUserData user = 1;
+    string sessionId = 2;
+    string reconnectToken = 3;
+    map<string, google.protobuf.Value> presenceState = 4;
+  }
+
+  message AuthFailure {
+    string message = 1;
+  }
 
   oneof response {
     AuthSuccess success = 1;

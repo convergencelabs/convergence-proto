@@ -12,14 +12,14 @@ import "google/protobuf/struct.proto";
 
 import "scalapb/scalapb.proto";
 
-import "identity/identityMessages.proto";
+import "core/identityData.proto";
 import "presence/presenceData.proto";
 
 message PresenceRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Presence";
 
-  repeated DomainUserIdData users = 1;
+  repeated com.convergencelabs.convergence.proto.core.DomainUserIdData users = 1;
 }
 
 message PresenceResponseMessage {
@@ -33,7 +33,7 @@ message SubscribePresenceRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Presence";
 
-  repeated DomainUserIdData users = 1;
+  repeated com.convergencelabs.convergence.proto.core.DomainUserIdData users = 1;
 }
 
 message SubscribePresenceResponseMessage {
@@ -47,7 +47,7 @@ message UnsubscribePresenceMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Presence";
 
-  repeated DomainUserIdData users = 1;
+  repeated com.convergencelabs.convergence.proto.core.DomainUserIdData users = 1;
 }
 
 message PresenceSetStateMessage {
@@ -73,7 +73,7 @@ message PresenceStateSetMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Presence";
 
-  DomainUserIdData user = 1;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 1;
   map<string, google.protobuf.Value> state = 2;
 }
 
@@ -81,7 +81,7 @@ message PresenceStateRemovedMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Presence";
 
-  DomainUserIdData user = 1;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 1;
   repeated string keys = 2;
 }
 
@@ -89,13 +89,13 @@ message PresenceStateClearedMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Presence";
 
-  DomainUserIdData user = 1;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 1;
 }
 
 message PresenceAvailabilityChangedMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Presence";
 
-  DomainUserIdData user = 1;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 1;
   bool available = 2;
 }

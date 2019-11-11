@@ -6,9 +6,11 @@
  */
 syntax = "proto3";
 
-package com.convergencelabs.convergence.proto;
+package com.convergencelabs.convergence.proto.core;
+
 import "scalapb/scalapb.proto";
-import "identity/identityMessages.proto";
+
+import "core/identityData.proto";
 
 enum PermissionType {
   PERMISSION_TYPE_NOT_SET = 0;

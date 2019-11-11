@@ -1,13 +1,5 @@
-
-node_modules/
-
-target/
-
-dist/
 .idea
-/bin/
 .cache-main
-.classpath
-.project
-.settings
+node_modules/
+target
 npm-dist

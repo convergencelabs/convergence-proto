@@ -6,6 +6,8 @@
  */
 package com.convergencelabs.convergence.proto
 
+import com.convergencelabs.convergence.proto.core.PermissionType
+
 trait ServerMessage
 trait ClientMessage
 

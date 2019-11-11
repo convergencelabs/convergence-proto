@@ -7,14 +7,18 @@
     "protocol",
     "protobuf"
   ],
-  "author": "Convergence Labs",
   "homepage": "https://convergence.io",
+  "author": {
+    "name" : "Convergence Labs, Inc.",
+    "email" : "info@convergencelabs.com",
+    "url" : "https://convergencelabs.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://gitlab.convergencelabs.tech/shared/convergence-messages.git"
   },
   "bugs": "https://gitlab.convergencelabs.tech/shared/convergence-messages/issues",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "scripts": {
     "dist": "node scripts/dist.js",
     "clean": "node scripts/clean.js"

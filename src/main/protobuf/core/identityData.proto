@@ -1,0 +1,37 @@
+/*
+ * Copyright (C) Convergence Labs, Inc
+ *
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE.txt', which is part of this source code package.
+ */
+syntax = "proto3";
+
+package com.convergencelabs.convergence.proto.core;
+
+import "google/protobuf/wrappers.proto";
+
+enum DomainUserTypeData {
+    Normal = 0;
+    Convergence = 1;
+    Anonymous = 2;
+}
+
+message DomainUserIdData {
+    DomainUserTypeData userType = 1;
+    string username = 2;
+}
+
+message DomainUserIdList {
+    repeated DomainUserIdData values = 1;
+}
+
+message DomainUserData {
+    DomainUserIdData userId = 1;
+    google.protobuf.StringValue firstName = 2;
+    google.protobuf.StringValue lastName = 3;
+    google.protobuf.StringValue displayName = 4;
+    google.protobuf.StringValue email = 5;
+    bool disabled = 6;
+    bool deleted = 7;
+    google.protobuf.StringValue deletedUsername = 8;
+}

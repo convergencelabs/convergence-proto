@@ -9,10 +9,10 @@ syntax = "proto3";
 package com.convergencelabs.convergence.proto.presence;
 
 import "google/protobuf/struct.proto";
-import "identity/identityMessages.proto";
+import "core/identityData.proto";
 
 message UserPresenceData {
-  DomainUserIdData user = 1;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 1;
   bool available = 2;
   map<string, google.protobuf.Value> state = 3;
 }

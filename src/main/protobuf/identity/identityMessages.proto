@@ -13,13 +13,14 @@ import "google/protobuf/wrappers.proto";
 import "scalapb/scalapb.proto";
 
 import "identity/identityData.proto";
+import "core/identityData.proto";
 
 
 message GetUsersMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
 
-  repeated DomainUserIdData userIds = 1;
+  repeated com.convergencelabs.convergence.proto.core.DomainUserIdData userIds = 1;
 }
 
 message UserSearchMessage {
@@ -38,7 +39,7 @@ message UserListMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
 
-  repeated DomainUserData userData = 1;
+  repeated com.convergencelabs.convergence.proto.core.DomainUserData userData = 1;
 }
 
 message UserGroupsRequestMessage {
@@ -59,7 +60,7 @@ message UserGroupsForUsersRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
 
-  repeated DomainUserIdData users = 1;
+  repeated com.convergencelabs.convergence.proto.core.DomainUserIdData users = 1;
 }
 
 message UserGroupsForUsersResponseMessage {
@@ -73,6 +74,6 @@ message IdentityCacheUpdateMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
 
-  map<string, DomainUserIdData> sessions = 1;
-  repeated DomainUserData users = 2;
+  map<string, com.convergencelabs.convergence.proto.core.DomainUserIdData> sessions = 1;
+  repeated com.convergencelabs.convergence.proto.core.DomainUserData users = 2;
 }

@@ -10,7 +10,7 @@ package com.convergencelabs.convergence.proto.model;
 
 import "google/protobuf/wrappers.proto";
 
-import "core/common.proto";
+import "core/commonData.proto";
 
 message IndexRange {
   int32 startIndex = 1;
@@ -23,10 +23,10 @@ message IndexRangeList {
 
 message ReferenceValues {
   oneof values {
-    Int32List indices = 1;
+    com.convergencelabs.convergence.proto.core.Int32List indices = 1;
     IndexRangeList ranges = 2;
-    StringList properties = 3;
-    StringList elements = 4;
+    com.convergencelabs.convergence.proto.core.StringList properties = 3;
+    com.convergencelabs.convergence.proto.core.StringList elements = 4;
   }
 }
 

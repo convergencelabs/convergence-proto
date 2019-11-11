@@ -10,11 +10,10 @@ package com.convergencelabs.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
 
-
-import "core/authentication.proto";
-import "core/connection.proto";
+import "core/authenticationMessages.proto";
+import "core/connectionMessages.proto";
 import "core/permissions.proto";
-import "core/common.proto";
+import "core/commonData.proto";
 
 import "activity/activityMessages.proto";
 import "chat/chatMessages.proto";
@@ -28,18 +27,17 @@ message ConvergenceMessage {
   google.protobuf.Int32Value responseId = 2;
 
   oneof body {
-    OkResponse ok = 3;
-    ErrorMessage error = 4;
+    core.OkResponse ok = 3;
+    core.ErrorMessage error = 4;
 
-    PingMessage ping = 5;
-    PongMessage pong = 6;
+    core.PingMessage ping = 5;
+    core.PongMessage pong = 6;
 
-    HandshakeRequestMessage handshakeRequest = 7;
-    HandshakeResponseMessage handshakeResponse = 8;
+    core.HandshakeRequestMessage handshakeRequest = 7;
+    core.HandshakeResponseMessage handshakeResponse = 8;
 
-    AuthenticationRequestMessage authenticationRequest = 9;
-    AuthenticationResponseMessage authenticationResponse = 10;
-
+    core.AuthenticationRequestMessage authenticationRequest = 9;
+    core.AuthenticationResponseMessage authenticationResponse = 10;
 
     // Models
     model.OpenRealtimeModelRequestMessage openRealTimeModelRequest = 100;
@@ -211,31 +209,31 @@ message ConvergenceMessage {
     chat.ChatHistoryResponseMessage getChatHistoryResponse = 540;
 
     // Permissions
-    GetClientPermissionsRequestMessage getClientPermissionsRequest = 601;
-    GetClientPermissionsResponseMessage getClientPermissionsResponse = 602;
+    core.GetClientPermissionsRequestMessage getClientPermissionsRequest = 601;
+    core.GetClientPermissionsResponseMessage getClientPermissionsResponse = 602;
 
-    AddPermissionsRequestMessage addPermissionsRequest = 603;
-    AddPermissionsResponseMessage addPermissionsResponse = 604;
+    core.AddPermissionsRequestMessage addPermissionsRequest = 603;
+    core.AddPermissionsResponseMessage addPermissionsResponse = 604;
 
-    RemovePermissionsRequestMessage removePermissionsRequest = 605;
-    RemovePermissionsResponseMessage removePermissionsResponse = 606;
+    core.RemovePermissionsRequestMessage removePermissionsRequest = 605;
+    core.RemovePermissionsResponseMessage removePermissionsResponse = 606;
 
-    SetPermissionsRequestMessage setPermissionsRequest = 607;
-    SetPermissionsResponseMessage setPermissionsResponse = 608;
+    core.SetPermissionsRequestMessage setPermissionsRequest = 607;
+    core.SetPermissionsResponseMessage setPermissionsResponse = 608;
 
-    GetWorldPermissionsRequestMessage getWorldPermissionsRequest = 609;
-    GetWorldPermissionsResponseMessage getWorldPermissionsResponse = 610;
+    core.GetWorldPermissionsRequestMessage getWorldPermissionsRequest = 609;
+    core.GetWorldPermissionsResponseMessage getWorldPermissionsResponse = 610;
 
-    GetAllUserPermissionsRequestMessage getAllUserPermissionsRequest = 611;
-    GetAllUserPermissionsResponseMessage getAllUserPermissionsResponse = 612;
+    core.GetAllUserPermissionsRequestMessage getAllUserPermissionsRequest = 611;
+    core.GetAllUserPermissionsResponseMessage getAllUserPermissionsResponse = 612;
 
-    GetUserPermissionsRequestMessage getUserPermissionsRequest = 613;
-    GetUserPermissionsResponseMessage getUserPermissionsResponse = 614;
+    core.GetUserPermissionsRequestMessage getUserPermissionsRequest = 613;
+    core.GetUserPermissionsResponseMessage getUserPermissionsResponse = 614;
 
-    GetAllGroupPermissionsRequestMessage getAllGroupPermissionsRequest = 615;
-    GetAllGroupPermissionsResponseMessage getAllGroupPermissionsResponse = 616;
+    core.GetAllGroupPermissionsRequestMessage getAllGroupPermissionsRequest = 615;
+    core.GetAllGroupPermissionsResponseMessage getAllGroupPermissionsResponse = 616;
 
-    GetGroupPermissionsRequestMessage getGroupPermissionsRequest = 617;
-    GetGroupPermissionsResponseMessage getGroupPermissionsResponse = 618;
+    core.GetGroupPermissionsRequestMessage getGroupPermissionsRequest = 617;
+    core.GetGroupPermissionsResponseMessage getGroupPermissionsResponse = 618;
   }
 }

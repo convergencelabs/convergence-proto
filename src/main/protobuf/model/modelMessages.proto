@@ -19,7 +19,7 @@ import "model/modelOperations.proto";
 import "model/modelPermissions.proto";
 import "model/modelAppliedOperations.proto";
 import "model/modelReferences.proto";
-import "identity/identityMessages.proto";
+import "core/identityData.proto";
 
 //
 // Open Close
@@ -199,7 +199,7 @@ message SetModelPermissionsRequestMessage {
   ModelPermissionsData worldPermissions = 3;
   bool removeAllUserPermissionsBeforeSet = 4;
   repeated UserModelPermissionsData setUserPermissions = 5;
-  repeated DomainUserIdData removedUserPermissions = 6;
+  repeated com.convergencelabs.convergence.proto.core.DomainUserIdData removedUserPermissions = 6;
 }
 
 message SetModelPermissionsResponseMessage {

@@ -36,7 +36,7 @@ function createProtoJson() {
     "--target", "json",
     "-o", "npm-dist/convergence-proto.json",
     "-p", "src/main/protobuf",
-    "./src/main/protobuf/convergence-protocol.proto"], function (err, output) {
+    "./src/main/protobuf/convergenceMessage.proto"], function (err, output) {
     if (err) {
       throw err;
     }
@@ -48,7 +48,7 @@ function compileProtoJavaScript() {
     "--target", "static",
     "-o", "npm-dist/convergence-proto.js",
     "-p", "src/main/protobuf",
-    "src/main/protobuf/convergence-protocol.proto"], function (err, output) {
+    "src/main/protobuf/convergenceMessage.proto"], function (err, output) {
     if (err) {
       throw err;
     }

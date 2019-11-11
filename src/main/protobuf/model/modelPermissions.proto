@@ -8,7 +8,7 @@ syntax = "proto3";
 
 package com.convergencelabs.convergence.proto.model;
 
-import "identity/identityMessages.proto";
+import "core/identityData.proto";
 
 message ModelPermissionsData {
   bool read = 1;
@@ -18,6 +18,6 @@ message ModelPermissionsData {
 }
 
 message UserModelPermissionsData {
-  DomainUserIdData user = 1;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 1;
   ModelPermissionsData permissions = 2;
 }
