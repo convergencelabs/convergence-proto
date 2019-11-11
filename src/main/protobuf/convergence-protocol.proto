@@ -17,7 +17,7 @@ import "core/permissions.proto";
 import "core/common.proto";
 
 import "activity/activityMessages.proto";
-import "chat/chat.proto";
+import "chat/chatMessages.proto";
 import "identity/identityMessages.proto";
 import "model/modelMessages.proto";
 import "presence/presenceMessages.proto";
@@ -103,17 +103,17 @@ message ConvergenceMessage {
 
 
     // Identity
-    IdentityCacheUpdateMessage identityCacheUpdate = 200;
+    identity.IdentityCacheUpdateMessage identityCacheUpdate = 200;
 
-    GetUsersMessage usersGetRequest = 201;
-    UserSearchMessage userSearchRequest = 202;
-    UserListMessage userListResponse = 203;
+    identity.GetUsersMessage usersGetRequest = 201;
+    identity.UserSearchMessage userSearchRequest = 202;
+    identity.UserListMessage userListResponse = 203;
 
-    UserGroupsRequestMessage userGroupsRequest = 204;
-    UserGroupsResponseMessage userGroupsResponse = 205;
+    identity.UserGroupsRequestMessage userGroupsRequest = 204;
+    identity.UserGroupsResponseMessage userGroupsResponse = 205;
 
-    UserGroupsForUsersRequestMessage userGroupsForUsersRequest = 206;
-    UserGroupsForUsersResponseMessage userGroupsForUsersResponse = 207;
+    identity.UserGroupsForUsersRequestMessage userGroupsForUsersRequest = 206;
+    identity.UserGroupsForUsersResponseMessage userGroupsForUsersResponse = 207;
 
 
     // Activity
@@ -153,62 +153,62 @@ message ConvergenceMessage {
 
 
     // Chat
-    CreateChatRequestMessage createChatRequest = 500;
-    CreateChatResponseMessage createChatResponse = 501;
+    chat.CreateChatRequestMessage createChatRequest = 500;
+    chat.CreateChatResponseMessage createChatResponse = 501;
 
-    RemoveChatRequestMessage removeChatRequest = 502;
-    RemoveChatResponseMessage removeChatResponse = 503;
-    ChatRemovedMessage chatRemoved = 504;
+    chat.RemoveChatRequestMessage removeChatRequest = 502;
+    chat.RemoveChatResponseMessage removeChatResponse = 503;
+    chat.ChatRemovedMessage chatRemoved = 504;
 
-    GetChatsRequestMessage getChatsRequest = 505;
-    GetChatsResponseMessage getChatsResponse = 506;
+    chat.GetChatsRequestMessage getChatsRequest = 505;
+    chat.GetChatsResponseMessage getChatsResponse = 506;
 
-    ChatsExistRequestMessage chatsExistRequest = 507;
-    ChatsExistResponseMessage chatsExistResponse = 508;
+    chat.ChatsExistRequestMessage chatsExistRequest = 507;
+    chat.ChatsExistResponseMessage chatsExistResponse = 508;
 
-    GetDirectChatsRequestMessage getDirectChatsRequest = 509;
-    GetDirectChatsResponseMessage getDirectChatsResponse = 510;
+    chat.GetDirectChatsRequestMessage getDirectChatsRequest = 509;
+    chat.GetDirectChatsResponseMessage getDirectChatsResponse = 510;
 
-    GetJoinedChatsRequestMessage getJoinedChatsRequest = 511;
-    GetJoinedChatsResponseMessage getJoinedChatsResponse = 512;
+    chat.GetJoinedChatsRequestMessage getJoinedChatsRequest = 511;
+    chat.GetJoinedChatsResponseMessage getJoinedChatsResponse = 512;
 
     // SearchChatChannelsRequest = 513;
     // SearchChatChannelsResponse = 514;
 
-    JoinChatRequestMessage joinChatRequest = 515;
-    JoinChatResponseMessage joinChatResponse = 516;
-    UserJoinedChatMessage userJoinedChat = 517;
+    chat.JoinChatRequestMessage joinChatRequest = 515;
+    chat.JoinChatResponseMessage joinChatResponse = 516;
+    chat.UserJoinedChatMessage userJoinedChat = 517;
 
-    LeaveChatRequestMessage leaveChatRequest = 518;
-    LeaveChatResponseMessage leaveChatResponse = 519;
-    UserLeftChatMessage userLeftChat = 520;
+    chat.LeaveChatRequestMessage leaveChatRequest = 518;
+    chat.LeaveChatResponseMessage leaveChatResponse = 519;
+    chat.UserLeftChatMessage userLeftChat = 520;
 
-    AddUserToChatChannelRequestMessage addUserToChatChannelRequest = 521;
-    AddUserToChatChannelResponseMessage addUserToChatChannelResponse = 522;
-    UserAddedToChatChannelMessage userAddedToChatChannel = 523;
+    chat.AddUserToChatChannelRequestMessage addUserToChatChannelRequest = 521;
+    chat.AddUserToChatChannelResponseMessage addUserToChatChannelResponse = 522;
+    chat.UserAddedToChatChannelMessage userAddedToChatChannel = 523;
 
-    RemoveUserFromChatChannelRequestMessage removeUserFromChatChannelRequest = 524;
-    RemoveUserFromChatChannelResponseMessage removeUserFromChatChannelResponse = 525;
-    UserRemovedFromChatChannelMessage userRemovedFromChatChannel = 526;
+    chat.RemoveUserFromChatChannelRequestMessage removeUserFromChatChannelRequest = 524;
+    chat.RemoveUserFromChatChannelResponseMessage removeUserFromChatChannelResponse = 525;
+    chat.UserRemovedFromChatChannelMessage userRemovedFromChatChannel = 526;
 
-    SetChatNameRequestMessage setChatNameRequest = 527;
-    SetChatNameResponseMessage setChatNameResponse = 528;
-    ChatNameSetMessage chatNameChanged = 529;
+    chat.SetChatNameRequestMessage setChatNameRequest = 527;
+    chat.SetChatNameResponseMessage setChatNameResponse = 528;
+    chat.ChatNameSetMessage chatNameChanged = 529;
 
-    SetChatTopicRequestMessage setChatTopicRequest = 530;
-    SetChatTopicResponseMessage setChatTopicResponse = 531;
-    ChatTopicSetMessage chatTopicChanged = 532;
+    chat.SetChatTopicRequestMessage setChatTopicRequest = 530;
+    chat.SetChatTopicResponseMessage setChatTopicResponse = 531;
+    chat.ChatTopicSetMessage chatTopicChanged = 532;
 
-    MarkChatEventsSeenRequestMessage markChatEventsSeenRequest = 533;
-    MarkChatEventsSeenResponseMessage markChatEventsSeenResponse = 534;
-    ChatEventsMarkedSeenMessage chatEventsMarkedSeen = 535;
+    chat.MarkChatEventsSeenRequestMessage markChatEventsSeenRequest = 533;
+    chat.MarkChatEventsSeenResponseMessage markChatEventsSeenResponse = 534;
+    chat.ChatEventsMarkedSeenMessage chatEventsMarkedSeen = 535;
 
-    PublishChatRequestMessage publishChatMessageRequest = 536;
-    PublishChatResponseMessage publishChatMessageResponse = 537;
-    RemoteChatMessageMessage remoteChatMessage = 538;
+    chat.PublishChatRequestMessage publishChatMessageRequest = 536;
+    chat.PublishChatResponseMessage publishChatMessageResponse = 537;
+    chat.RemoteChatMessageMessage remoteChatMessage = 538;
 
-    ChatHistoryRequestMessage getChatHistoryRequest = 539;
-    ChatHistoryResponseMessage getChatHistoryResponse = 540;
+    chat.ChatHistoryRequestMessage getChatHistoryRequest = 539;
+    chat.ChatHistoryResponseMessage getChatHistoryResponse = 540;
 
     // Permissions
     GetClientPermissionsRequestMessage getClientPermissionsRequest = 601;

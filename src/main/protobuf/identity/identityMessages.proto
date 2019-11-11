@@ -6,19 +6,14 @@
  */
 syntax = "proto3";
 
-package com.convergencelabs.convergence.proto;
+package com.convergencelabs.convergence.proto.identity;
 
 import "google/protobuf/wrappers.proto";
+
 import "scalapb/scalapb.proto";
 
-enum UserField {
-  FIELD_NOT_SET = 0;
-  USERNAME = 1;
-  EMAIL =  2;
-  FIRST_NAME = 3;
-  LAST_NAME = 4;
-  DISPLAY_NAME = 5;
-}
+import "identity/identityData.proto";
+
 
 message GetUsersMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
@@ -37,38 +32,6 @@ message UserSearchMessage {
   google.protobuf.Int32Value limit = 4;
   UserField orderField = 5;
   bool ascending = 6;
-}
-
-enum DomainUserTypeData {
-  Normal = 0;
-  Convergence = 1;
-  Anonymous = 2;
-}
-
-message DomainUserIdData {
-  DomainUserTypeData userType = 1;
-  string username = 2;
-}
-
-message DomainUserIdList {
-  repeated DomainUserIdData values = 1;
-}
-
-message DomainUserData {
-  DomainUserIdData userId = 1;
-  google.protobuf.StringValue firstName = 2;
-  google.protobuf.StringValue lastName = 3;
-  google.protobuf.StringValue displayName = 4;
-  google.protobuf.StringValue email = 5;
-  bool disabled = 6;
-  bool deleted = 7;
-  google.protobuf.StringValue deletedUsername = 8;
-}
-
-message UserGroupData {
-  string id = 1;
-  string description = 2;
-  repeated DomainUserIdData members = 3;
 }
 
 message UserListMessage {
@@ -104,11 +67,6 @@ message UserGroupsForUsersResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
 
   repeated UserGroupsEntry userGroups = 1;
-}
-
-message UserGroupsEntry {
-  DomainUserIdData user = 1;
-  repeated string groups = 2;
 }
 
 message IdentityCacheUpdateMessage {

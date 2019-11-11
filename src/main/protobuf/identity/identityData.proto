@@ -6,10 +6,9 @@
  */
 syntax = "proto3";
 
-package com.convergencelabs.convergence.proto;
+package com.convergencelabs.convergence.proto.identity;
 
 import "google/protobuf/wrappers.proto";
-import "scalapb/scalapb.proto";
 
 enum UserField {
   FIELD_NOT_SET = 0;
@@ -18,25 +17,6 @@ enum UserField {
   FIRST_NAME = 3;
   LAST_NAME = 4;
   DISPLAY_NAME = 5;
-}
-
-message GetUsersMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
-
-  repeated DomainUserIdData userIds = 1;
-}
-
-message UserSearchMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
-
-  repeated UserField fields = 1;
-  string value = 2;
-  google.protobuf.Int32Value offset = 3;
-  google.protobuf.Int32Value limit = 4;
-  UserField orderField = 5;
-  bool ascending = 6;
 }
 
 enum DomainUserTypeData {
@@ -71,50 +51,8 @@ message UserGroupData {
   repeated DomainUserIdData members = 3;
 }
 
-message UserListMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
-
-  repeated DomainUserData userData = 1;
-}
-
-message UserGroupsRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
-
-  repeated string ids = 1;
-}
-
-message UserGroupsResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
-
-  repeated UserGroupData groupData  = 1;
-}
-
-message UserGroupsForUsersRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
-
-  repeated DomainUserIdData users = 1;
-}
-
-message UserGroupsForUsersResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Response";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
-
-  repeated UserGroupsEntry userGroups = 1;
-}
 
 message UserGroupsEntry {
   DomainUserIdData user = 1;
   repeated string groups = 2;
-}
-
-message IdentityCacheUpdateMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Normal";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Identity";
-
-  map<string, DomainUserIdData> sessions = 1;
-  repeated DomainUserData users = 2;
 }
