@@ -6,6 +6,7 @@
  */
 syntax = "proto3";
 
+
 package com.convergencelabs.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
@@ -21,11 +22,24 @@ import "identity/identityMessages.proto";
 import "model/modelMessages.proto";
 import "presence/presenceMessages.proto";
 
+/*
+ * The ConvergenceMessage is the root of the client-server protocol. It is
+ * essentially a message envelope that will hold a single client-server
+ * message.
+ */
 message ConvergenceMessage {
 
+  // An optional request correlation id, if the sender expects a response to
+  // this message. This will be set if this message is a request message.
   google.protobuf.Int32Value requestId = 1;
+
+  // An optional response correlation id that corresponds to request id of
+  // the message this message is in response to. This will be set if this
+  // message is a response message.
   google.protobuf.Int32Value responseId = 2;
 
+
+  // The body holds the specific message that was sent / received.
   oneof body {
     core.OkResponse ok = 3;
     core.ErrorMessage error = 4;
@@ -39,7 +53,39 @@ message ConvergenceMessage {
     core.AuthenticationRequestMessage authenticationRequest = 9;
     core.AuthenticationResponseMessage authenticationResponse = 10;
 
+    //
+    // Permissions
+    //
+    core.GetClientPermissionsRequestMessage getClientPermissionsRequest = 601;
+    core.GetClientPermissionsResponseMessage getClientPermissionsResponse = 602;
+
+    core.AddPermissionsRequestMessage addPermissionsRequest = 603;
+    core.AddPermissionsResponseMessage addPermissionsResponse = 604;
+
+    core.RemovePermissionsRequestMessage removePermissionsRequest = 605;
+    core.RemovePermissionsResponseMessage removePermissionsResponse = 606;
+
+    core.SetPermissionsRequestMessage setPermissionsRequest = 607;
+    core.SetPermissionsResponseMessage setPermissionsResponse = 608;
+
+    core.GetWorldPermissionsRequestMessage getWorldPermissionsRequest = 609;
+    core.GetWorldPermissionsResponseMessage getWorldPermissionsResponse = 610;
+
+    core.GetAllUserPermissionsRequestMessage getAllUserPermissionsRequest = 611;
+    core.GetAllUserPermissionsResponseMessage getAllUserPermissionsResponse = 612;
+
+    core.GetUserPermissionsRequestMessage getUserPermissionsRequest = 613;
+    core.GetUserPermissionsResponseMessage getUserPermissionsResponse = 614;
+
+    core.GetAllGroupPermissionsRequestMessage getAllGroupPermissionsRequest = 615;
+    core.GetAllGroupPermissionsResponseMessage getAllGroupPermissionsResponse = 616;
+
+    core.GetGroupPermissionsRequestMessage getGroupPermissionsRequest = 617;
+    core.GetGroupPermissionsResponseMessage getGroupPermissionsResponse = 618;
+
+    //
     // Models
+    //
     model.OpenRealtimeModelRequestMessage openRealTimeModelRequest = 100;
     model.OpenRealtimeModelResponseMessage openRealTimeModelResponse = 101;
 
@@ -99,8 +145,9 @@ message ConvergenceMessage {
     model.HistoricalOperationRequestMessage historicalOperationsRequest = 138;
     model.HistoricalOperationsResponseMessage historicalOperationsResponse = 139;
 
-
+    //
     // Identity
+    //
     identity.IdentityCacheUpdateMessage identityCacheUpdate = 200;
 
     identity.GetUsersMessage usersGetRequest = 201;
@@ -114,7 +161,9 @@ message ConvergenceMessage {
     identity.UserGroupsForUsersResponseMessage userGroupsForUsersResponse = 207;
 
 
+    //
     // Activity
+    //
     activity.ActivityParticipantsRequestMessage activityParticipantsRequest = 300;
     activity.ActivityParticipantsResponseMessage activityParticipantsResponse = 301;
 
@@ -130,8 +179,9 @@ message ConvergenceMessage {
     activity.ActivityUpdateStateMessage activityUpdateState = 308;
     activity.ActivityStateUpdatedMessage activityStateUpdated = 309;
 
-
+    //
     // Presence
+    //
     presence.PresenceSetStateMessage presenceSetState = 400;
     presence.PresenceRemoveStateMessage presenceRemoveState = 401;
     presence.PresenceClearStateMessage presenceClearState = 402;
@@ -149,8 +199,9 @@ message ConvergenceMessage {
     presence.SubscribePresenceResponseMessage presenceSubscribeResponse = 410;
     presence.UnsubscribePresenceMessage presenceUnsubscribe = 411;
 
-
+    //
     // Chat
+    //
     chat.CreateChatRequestMessage createChatRequest = 500;
     chat.CreateChatResponseMessage createChatResponse = 501;
 
@@ -207,33 +258,5 @@ message ConvergenceMessage {
 
     chat.ChatHistoryRequestMessage getChatHistoryRequest = 539;
     chat.ChatHistoryResponseMessage getChatHistoryResponse = 540;
-
-    // Permissions
-    core.GetClientPermissionsRequestMessage getClientPermissionsRequest = 601;
-    core.GetClientPermissionsResponseMessage getClientPermissionsResponse = 602;
-
-    core.AddPermissionsRequestMessage addPermissionsRequest = 603;
-    core.AddPermissionsResponseMessage addPermissionsResponse = 604;
-
-    core.RemovePermissionsRequestMessage removePermissionsRequest = 605;
-    core.RemovePermissionsResponseMessage removePermissionsResponse = 606;
-
-    core.SetPermissionsRequestMessage setPermissionsRequest = 607;
-    core.SetPermissionsResponseMessage setPermissionsResponse = 608;
-
-    core.GetWorldPermissionsRequestMessage getWorldPermissionsRequest = 609;
-    core.GetWorldPermissionsResponseMessage getWorldPermissionsResponse = 610;
-
-    core.GetAllUserPermissionsRequestMessage getAllUserPermissionsRequest = 611;
-    core.GetAllUserPermissionsResponseMessage getAllUserPermissionsResponse = 612;
-
-    core.GetUserPermissionsRequestMessage getUserPermissionsRequest = 613;
-    core.GetUserPermissionsResponseMessage getUserPermissionsResponse = 614;
-
-    core.GetAllGroupPermissionsRequestMessage getAllGroupPermissionsRequest = 615;
-    core.GetAllGroupPermissionsResponseMessage getAllGroupPermissionsResponse = 616;
-
-    core.GetGroupPermissionsRequestMessage getGroupPermissionsRequest = 617;
-    core.GetGroupPermissionsResponseMessage getGroupPermissionsResponse = 618;
   }
 }

@@ -5,7 +5,9 @@ Convergence supplies a JavaScript client with the server implemented in Scala. T
 
 # Dependencies
 * [NodeJS](https://nodejs.org/) >= 10
+* [protobuf.js](https://github.com/protobufjs/protobuf.js) = 6.8.8
 * [sbt](https://www.scala-sbt.org/) >= 1.3
+* [ScalaPB](https://scalapb.github.io/) = 0.9.4
 
 # Installation
 
@@ -23,13 +25,24 @@ libraryDependencies += "com.convergencelabs" %% "convergence-proto-scala" % "1.0
 ```
 
 # Building
-To build the JavaScript bindings use the following command:
+There are different build commands for each language binding. They are as follows:
 
-```
-npm run dist
-```
+* **JavaScript**: `npm run dist`
+* **Scala**: `sbt compile`
 
-To build the Scala bindings use the following command:
-```$xslt
-sbt compile
-```
+# Protocol
+The Convergence client-server protocol is intended to be sent over a [WebSocket](https://en.wikipedia.org/wiki/WebSocket) connection between a Convergence client and the Convergence Server. Each message sent between the client and server is an instance of the [ConvergenceMessage](src/main/protobuf/convergenceMessage.proto) protocol buffer message. The rough structure of the message is as follows:
+
+```proto
+message ConvergenceMessage {
+  google.protobuf.Int32Value requestId = 1;
+  google.protobuf.Int32Value responseId = 2;
+
+  oneof body {
+    // messages
+  }
+}
+``` 
+The body field will contain a specific message sent or received. WebSockets are an asynchronous, bi-directional streaming communication channel. However, Convergence has several request / response style exchanges. The ConvergenceMessage structure implements a correlation id strategy to enable request / response behavior over WebSockets.
+
+The best way to understand the protocol is to simply view the `.proto` files in the [src/main/protobuf](src/main/protobuf) directory.
