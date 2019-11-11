@@ -1,0 +1,90 @@
+/*
+ * Copyright (C) Convergence Labs, Inc
+ *
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE.txt', which is part of this source code package.
+ */
+syntax = "proto3";
+
+package com.convergencelabs.convergence.proto.chat;
+
+import "google/protobuf/timestamp.proto";
+
+import "core/identityData.proto";
+
+message ChatCreatedEventData {
+  string chatId = 1;
+  int64 eventNumber = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
+  string name = 5;
+  string topic = 6;
+  repeated com.convergencelabs.convergence.proto.core.DomainUserIdData members = 7;
+}
+
+message ChatMessageEventData {
+  string chatId = 1;
+  int64 eventNumber = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
+  string message = 5;
+}
+
+message ChatUserJoinedEventData {
+  string chatId = 1;
+  int64 eventNumber = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
+}
+
+message ChatUserLeftEventData {
+  string chatId = 1;
+  int64 eventNumber = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
+}
+
+message ChatUserAddedEventData {
+  string chatId = 1;
+  int64 eventNumber = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData addedUser = 5;
+}
+
+message ChatUserRemovedEventData {
+  string chatId = 1;
+  int64 eventNumber = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData removedUser = 5;
+}
+
+message ChatNameChangedEventData {
+  string chatId = 1;
+  int64 eventNumber = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
+  string name = 5;
+}
+
+message ChatTopicChangedEventData {
+  string chatId = 1;
+  int64 eventNumber = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
+  string topic = 5;
+}
+
+message ChatEventData {
+  oneof event {
+    ChatCreatedEventData created = 1;
+    ChatMessageEventData message = 2;
+    ChatUserJoinedEventData userJoined = 3;
+    ChatUserLeftEventData userLeft = 4;
+    ChatUserAddedEventData userAdded = 5;
+    ChatUserRemovedEventData userRemoved = 6;
+    ChatNameChangedEventData nameChanged = 7;
+    ChatTopicChangedEventData topicChanged = 8;
+  }
+}

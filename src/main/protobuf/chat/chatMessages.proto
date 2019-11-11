@@ -14,11 +14,8 @@ import "google/protobuf/timestamp.proto";
 import "scalapb/scalapb.proto";
 
 import "core/identityData.proto";
-
-message ChatMemberData {
-  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 1;
-  int64 maxSeenEventNumber = 2;
-}
+import "chat/chatData.proto";
+import "chat/chatEventData.proto";
 
 message PublishChatRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Request";
@@ -87,18 +84,6 @@ message JoinChatRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Chat";
 
   string chatId = 1;
-}
-
-message ChatInfoData {
-  string id = 1;
-  string chatType = 2;
-  string membership = 3;
-  string name = 4;
-  string topic = 5;
-  google.protobuf.Timestamp createdTime = 6;
-  google.protobuf.Timestamp lastEventTime = 7;
-  int64 lastEventNumber = 8;
-  repeated ChatMemberData members = 9;
 }
 
 message JoinChatResponseMessage {
@@ -342,81 +327,4 @@ message ChatsExistResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.Chat";
 
   repeated bool exists = 1;
-}
-
-message ChatCreatedEventData {
-  string chatId = 1;
-  int64 eventNumber = 2;
-  google.protobuf.Timestamp timestamp = 3;
-  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
-  string name = 5;
-  string topic = 6;
-  repeated com.convergencelabs.convergence.proto.core.DomainUserIdData members = 7;
-}
-
-message ChatMessageEventData {
-  string chatId = 1;
-  int64 eventNumber = 2;
-  google.protobuf.Timestamp timestamp = 3;
-  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
-  string message = 5;
-}
-
-message ChatUserJoinedEventData {
-  string chatId = 1;
-  int64 eventNumber = 2;
-  google.protobuf.Timestamp timestamp = 3;
-  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
-}
-
-message ChatUserLeftEventData {
-  string chatId = 1;
-  int64 eventNumber = 2;
-  google.protobuf.Timestamp timestamp = 3;
-  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
-}
-
-message ChatUserAddedEventData {
-  string chatId = 1;
-  int64 eventNumber = 2;
-  google.protobuf.Timestamp timestamp = 3;
-  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
-  com.convergencelabs.convergence.proto.core.DomainUserIdData addedUser = 5;
-}
-
-message ChatUserRemovedEventData {
-  string chatId = 1;
-  int64 eventNumber = 2;
-  google.protobuf.Timestamp timestamp = 3;
-  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
-  com.convergencelabs.convergence.proto.core.DomainUserIdData removedUser = 5;
-}
-
-message ChatNameChangedEventData {
-  string chatId = 1;
-  int64 eventNumber = 2;
-  google.protobuf.Timestamp timestamp = 3;
-  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
-  string name = 5;
-}
-
-message ChatTopicChangedEventData {
-  string chatId = 1;
-  int64 eventNumber = 2;
-  google.protobuf.Timestamp timestamp = 3;
-  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
-  string topic = 5;
-}
-
-message ChatEventData {
-  oneof event {
-    ChatCreatedEventData created = 1;
-    ChatMessageEventData message = 2;
-    ChatUserJoinedEventData userJoined = 3;
-    ChatUserLeftEventData userLeft = 4;
-    ChatUserAddedEventData userAdded = 5;
-    ChatUserRemovedEventData userRemoved = 6;
-    ChatNameChangedEventData nameChanged = 7;
-    ChatTopicChangedEventData topicChanged = 8;
-  }
 }

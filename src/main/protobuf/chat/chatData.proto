@@ -1,0 +1,30 @@
+/*
+ * Copyright (C) Convergence Labs, Inc
+ *
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE.txt', which is part of this source code package.
+ */
+syntax = "proto3";
+
+package com.convergencelabs.convergence.proto.chat;
+
+import "google/protobuf/timestamp.proto";
+
+import "core/identityData.proto";
+
+message ChatMemberData {
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 1;
+  int64 maxSeenEventNumber = 2;
+}
+
+message ChatInfoData {
+  string id = 1;
+  string chatType = 2;
+  string membership = 3;
+  string name = 4;
+  string topic = 5;
+  google.protobuf.Timestamp createdTime = 6;
+  google.protobuf.Timestamp lastEventTime = 7;
+  int64 lastEventNumber = 8;
+  repeated ChatMemberData members = 9;
+}
