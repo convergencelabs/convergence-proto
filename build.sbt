@@ -1,4 +1,4 @@
-name := "convergence-proto"
+name := "convergence-proto-scala"
 description := "Convergence Protocol Scala Bindings"
 homepage := Some(url("https://convergence.io"))
 
