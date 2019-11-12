@@ -1,0 +1,14 @@
+matrix:
+  include:
+    - language: node_js
+      node_js:
+        - 10
+
+      script:
+        - npm run dist
+
+    - language: scala
+      scala:
+        - 2.12.10
+      script:
+        - sbt -J-Xmx3G -J-Xss5M compile
