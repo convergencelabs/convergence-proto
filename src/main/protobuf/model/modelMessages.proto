@@ -154,37 +154,62 @@ message DeleteRealtimeModelResponseMessage {
 }
 
 //
-// Reconnect
+// Model Resynchronization
 //
 
-message ModelReconnectRequestMessage {
+message ModelResyncRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
+  // The id of the model to resync.
   string modelId = 1;
+
+  // The current version that the client has locally.
   int64 contextVersion = 2;
 }
 
-message ModelReconnectResponseMessage {
+message ModelResyncResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
+  // The resource id to use for further communication on this model.
   string resourceId = 1;
+
+  // The servers current version of this model.
   int64 currentVersion = 2;
+
+  // The client's current permissions for this model.
+  ModelPermissionsData permissions = 3;
 }
 
-message ModelReconnectCompleteMessage {
+message ModelResyncCompleteRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+
+  // The resource id of a model being resynchronized.
+  string resourceId = 1;
+
+  // Indicates if the client desires to open the model after the resync.
+  bool open = 2;
+}
+
+message ModelResyncCompleteResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  string resourceId = 1;
-  repeated string connectedClients = 2;
-  repeated ReferenceData references = 3;
-  ModelPermissionsData permissions = 4;
+  // These will be empty if the client did not want to open the model.
+
+  // The sessionIds of the clients that have this model open.
+  repeated string connectedClients = 1;
+
+  // Any references current shared for this model.
+  repeated ReferenceData references = 2;
 }
+
 
 //
 // Permissions

@@ -132,18 +132,19 @@ message ConvergenceMessage {
 
     model.ModelPermissionsChangedMessage modelPermissionsChanged = 130;
 
-    model.ModelReconnectRequestMessage modelReconnectRequest = 131;
-    model.ModelReconnectResponseMessage modelReconnectResponse = 132;
-    model.ModelReconnectCompleteMessage modelReconnectComplete = 133;
+    model.ModelResyncRequestMessage modelResyncRequest = 131;
+    model.ModelResyncResponseMessage modelRecsyncResponse = 132;
+    model.ModelResyncCompleteRequestMessage modelResyncCompleteRequest = 133;
+    model.ModelResyncCompleteResponseMessage modelResyncCompleteResponse = 134;
 
-    model.ModelOfflineSubscriptionChangeRequestMessage modelOfflineSubscriptionChange = 134;
-    model.OfflineModelUpdatedMessage modelOfflineUpdated = 135;
+    model.ModelOfflineSubscriptionChangeRequestMessage modelOfflineSubscriptionChange = 135;
+    model.OfflineModelUpdatedMessage modelOfflineUpdated = 136;
 
-    model.HistoricalDataRequestMessage historicalDataRequest = 136;
-    model.HistoricalDataResponseMessage historicalDataResponse = 137;
+    model.HistoricalDataRequestMessage historicalDataRequest = 137;
+    model.HistoricalDataResponseMessage historicalDataResponse = 138;
 
-    model.HistoricalOperationRequestMessage historicalOperationsRequest = 138;
-    model.HistoricalOperationsResponseMessage historicalOperationsResponse = 139;
+    model.HistoricalOperationRequestMessage historicalOperationsRequest = 139;
+    model.HistoricalOperationsResponseMessage historicalOperationsResponse = 140;
 
     //
     // Identity
