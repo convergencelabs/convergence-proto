@@ -47,8 +47,9 @@ message OpenRealtimeModelResponseMessage {
   google.protobuf.Timestamp modifiedTime = 7;
   ObjectValue data = 8;
   repeated string connectedClients = 9;
-  repeated ReferenceData references = 10;
-  ModelPermissionsData permissions = 11;
+  repeated string resyncingClients = 10;
+  repeated ReferenceData references = 11;
+  ModelPermissionsData permissions = 12;
 }
 
 message CloseRealtimeModelRequestMessage {
@@ -206,8 +207,11 @@ message ModelResyncCompleteResponseMessage {
   // The sessionIds of the clients that have this model open.
   repeated string connectedClients = 1;
 
+  // The sessionIds of the clients that are currently resynchronizing.
+  repeated string resyncingClients = 2;
+
   // Any references current shared for this model.
-  repeated ReferenceData references = 2;
+  repeated ReferenceData references = 3;
 }
 
 message RemoteClientResyncStartedMessage {
