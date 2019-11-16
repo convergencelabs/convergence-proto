@@ -210,7 +210,7 @@ message ModelResyncCompleteResponseMessage {
   repeated ReferenceData references = 2;
 }
 
-message RemoteClientResynStartedMessage {
+message RemoteClientResyncStartedMessage {
     option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
     option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
     option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
@@ -222,7 +222,7 @@ message RemoteClientResynStartedMessage {
     string sessionId = 2;
 }
 
-message RemoteClientResynCompletedMessage {
+message RemoteClientResyncCompletedMessage {
     option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
     option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
     option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";

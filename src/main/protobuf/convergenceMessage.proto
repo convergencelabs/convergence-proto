@@ -136,8 +136,8 @@ message ConvergenceMessage {
     model.ModelResyncResponseMessage modelResyncResponse = 132;
     model.ModelResyncCompleteRequestMessage modelResyncCompleteRequest = 133;
     model.ModelResyncCompleteResponseMessage modelResyncCompleteResponse = 134;
-    model.RemoteClientResynStartedMessage remoteClientResynStartedMessage = 135;
-    model.RemoteClientResynCompletedMessage remoteClientResynCompletedMessage = 136;
+    model.RemoteClientResyncStartedMessage remoteClientResyncStartedMessage = 135;
+    model.RemoteClientResyncCompletedMessage remoteClientResyncCompletedMessage = 136;
 
     model.ModelOfflineSubscriptionChangeRequestMessage modelOfflineSubscriptionChange = 137;
     model.OfflineModelUpdatedMessage modelOfflineUpdated = 138;
