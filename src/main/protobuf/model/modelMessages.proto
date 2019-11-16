@@ -216,10 +216,10 @@ message RemoteClientResynStartedMessage {
     option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
     // The resourceId of the model this message relates to.
-    repeated string resourceId = 1;
+    string resourceId = 1;
 
     // The session id of the remote client that started the resync
-    repeated string sessionId = 2;
+    string sessionId = 2;
 }
 
 message RemoteClientResynCompletedMessage {
@@ -228,10 +228,10 @@ message RemoteClientResynCompletedMessage {
     option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
     // The resourceId of the model this message relates to.
-    repeated string resourceId = 1;
+    string resourceId = 1;
 
     // The session id of the remote client that completed the resync
-    repeated string sessionId = 2;
+    string sessionId = 2;
 }
 
 //
