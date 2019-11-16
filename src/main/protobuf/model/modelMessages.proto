@@ -210,6 +210,29 @@ message ModelResyncCompleteResponseMessage {
   repeated ReferenceData references = 2;
 }
 
+message RemoteClientResynStartedMessage {
+    option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+    option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+    option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+
+    // The resourceId of the model this message relates to.
+    repeated string resourceId = 1;
+
+    // The session id of the remote client that started the resync
+    repeated string sessionId = 2;
+}
+
+message RemoteClientResynCompletedMessage {
+    option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+    option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
+    option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+
+    // The resourceId of the model this message relates to.
+    repeated string resourceId = 1;
+
+    // The session id of the remote client that completed the resync
+    repeated string sessionId = 2;
+}
 
 //
 // Permissions

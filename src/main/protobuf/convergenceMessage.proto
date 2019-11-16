@@ -136,15 +136,17 @@ message ConvergenceMessage {
     model.ModelResyncResponseMessage modelResyncResponse = 132;
     model.ModelResyncCompleteRequestMessage modelResyncCompleteRequest = 133;
     model.ModelResyncCompleteResponseMessage modelResyncCompleteResponse = 134;
+    model.RemoteClientResynStartedMessage remoteClientResynStartedMessage = 135;
+    model.RemoteClientResynCompletedMessage remoteClientResynCompletedMessage = 136;
 
-    model.ModelOfflineSubscriptionChangeRequestMessage modelOfflineSubscriptionChange = 135;
-    model.OfflineModelUpdatedMessage modelOfflineUpdated = 136;
+    model.ModelOfflineSubscriptionChangeRequestMessage modelOfflineSubscriptionChange = 137;
+    model.OfflineModelUpdatedMessage modelOfflineUpdated = 138;
 
-    model.HistoricalDataRequestMessage historicalDataRequest = 137;
-    model.HistoricalDataResponseMessage historicalDataResponse = 138;
+    model.HistoricalDataRequestMessage historicalDataRequest = 139;
+    model.HistoricalDataResponseMessage historicalDataResponse = 140;
 
-    model.HistoricalOperationRequestMessage historicalOperationsRequest = 139;
-    model.HistoricalOperationsResponseMessage historicalOperationsResponse = 140;
+    model.HistoricalOperationRequestMessage historicalOperationsRequest = 141;
+    model.HistoricalOperationsResponseMessage historicalOperationsResponse = 142;
 
     //
     // Identity
