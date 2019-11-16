@@ -133,7 +133,7 @@ message ConvergenceMessage {
     model.ModelPermissionsChangedMessage modelPermissionsChanged = 130;
 
     model.ModelResyncRequestMessage modelResyncRequest = 131;
-    model.ModelResyncResponseMessage modelRecsyncResponse = 132;
+    model.ModelResyncResponseMessage modelResyncResponse = 132;
     model.ModelResyncCompleteRequestMessage modelResyncCompleteRequest = 133;
     model.ModelResyncCompleteResponseMessage modelResyncCompleteResponse = 134;
 
