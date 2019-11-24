@@ -473,6 +473,12 @@ message OfflineModelUpdatedMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
+  message OfflineModelInitialData {
+    string collection = 1;
+    ModelUpdateData model = 2;
+    ModelPermissionsData permissions = 3;
+  }
+
   message OfflineModelUpdateData {
     ModelUpdateData model = 1;
     ModelPermissionsData permissions = 2;
@@ -491,6 +497,7 @@ message OfflineModelUpdatedMessage {
     bool deleted  = 2;
     bool permissionRevoked  = 3;
     OfflineModelUpdateData updated = 4;
+    OfflineModelInitialData initial = 5;
   }
 }
 
