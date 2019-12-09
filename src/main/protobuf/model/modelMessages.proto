@@ -475,8 +475,9 @@ message OfflineModelUpdatedMessage {
 
   message OfflineModelInitialData {
     string collection = 1;
-    ModelUpdateData model = 2;
-    ModelPermissionsData permissions = 3;
+    string valueIdPrefix = 2;
+    ModelUpdateData model = 3;
+    ModelPermissionsData permissions = 4;
   }
 
   message OfflineModelUpdateData {
