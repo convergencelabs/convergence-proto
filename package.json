@@ -1,6 +1,6 @@
 {
   "name": "@convergence/convergence-proto",
-  "version": "1.0.0-SNAPSHOT",
+  "version": "1.0.0-rc.1",
   "description": "Convergence Protocol",
   "tags": [
     "convergence",
