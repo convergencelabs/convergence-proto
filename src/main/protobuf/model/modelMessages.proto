@@ -185,8 +185,8 @@ message ModelResyncResponseMessage {
   ModelPermissionsData permissions = 3;
 }
 
-message ModelResyncCompleteRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+message ModelResyncClientCompleteMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
@@ -197,21 +197,22 @@ message ModelResyncCompleteRequestMessage {
   bool open = 2;
 }
 
-message ModelResyncCompleteResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+message ModelResyncServerCompleteMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
+  string resourceId = 1;
   // These will be empty if the client did not want to open the model.
 
   // The sessionIds of the clients that have this model open.
-  repeated string connectedClients = 1;
+  repeated string connectedClients = 2;
 
   // The sessionIds of the clients that are currently resynchronizing.
-  repeated string resyncingClients = 2;
+  repeated string resyncingClients = 3;
 
   // Any references current shared for this model.
-  repeated ReferenceData references = 3;
+  repeated ReferenceData references = 4;
 }
 
 message RemoteClientResyncStartedMessage {

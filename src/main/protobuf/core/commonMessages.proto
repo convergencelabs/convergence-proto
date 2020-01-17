@@ -9,6 +9,7 @@ syntax = "proto3";
 package com.convergencelabs.convergence.proto.core;
 
 import "scalapb/scalapb.proto";
+import "google/protobuf/struct.proto";
 
 
 message ErrorMessage {
@@ -19,7 +20,7 @@ message ErrorMessage {
 
   string code = 1;
   string message = 2;
-  map<string, string> details = 3;
+  map<string, google.protobuf.Value> details = 3;
 }
 
 message OkResponse {

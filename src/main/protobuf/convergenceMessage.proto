@@ -134,8 +134,8 @@ message ConvergenceMessage {
 
     model.ModelResyncRequestMessage modelResyncRequest = 131;
     model.ModelResyncResponseMessage modelResyncResponse = 132;
-    model.ModelResyncCompleteRequestMessage modelResyncCompleteRequest = 133;
-    model.ModelResyncCompleteResponseMessage modelResyncCompleteResponse = 134;
+    model.ModelResyncClientCompleteMessage modelResyncClientComplete = 133;
+    model.ModelResyncServerCompleteMessage modelResyncServerComplete = 134;
     model.RemoteClientResyncStartedMessage remoteClientResyncStarted = 135;
     model.RemoteClientResyncCompletedMessage remoteClientResyncCompleted = 136;
 
