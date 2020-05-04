@@ -30,6 +30,9 @@ message PublishChatResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ChatMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+
+  int64 eventNumber = 1;
+  google.protobuf.Timestamp timestamp = 2;
 }
 
 message RemoteChatMessageMessage {
@@ -340,10 +343,11 @@ message ChatHistoryRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   string chatId = 1;
-  google.protobuf.Int32Value limit = 2;
-  google.protobuf.Int64Value startEvent = 3;
-  google.protobuf.BoolValue forward = 4;
-  repeated string eventFilter = 5;
+  google.protobuf.Int64Value offset = 2;
+  google.protobuf.Int64Value limit = 3;
+  google.protobuf.Int64Value startEvent = 4;
+  google.protobuf.BoolValue forward = 5;
+  repeated string eventFilter = 6;
 }
 
 message ChatHistoryResponseMessage {
@@ -351,7 +355,9 @@ message ChatHistoryResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ChatMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  repeated ChatEventData eventData = 1;
+  repeated ChatEventData data = 1;
+  int64 startIndex = 2;
+  int64 totalResults = 3;
 }
 
 message ChatsExistRequestMessage {
@@ -368,4 +374,27 @@ message ChatsExistResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   repeated bool exists = 1;
+}
+
+message ChatsSearchRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ChatMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+
+  string searchTerm = 1;
+  repeated string searchFields = 2;
+  repeated string types = 3;
+  string membership = 4;
+  google.protobuf.Int64Value offset = 5;
+  google.protobuf.Int64Value limit = 6;
+}
+
+message ChatsSearchResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ChatMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+
+  repeated ChatInfoData data = 1;
+  int64 startIndex = 2;
+  int64 totalResults = 3;
 }

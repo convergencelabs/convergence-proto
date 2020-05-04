@@ -224,8 +224,8 @@ message ConvergenceMessage {
     chat.GetJoinedChatsRequestMessage getJoinedChatsRequest = 511;
     chat.GetJoinedChatsResponseMessage getJoinedChatsResponse = 512;
 
-    // SearchChatChannelsRequest = 513;
-    // SearchChatChannelsResponse = 514;
+    chat.ChatsSearchRequestMessage chatsSearchRequest = 513;
+    chat.ChatsSearchResponseMessage chatsSearchResponse = 514;
 
     chat.JoinChatRequestMessage joinChatRequest = 515;
     chat.JoinChatResponseMessage joinChatResponse = 516;

@@ -1,6 +1,6 @@
 {
   "name": "@convergence/convergence-proto",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-SNAPSHOT",
   "description": "Convergence Protocol",
   "tags": [
     "convergence",
@@ -9,9 +9,9 @@
   ],
   "homepage": "https://convergence.io",
   "author": {
-    "name" : "Convergence Labs, Inc.",
-    "email" : "info@convergencelabs.com",
-    "url" : "https://convergencelabs.com"
+    "name": "Convergence Labs, Inc.",
+    "email": "info@convergencelabs.com",
+    "url": "https://convergencelabs.com"
   },
   "repository": {
     "type": "git",
@@ -26,10 +26,10 @@
   "main": "convergence-proto.js",
   "types": "convergence-proto.d.ts",
   "dependencies": {
-    "protobufjs": "6.8.8"
+    "protobufjs": "6.9.0"
   },
   "devDependencies": {
     "bump-regex": "4.0.0",
-    "fs-extra": "8.1.0"
+    "fs-extra": "9.0.0"
   }
 }
