@@ -3,7 +3,7 @@
 </div>
 
 # Convergence Protocol
-![Build Status](https://travis-ci.org/convergencelabs/convergence-proto.svg?branch=master)
+[![Build Status](https://travis-ci.org/convergencelabs/convergence-proto.svg?branch=master)](https://travis-ci.org/convergencelabs/convergence-proto)
 
 This repository defines the Convergence client-server, realtime, WebSocket protocol.  The protocol is specified using [Google Protocol Buffers](https://developers.google.com/protocol-buffers) version 3 messages. The protocol itself can be found in the [src/main/protobuf](src/main/protobuf) directory. 
 
@@ -11,7 +11,7 @@ Convergence supplies a JavaScript client with the server implemented in Scala. T
 
 # Dependencies
 * [NodeJS](https://nodejs.org/) >= 10
-* [protobuf.js](https://github.com/protobufjs/protobuf.js) = 6.8.8
+* [protobuf.js](https://github.com/protobufjs/protobuf.js) = 6.9.0
 * [sbt](https://www.scala-sbt.org/) >= 1.3
 * [ScalaPB](https://scalapb.github.io/) = 0.9.4
 
