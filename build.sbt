@@ -26,7 +26,7 @@ developers := List(
   )
 )
 
-scalaVersion := "2.12.10"
+scalaVersion := "2.13.2"
 
 // Protocol Buffer Configuration
 libraryDependencies += "com.thesamet.scalapb" %% "scalapb-runtime" % scalapb.compiler.Version.scalapbVersion % "protobuf"

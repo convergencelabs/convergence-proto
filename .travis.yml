@@ -9,6 +9,6 @@ matrix:
 
     - language: scala
       scala:
-        - 2.12.10
+        - 2.13.2
       script:
         - sbt -J-Xmx3G -J-Xss5M compile
