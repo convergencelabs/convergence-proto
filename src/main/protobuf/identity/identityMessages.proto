@@ -16,14 +16,16 @@ import "identity/identityData.proto";
 import "core/identityData.proto";
 
 
-message GetUsersMessage {
+message GetUsersRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
   repeated com.convergencelabs.convergence.proto.core.DomainUserIdData userIds = 1;
 }
 
-message UserSearchMessage {
+message SearchUsersRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
@@ -36,6 +38,7 @@ message UserSearchMessage {
 }
 
 message UserListMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
@@ -43,6 +46,7 @@ message UserListMessage {
 }
 
 message UserGroupsRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
@@ -50,6 +54,7 @@ message UserGroupsRequestMessage {
 }
 
 message UserGroupsResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
@@ -57,6 +62,7 @@ message UserGroupsResponseMessage {
 }
 
 message UserGroupsForUsersRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
@@ -64,6 +70,7 @@ message UserGroupsForUsersRequestMessage {
 }
 
 message UserGroupsForUsersResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 
@@ -71,6 +78,7 @@ message UserGroupsForUsersResponseMessage {
 }
 
 message IdentityCacheUpdateMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.IdentityMessage";
 

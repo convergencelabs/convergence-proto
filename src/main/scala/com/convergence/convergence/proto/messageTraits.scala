@@ -19,9 +19,9 @@ trait ProtocolMessage
 trait ActivityMessage
 trait AuthenticationMessage
 trait ChatMessage
-trait HistoricalMessage
 trait IdentityMessage
 trait ModelMessage
+trait HistoricalModelMessage
 trait PermissionsMessage
 trait PresenceMessage
 

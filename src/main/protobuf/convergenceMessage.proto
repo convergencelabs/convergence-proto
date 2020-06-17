@@ -153,8 +153,8 @@ message ConvergenceMessage {
     //
     identity.IdentityCacheUpdateMessage identityCacheUpdate = 200;
 
-    identity.GetUsersMessage usersGetRequest = 201;
-    identity.UserSearchMessage userSearchRequest = 202;
+    identity.GetUsersRequestMessage usersGetRequest = 201;
+    identity.SearchUsersRequestMessage userSearchRequest = 202;
     identity.UserListMessage userListResponse = 203;
 
     identity.UserGroupsRequestMessage userGroupsRequest = 204;
@@ -173,8 +173,8 @@ message ConvergenceMessage {
     activity.ActivityJoinRequestMessage activityJoinRequest = 302;
     activity.ActivityJoinResponseMessage activityJoinResponse = 303;
 
-    activity.ActivityLeaveMessage activityLeaveRequest = 304;
-    // ActivityLeaveResponse = 305;
+    activity.ActivityLeaveRequestMessage activityLeaveRequest = 304;
+    activity.ActivityLeaveResponseMessage activityLeaveResponse = 305;
 
     activity.ActivitySessionJoinedMessage activitySessionJoined = 306;
     activity.ActivitySessionLeftMessage activitySessionLeft = 307;

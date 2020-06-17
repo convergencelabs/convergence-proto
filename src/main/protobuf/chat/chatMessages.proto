@@ -43,7 +43,7 @@ message RemoteChatMessageMessage {
   string chatId = 1;
   int64 eventNumber = 2;
   google.protobuf.Timestamp timestamp = 3;
-  string sessionId = 4;
+  com.convergencelabs.convergence.proto.core.DomainUserIdData user = 4;
   string message = 5;
 }
 

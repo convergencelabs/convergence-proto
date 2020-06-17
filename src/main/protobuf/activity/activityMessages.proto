@@ -31,12 +31,18 @@ message ActivityJoinResponseMessage {
   map<string, ActivityStateData> state = 1;
 }
 
-message ActivityLeaveMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+message ActivityLeaveRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
 
   string activityId = 1;
+}
+
+message ActivityLeaveResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
 }
 
 message ActivityParticipantsRequestMessage {

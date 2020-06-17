@@ -16,6 +16,7 @@ import "core/identityData.proto";
 import "presence/presenceData.proto";
 
 message PresenceRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PresenceMessage";
 
@@ -23,6 +24,7 @@ message PresenceRequestMessage {
 }
 
 message PresenceResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PresenceMessage";
 
@@ -30,6 +32,7 @@ message PresenceResponseMessage {
 }
 
 message SubscribePresenceRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PresenceMessage";
 
@@ -37,6 +40,7 @@ message SubscribePresenceRequestMessage {
 }
 
 message SubscribePresenceResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PresenceMessage";
 
@@ -44,6 +48,7 @@ message SubscribePresenceResponseMessage {
 }
 
 message UnsubscribePresenceMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PresenceMessage";
 
@@ -51,6 +56,7 @@ message UnsubscribePresenceMessage {
 }
 
 message PresenceSetStateMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PresenceMessage";
 
@@ -58,6 +64,7 @@ message PresenceSetStateMessage {
 }
 
 message PresenceRemoveStateMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PresenceMessage";
 
@@ -65,11 +72,13 @@ message PresenceRemoveStateMessage {
 }
 
 message PresenceClearStateMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PresenceMessage";
 }
 
 message PresenceStateSetMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PresenceMessage";
 
@@ -78,6 +87,7 @@ message PresenceStateSetMessage {
 }
 
 message PresenceStateRemovedMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PresenceMessage";
 
@@ -86,6 +96,7 @@ message PresenceStateRemovedMessage {
 }
 
 message PresenceStateClearedMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PresenceMessage";
 
@@ -93,6 +104,7 @@ message PresenceStateClearedMessage {
 }
 
 message PresenceAvailabilityChangedMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PresenceMessage";
 
