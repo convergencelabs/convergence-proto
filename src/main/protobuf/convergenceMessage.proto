@@ -235,13 +235,13 @@ message ConvergenceMessage {
     chat.LeaveChatResponseMessage leaveChatResponse = 519;
     chat.UserLeftChatMessage userLeftChat = 520;
 
-    chat.AddUserToChatChannelRequestMessage addUserToChatChannelRequest = 521;
-    chat.AddUserToChatChannelResponseMessage addUserToChatChannelResponse = 522;
-    chat.UserAddedToChatChannelMessage userAddedToChatChannel = 523;
+    chat.AddUserToChatRequestMessage addUserToChatRequest = 521;
+    chat.AddUserToChatResponseMessage addUserToChatResponse = 522;
+    chat.UserAddedToChatMessage userAddedToChat = 523;
 
-    chat.RemoveUserFromChatChannelRequestMessage removeUserFromChatChannelRequest = 524;
-    chat.RemoveUserFromChatChannelResponseMessage removeUserFromChatChannelResponse = 525;
-    chat.UserRemovedFromChatChannelMessage userRemovedFromChatChannel = 526;
+    chat.RemoveUserFromChatRequestMessage removeUserFromChatRequest = 524;
+    chat.RemoveUserFromChatResponseMessage removeUserFromChatResponse = 525;
+    chat.UserRemovedFromChatMessage userRemovedFromChat = 526;
 
     chat.SetChatNameRequestMessage setChatNameRequest = 527;
     chat.SetChatNameResponseMessage setChatNameResponse = 528;
