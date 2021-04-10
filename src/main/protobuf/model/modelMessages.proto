@@ -127,9 +127,10 @@ message CreateRealtimeModelRequestMessage {
   string collectionId = 1;
   google.protobuf.StringValue modelId = 2;
   ObjectValue data = 3;
-  bool overrideWorldPermissions = 4;
-  ModelPermissionsData worldPermissions = 5;
-  repeated UserModelPermissionsData userPermissions = 6;
+  google.protobuf.Timestamp createdTime = 4;
+  bool overrideWorldPermissions = 5;
+  ModelPermissionsData worldPermissions = 6;
+  repeated UserModelPermissionsData userPermissions = 7;
 }
 
 message CreateRealtimeModelResponseMessage {
