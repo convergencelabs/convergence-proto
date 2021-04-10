@@ -1,6 +1,6 @@
 {
   "name": "@convergence/convergence-proto",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "Convergence Protocol",
   "tags": [
     "convergence",
@@ -26,10 +26,10 @@
   "main": "convergence-proto.js",
   "types": "convergence-proto.d.ts",
   "dependencies": {
-    "protobufjs": "6.9.0"
+    "protobufjs": "6.10.2"
   },
   "devDependencies": {
-    "bump-regex": "4.0.0",
-    "fs-extra": "9.0.0"
+    "bump-regex": "4.1.0",
+    "fs-extra": "9.1.0"
   }
 }
