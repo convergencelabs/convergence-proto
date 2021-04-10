@@ -26,11 +26,11 @@ developers := List(
   )
 )
 
-scalaVersion := "2.13.2"
+scalaVersion := "2.13.5"
 
 // Protocol Buffer Configuration
 libraryDependencies += "com.thesamet.scalapb" %% "scalapb-runtime" % scalapb.compiler.Version.scalapbVersion % "protobuf"
 
-PB.targets in Compile := Seq(
-  scalapb.gen(flatPackage = true) -> (sourceManaged in Compile).value
+Compile / PB.targets   := Seq(
+  scalapb.gen(flatPackage = true) -> (Compile / sourceManaged).value
 )
