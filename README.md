@@ -30,6 +30,8 @@ To use the Scala protocol bindings add the following dependency:
 libraryDependencies += "com.convergencelabs" %% "convergence-proto-scala" % "1.0.0"
 ```
 
+Run `sbt publishLocal` to publish to a local repository for e.g. the [Convergence Server](https://github.com/convergencelabs/convergence-server) to reference.
+
 # Building
 There are different build commands for each language binding. They are as follows:
 
