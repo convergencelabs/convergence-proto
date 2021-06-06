@@ -38,7 +38,7 @@ message OpenRealtimeModelResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   string modelId = 2;
   string collection = 3;
   string valueIdPrefix = 4;
@@ -57,7 +57,7 @@ message CloseRealtimeModelRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
 }
 
 message CloseRealTimeModelResponseMessage {
@@ -92,7 +92,7 @@ message RemoteClientClosedMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   string sessionId = 2;
 }
 
@@ -101,7 +101,7 @@ message RemoteClientOpenedMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   string sessionId = 2;
 }
 
@@ -110,7 +110,7 @@ message ModelForceCloseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   string reason = 2;
   int32 reasonCode = 3;
 }
@@ -177,7 +177,7 @@ message ModelResyncResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
   // The resource id to use for further communication on this model.
-  string resourceId = 1;
+  int32 resourceId = 1;
 
   // The servers current version of this model.
   int64 currentVersion = 2;
@@ -192,7 +192,7 @@ message ModelResyncClientCompleteMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   // The resource id of a model being resynchronized.
-  string resourceId = 1;
+  int32 resourceId = 1;
 
   // Indicates if the client desires to open the model after the resync.
   bool open = 2;
@@ -203,7 +203,7 @@ message ModelResyncServerCompleteMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   // These will be empty if the client did not want to open the model.
 
   // The sessionIds of the clients that have this model open.
@@ -222,7 +222,7 @@ message RemoteClientResyncStartedMessage {
     option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
     // The resourceId of the model this message relates to.
-    string resourceId = 1;
+    int32 resourceId = 1;
 
     // The session id of the remote client that started the resync
     string sessionId = 2;
@@ -234,7 +234,7 @@ message RemoteClientResyncCompletedMessage {
     option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
     // The resourceId of the model this message relates to.
-    string resourceId = 1;
+    int32 resourceId = 1;
 
     // The session id of the remote client that completed the resync
     string sessionId = 2;
@@ -286,7 +286,7 @@ message ModelPermissionsChangedMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   ModelPermissionsData permissions = 2;
 }
 
@@ -329,7 +329,7 @@ message OperationSubmissionMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   int32 sequenceNumber = 2;
   int64 contextVersion = 3;
   OperationData operation = 4;
@@ -340,7 +340,7 @@ message OperationAcknowledgementMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   int32 sequenceNumber = 2;
   int64 version = 3;
   google.protobuf.Timestamp timestamp = 4;
@@ -351,7 +351,7 @@ message RemoteOperationMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   string sessionId = 2;
   int64 contextVersion = 3;
   google.protobuf.Timestamp timestamp = 4;
@@ -366,7 +366,7 @@ message ShareReferenceMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   google.protobuf.StringValue valueId = 2;
   string key = 3;
   ReferenceValues references = 4;
@@ -378,7 +378,7 @@ message RemoteReferenceSharedMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   google.protobuf.StringValue valueId = 2;
   string key = 3;
   ReferenceValues references = 4;
@@ -390,7 +390,7 @@ message UnshareReferenceMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   google.protobuf.StringValue valueId = 2;
   string key = 3;
 }
@@ -400,7 +400,7 @@ message RemoteReferenceUnsharedMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   google.protobuf.StringValue valueId = 2;
   string key = 3;
   string sessionId = 4;
@@ -411,7 +411,7 @@ message SetReferenceMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   google.protobuf.StringValue valueId = 2;
   string key = 3;
   ReferenceValues references = 4;
@@ -423,7 +423,7 @@ message RemoteReferenceSetMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   google.protobuf.StringValue valueId = 2;
   string key = 3;
   ReferenceValues references = 4;
@@ -435,7 +435,7 @@ message ClearReferenceMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   google.protobuf.StringValue valueId = 2;
   string key = 3;
 }
@@ -445,7 +445,7 @@ message RemoteReferenceClearedMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  string resourceId = 1;
+  int32 resourceId = 1;
   google.protobuf.StringValue valueId = 2;
   string key = 3;
   string sessionId = 4;
