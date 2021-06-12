@@ -9,52 +9,74 @@ syntax = "proto3";
 package com.convergencelabs.convergence.proto.core;
 
 import "google/protobuf/wrappers.proto";
+import "google/protobuf/struct.proto";
+
 import "scalapb/scalapb.proto";
 
-message PingMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ProtocolMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
-}
+import "core/identityData.proto";
 
-message PongMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ProtocolMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
-}
-
-message HandshakeRequestMessage {
+message ConnectionRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ProtocolMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.AuthenticationMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  bool reconnect = 1;
-  google.protobuf.StringValue reconnectToken = 2;
-  string client = 3;
-  string clientVersion = 4;
+  string client = 1;
+  string clientVersion = 2;
+
+  message PasswordAuthRequestData {
+    string username = 1;
+    string password = 2;
+  }
+
+  message JwtAuthRequestData {
+    string jwt = 1;
+  }
+
+  message ReconnectTokenAuthRequestData {
+    string token = 1;
+  }
+
+  message AnonymousAuthRequestData {
+    google.protobuf.StringValue displayName = 1;
+  }
+
+  oneof auth {
+    PasswordAuthRequestData password = 3;
+    JwtAuthRequestData jwt = 4;
+    AnonymousAuthRequestData anonymous = 5;
+    ReconnectTokenAuthRequestData reconnect = 6;
+  }
 }
 
-message HandshakeResponseMessage {
+
+message ConnectionResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ProtocolMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.AuthenticationMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
 
-  bool success = 1;
+  message ServerData {
+    string version = 1;
+  }
 
-  message ErrorData {
+  message ConnectionSuccessData {
+    string namespace = 1;
+    string domainId = 2;
+    DomainUserData user = 3;
+    string sessionId = 4;
+    string reconnectToken = 5;
+    map<string, google.protobuf.Value> presenceState = 6;
+  }
+
+  message ConnectionFailureData {
     string code = 1;
     string details = 2;
+    bool retryOk = 3;
   }
 
-  ErrorData error = 2;
-  bool retryOk = 3;
+  ServerData server = 1;
 
-  string namespace = 4;
-  string id = 5;
-
-  message ProtocolConfigData {
-    bool heartbeatEnabled = 1;
+  oneof response {
+    ConnectionSuccessData success = 3;
+    ConnectionFailureData failure = 4;
   }
-
-  ProtocolConfigData protocolConfig = 6;
 }

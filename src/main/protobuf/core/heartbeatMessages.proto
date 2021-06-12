@@ -1,0 +1,24 @@
+/*
+ * Copyright (C) Convergence Labs, Inc
+ *
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE', which is part of this source code package.
+ */
+syntax = "proto3";
+
+package com.convergencelabs.convergence.proto.core;
+
+import "google/protobuf/wrappers.proto";
+import "scalapb/scalapb.proto";
+
+message PingMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ProtocolMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+}
+
+message PongMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ProtocolMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+}

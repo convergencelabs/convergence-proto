@@ -11,7 +11,7 @@ package com.convergencelabs.convergence.proto;
 
 import "google/protobuf/wrappers.proto";
 
-import "core/authenticationMessages.proto";
+import "core/heartbeatMessages.proto";
 import "core/connectionMessages.proto";
 import "core/permissions.proto";
 import "core/commonMessages.proto";
@@ -47,41 +47,8 @@ message ConvergenceMessage {
     core.PingMessage ping = 5;
     core.PongMessage pong = 6;
 
-    core.HandshakeRequestMessage handshakeRequest = 7;
-    core.HandshakeResponseMessage handshakeResponse = 8;
-
-    core.AuthenticationRequestMessage authenticationRequest = 9;
-    core.AuthenticationResponseMessage authenticationResponse = 10;
-
-    //
-    // Permissions
-    //
-    core.GetClientPermissionsRequestMessage getClientPermissionsRequest = 601;
-    core.GetClientPermissionsResponseMessage getClientPermissionsResponse = 602;
-
-    core.AddPermissionsRequestMessage addPermissionsRequest = 603;
-    core.AddPermissionsResponseMessage addPermissionsResponse = 604;
-
-    core.RemovePermissionsRequestMessage removePermissionsRequest = 605;
-    core.RemovePermissionsResponseMessage removePermissionsResponse = 606;
-
-    core.SetPermissionsRequestMessage setPermissionsRequest = 607;
-    core.SetPermissionsResponseMessage setPermissionsResponse = 608;
-
-    core.GetWorldPermissionsRequestMessage getWorldPermissionsRequest = 609;
-    core.GetWorldPermissionsResponseMessage getWorldPermissionsResponse = 610;
-
-    core.GetAllUserPermissionsRequestMessage getAllUserPermissionsRequest = 611;
-    core.GetAllUserPermissionsResponseMessage getAllUserPermissionsResponse = 612;
-
-    core.GetUserPermissionsRequestMessage getUserPermissionsRequest = 613;
-    core.GetUserPermissionsResponseMessage getUserPermissionsResponse = 614;
-
-    core.GetAllGroupPermissionsRequestMessage getAllGroupPermissionsRequest = 615;
-    core.GetAllGroupPermissionsResponseMessage getAllGroupPermissionsResponse = 616;
-
-    core.GetGroupPermissionsRequestMessage getGroupPermissionsRequest = 617;
-    core.GetGroupPermissionsResponseMessage getGroupPermissionsResponse = 618;
+    core.ConnectionRequestMessage connectionRequest = 7;
+    core.ConnectionResponseMessage connectionResponse = 8;
 
     //
     // Models
@@ -261,5 +228,35 @@ message ConvergenceMessage {
 
     chat.ChatHistoryRequestMessage getChatHistoryRequest = 539;
     chat.ChatHistoryResponseMessage getChatHistoryResponse = 540;
+
+    //
+    // Permissions
+    //
+    core.GetClientPermissionsRequestMessage getClientPermissionsRequest = 601;
+    core.GetClientPermissionsResponseMessage getClientPermissionsResponse = 602;
+
+    core.AddPermissionsRequestMessage addPermissionsRequest = 603;
+    core.AddPermissionsResponseMessage addPermissionsResponse = 604;
+
+    core.RemovePermissionsRequestMessage removePermissionsRequest = 605;
+    core.RemovePermissionsResponseMessage removePermissionsResponse = 606;
+
+    core.SetPermissionsRequestMessage setPermissionsRequest = 607;
+    core.SetPermissionsResponseMessage setPermissionsResponse = 608;
+
+    core.GetWorldPermissionsRequestMessage getWorldPermissionsRequest = 609;
+    core.GetWorldPermissionsResponseMessage getWorldPermissionsResponse = 610;
+
+    core.GetAllUserPermissionsRequestMessage getAllUserPermissionsRequest = 611;
+    core.GetAllUserPermissionsResponseMessage getAllUserPermissionsResponse = 612;
+
+    core.GetUserPermissionsRequestMessage getUserPermissionsRequest = 613;
+    core.GetUserPermissionsResponseMessage getUserPermissionsResponse = 614;
+
+    core.GetAllGroupPermissionsRequestMessage getAllGroupPermissionsRequest = 615;
+    core.GetAllGroupPermissionsResponseMessage getAllGroupPermissionsResponse = 616;
+
+    core.GetGroupPermissionsRequestMessage getGroupPermissionsRequest = 617;
+    core.GetGroupPermissionsResponseMessage getGroupPermissionsResponse = 618;
   }
 }
