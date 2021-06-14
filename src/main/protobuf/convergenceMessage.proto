@@ -38,9 +38,11 @@ message ConvergenceMessage {
   // message is a response message.
   google.protobuf.Int32Value responseId = 2;
 
-
   // The body holds the specific message that was sent / received.
   oneof body {
+    //
+    // Core
+    //
     core.OkResponse ok = 3;
     core.ErrorMessage error = 4;
 
@@ -130,24 +132,29 @@ message ConvergenceMessage {
     identity.UserGroupsForUsersRequestMessage userGroupsForUsersRequest = 206;
     identity.UserGroupsForUsersResponseMessage userGroupsForUsersResponse = 207;
 
-
     //
     // Activity
     //
     activity.ActivityParticipantsRequestMessage activityParticipantsRequest = 300;
     activity.ActivityParticipantsResponseMessage activityParticipantsResponse = 301;
 
-    activity.ActivityJoinRequestMessage activityJoinRequest = 302;
-    activity.ActivityJoinResponseMessage activityJoinResponse = 303;
+    activity.ActivityCreateRequestMessage activityCreateRequest = 302;
+    // 303 reserved for ActivityCreateResponseMessage
 
-    activity.ActivityLeaveRequestMessage activityLeaveRequest = 304;
-    activity.ActivityLeaveResponseMessage activityLeaveResponse = 305;
+    activity.ActivityDeleteRequestMessage activityDeleteRequest = 304;
+    // 304 reserved for ActivityCreateResponseMessage
 
-    activity.ActivitySessionJoinedMessage activitySessionJoined = 306;
-    activity.ActivitySessionLeftMessage activitySessionLeft = 307;
+    activity.ActivityJoinRequestMessage activityJoinRequest = 306;
+    activity.ActivityJoinResponseMessage activityJoinResponse = 307;
 
-    activity.ActivityUpdateStateMessage activityUpdateState = 308;
-    activity.ActivityStateUpdatedMessage activityStateUpdated = 309;
+    activity.ActivityLeaveRequestMessage activityLeaveRequest = 308;
+    // 309 reserved for response message.
+
+    activity.ActivitySessionJoinedMessage activitySessionJoined = 310;
+    activity.ActivitySessionLeftMessage activitySessionLeft = 311;
+
+    activity.ActivityUpdateStateMessage activityUpdateState = 312;
+    activity.ActivityStateUpdatedMessage activityStateUpdated = 313;
 
     //
     // Presence
@@ -232,17 +239,17 @@ message ConvergenceMessage {
     //
     // Permissions
     //
-    core.GetClientPermissionsRequestMessage getClientPermissionsRequest = 601;
-    core.GetClientPermissionsResponseMessage getClientPermissionsResponse = 602;
+    core.GetConnectedUserPermissionsRequestMessage getConnectedUserPermissionsRequestMessage = 601;
+    core.GetConnectedUserPermissionsResponseMessage getConnectedUserPermissionsResponseMessage = 602;
 
     core.AddPermissionsRequestMessage addPermissionsRequest = 603;
-    core.AddPermissionsResponseMessage addPermissionsResponse = 604;
+    // 604 reserved for AddPermissionsResponseMessage
 
     core.RemovePermissionsRequestMessage removePermissionsRequest = 605;
-    core.RemovePermissionsResponseMessage removePermissionsResponse = 606;
+    // 606 reserved for RemovePermissionsResponseMessage
 
     core.SetPermissionsRequestMessage setPermissionsRequest = 607;
-    core.SetPermissionsResponseMessage setPermissionsResponse = 608;
+    // 608 reserved for SetPermissionsResponseMessage
 
     core.GetWorldPermissionsRequestMessage getWorldPermissionsRequest = 609;
     core.GetWorldPermissionsResponseMessage getWorldPermissionsResponse = 610;

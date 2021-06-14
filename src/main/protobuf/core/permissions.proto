@@ -12,10 +12,6 @@ import "scalapb/scalapb.proto";
 
 import "core/identityData.proto";
 
-enum PermissionType {
-  PERMISSION_TYPE_NOT_SET = 0;
-  CHAT = 1;
-}
 
 message UserPermissionsEntry {
   DomainUserIdData user = 1;
@@ -26,66 +22,70 @@ message PermissionsList {
   repeated string values = 1;
 }
 
+message PermissionTarget {
+  message Chat {
+    string id = 1;
+  }
+
+  message Activity {
+    string type = 1;
+    string id = 2;
+  }
+
+  oneof targetType {
+    Chat chat = 1;
+    Activity activity = 2;
+  }
+}
+
 message AddPermissionsRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionRequest";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  PermissionType idType = 1;
-  string id = 2;
-  repeated string world = 3;
-  repeated UserPermissionsEntry user = 4;
-  map<string, PermissionsList> group = 5;
+  PermissionTarget target = 1;
+  repeated string world = 2;
+  repeated UserPermissionsEntry user = 3;
+  map<string, PermissionsList> group = 4;
 }
 
-message AddPermissionsResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionsMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
-}
+// Response will be an OkResponse
 
 message RemovePermissionsRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionRequest";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  PermissionType idType = 1;
-  string id = 2;
-  repeated string world = 3;
-  repeated UserPermissionsEntry user = 4;
-  map<string, PermissionsList> group = 5;
+  PermissionTarget target = 1;
+  repeated string world = 2;
+  repeated UserPermissionsEntry user = 3;
+  map<string, PermissionsList> group = 4;
 }
 
-message RemovePermissionsResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionsMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
-}
+// Response will be an OkResponse
 
 message SetPermissionsRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionRequest";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  PermissionType idType = 1;
-  string id = 2;
-  repeated string world = 3;
-  repeated UserPermissionsEntry user = 4;
-  map<string, PermissionsList> group = 5;
+  PermissionTarget target = 1;
+  repeated string world = 2;
+  repeated UserPermissionsEntry user = 3;
+  map<string, PermissionsList> group = 4;
 }
 
-message SetPermissionsResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionsMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
-}
+// Response will be an OkResponse
 
-message GetClientPermissionsRequestMessage {
+/**
+ * Gets the permissions for the specified target for the connected client
+ * that is sending the request.
+ */
+message GetConnectedUserPermissionsRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionRequest";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  PermissionType idType = 1;
-  string id = 2;
+  PermissionTarget target = 1;
 }
 
-message GetClientPermissionsResponseMessage {
+message GetConnectedUserPermissionsResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionsMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
@@ -93,12 +93,15 @@ message GetClientPermissionsResponseMessage {
   repeated string permissions = 1;
 }
 
+
+/**
+ * Get the world permissions for the given target.
+ */
 message GetWorldPermissionsRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionRequest";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  PermissionType idType = 1;
-  string id = 2;
+  PermissionTarget target = 1;
 }
 
 message GetWorldPermissionsResponseMessage {
@@ -109,12 +112,13 @@ message GetWorldPermissionsResponseMessage {
   repeated string permissions = 1;
 }
 
+
+
 message GetAllUserPermissionsRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionRequest";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  PermissionType idType = 1;
-  string id = 2;
+  PermissionTarget target = 1;
 }
 
 message GetAllUserPermissionsResponseMessage {
@@ -129,8 +133,7 @@ message GetAllGroupPermissionsRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionRequest";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  PermissionType idType = 1;
-  string id = 2;
+  PermissionTarget target = 1;
 }
 
 message GetAllGroupPermissionsResponseMessage {
@@ -145,9 +148,8 @@ message GetUserPermissionsRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionRequest";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  PermissionType idType = 1;
-  string id = 2;
-  DomainUserIdData user = 3;
+  PermissionTarget target = 1;
+  DomainUserIdData user = 2;
 }
 
 message GetUserPermissionsResponseMessage {
@@ -162,9 +164,8 @@ message GetGroupPermissionsRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionRequest";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  PermissionType idType = 1;
-  string id = 2;
-  string groupId = 3;
+  PermissionTarget target = 1;
+  string groupId = 2;
 }
 
 message GetGroupPermissionsResponseMessage {

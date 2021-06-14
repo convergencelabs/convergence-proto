@@ -6,7 +6,7 @@
  */
 package com.convergencelabs.convergence.proto
 
-import com.convergencelabs.convergence.proto.core.PermissionType
+import com.convergencelabs.convergence.proto.core.PermissionTarget
 
 trait ServerMessage
 trait ClientMessage
@@ -26,5 +26,5 @@ trait PermissionsMessage
 trait PresenceMessage
 
 trait PermissionRequest extends RequestMessage with PermissionsMessage  {
-  def idType: PermissionType
+  def target: Option[PermissionTarget]
 }

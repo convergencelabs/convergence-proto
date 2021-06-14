@@ -9,18 +9,88 @@ syntax = "proto3";
 package com.convergencelabs.convergence.proto.activity;
 
 import "google/protobuf/struct.proto";
-
 import "scalapb/scalapb.proto";
-
 import "activity/activityData.proto";
+import "core/permissions.proto";
+
+//
+// Create Activity
+//
+
+message ActivityCreateRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+
+  string activityType = 1;
+  string activityId = 2;
+
+  repeated string worldPermissions = 3;
+  repeated core.UserPermissionsEntry userPermissions = 4;
+  map<string, core.PermissionsList> groupPermissions = 5;
+}
+
+// Response message will be OkResponse
+
+
+//
+// Delete Activity
+//
+
+message ActivityDeleteRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+
+  string activityType = 1;
+  string activityId = 2;
+}
+
+// Response message will be OkResponse
+
+
+//
+// Get ActivityParticipants
+//
+
+message ActivityParticipantsRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+
+  string activityType = 1;
+  string activityId = 2;
+}
+
+message ActivityParticipantsResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+
+  map<string, ActivityStateData> state = 1;
+}
+
+
+//
+// Join Activity
+//
 
 message ActivityJoinRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
-  string activityId = 1;
-  map<string, google.protobuf.Value> state = 2;
+  message AutoCreateData {
+    bool ephemeral = 1;
+    repeated string worldPermissions = 3;
+    repeated core.UserPermissionsEntry userPermissions = 4;
+    map<string, core.PermissionsList> groupPermissions = 5;
+  }
+
+  string activityType = 1;
+  string activityId = 2;
+  map<string, google.protobuf.Value> state = 3;
+  AutoCreateData autoCreateData = 4;
 }
 
 message ActivityJoinResponseMessage {
@@ -32,6 +102,9 @@ message ActivityJoinResponseMessage {
   map<string, ActivityStateData> state = 2;
 }
 
+//
+// Leave Activity
+//
 message ActivityLeaveRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
@@ -40,11 +113,29 @@ message ActivityLeaveRequestMessage {
   int32 resourceId = 1;
 }
 
-message ActivityLeaveResponseMessage {
+// Response message will be OkResponse
+
+
+//
+// Update activity state
+//
+
+message ActivityUpdateStateMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+
+  int32 resourceId = 1;
+  map<string, google.protobuf.Value> set = 2;
+  bool complete = 3;
+  repeated string removed = 4;
 }
+
+
+//
+// Messages from the server to the client about events occurring
+// for a joined activity.
+//
 
 message ActivitySessionJoinedMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
@@ -65,17 +156,6 @@ message ActivitySessionLeftMessage {
   string sessionId = 2;
 }
 
-message ActivityUpdateStateMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
-
-  int32 resourceId = 1;
-  map<string, google.protobuf.Value> set = 2;
-  bool complete = 3;
-  repeated string removed = 4;
-}
-
 message ActivityStateUpdatedMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
@@ -86,21 +166,4 @@ message ActivityStateUpdatedMessage {
   map<string, google.protobuf.Value> set = 3;
   bool complete = 4;
   repeated string removed = 5;
-}
-
-
-message ActivityParticipantsRequestMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
-
-  string activityId = 1;
-}
-
-message ActivityParticipantsResponseMessage {
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
-  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
-
-  map<string, ActivityStateData> state = 1;
 }
