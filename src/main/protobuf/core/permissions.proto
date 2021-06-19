@@ -66,10 +66,23 @@ message SetPermissionsRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionRequest";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
+  message SetWorld {
+    repeated string permissions = 1;
+  }
+
+
+  message SetUser {
+    repeated UserPermissionsEntry permissions = 1;
+  }
+
+  message SetGroup {
+    map<string, PermissionsList> permissions = 1;
+  }
+
   PermissionTarget target = 1;
-  repeated string world = 2;
-  repeated UserPermissionsEntry user = 3;
-  map<string, PermissionsList> group = 4;
+  SetWorld world = 2;
+  SetUser user = 3;
+  SetGroup group = 4;
 }
 
 // Response will be an OkResponse
@@ -78,14 +91,14 @@ message SetPermissionsRequestMessage {
  * Gets the permissions for the specified target for the connected client
  * that is sending the request.
  */
-message GetConnectedUserPermissionsRequestMessage {
+message ResolvePermissionsForConnectedSessionRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionRequest";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
 
   PermissionTarget target = 1;
 }
 
-message GetConnectedUserPermissionsResponseMessage {
+message ResolvePermissionsForConnectedSessionResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.PermissionsMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";

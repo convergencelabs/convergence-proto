@@ -239,8 +239,8 @@ message ConvergenceMessage {
     //
     // Permissions
     //
-    core.GetConnectedUserPermissionsRequestMessage getConnectedUserPermissionsRequestMessage = 601;
-    core.GetConnectedUserPermissionsResponseMessage getConnectedUserPermissionsResponseMessage = 602;
+    core.ResolvePermissionsForConnectedSessionRequestMessage resolvePermissionsForConnectedSessionRequest = 601;
+    core.ResolvePermissionsForConnectedSessionResponseMessage resolvePermissionsForConnectedSessionResponse = 602;
 
     core.AddPermissionsRequestMessage addPermissionsRequest = 603;
     // 604 reserved for AddPermissionsResponseMessage
