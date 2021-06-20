@@ -9,6 +9,7 @@ syntax = "proto3";
 package com.convergencelabs.convergence.proto.activity;
 
 import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
 import "scalapb/scalapb.proto";
 import "activity/activityData.proto";
 import "core/permissions.proto";
@@ -89,8 +90,9 @@ message ActivityJoinRequestMessage {
 
   string activityType = 1;
   string activityId = 2;
-  map<string, google.protobuf.Value> state = 3;
-  AutoCreateData autoCreateData = 4;
+  bool lurk = 3;
+  map<string, google.protobuf.Value> state = 4;
+  AutoCreateData autoCreateData = 5;
 }
 
 message ActivityJoinResponseMessage {
@@ -100,6 +102,8 @@ message ActivityJoinResponseMessage {
 
   int32 resourceId = 1;
   map<string, ActivityStateData> state = 2;
+  bool ephemeral = 3;
+  google.protobuf.Timestamp created = 5;
 }
 
 //

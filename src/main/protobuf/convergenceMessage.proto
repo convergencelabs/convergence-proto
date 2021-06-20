@@ -251,19 +251,7 @@ message ConvergenceMessage {
     core.SetPermissionsRequestMessage setPermissionsRequest = 607;
     // 608 reserved for SetPermissionsResponseMessage
 
-    core.GetWorldPermissionsRequestMessage getWorldPermissionsRequest = 609;
-    core.GetWorldPermissionsResponseMessage getWorldPermissionsResponse = 610;
-
-    core.GetAllUserPermissionsRequestMessage getAllUserPermissionsRequest = 611;
-    core.GetAllUserPermissionsResponseMessage getAllUserPermissionsResponse = 612;
-
-    core.GetUserPermissionsRequestMessage getUserPermissionsRequest = 613;
-    core.GetUserPermissionsResponseMessage getUserPermissionsResponse = 614;
-
-    core.GetAllGroupPermissionsRequestMessage getAllGroupPermissionsRequest = 615;
-    core.GetAllGroupPermissionsResponseMessage getAllGroupPermissionsResponse = 616;
-
-    core.GetGroupPermissionsRequestMessage getGroupPermissionsRequest = 617;
-    core.GetGroupPermissionsResponseMessage getGroupPermissionsResponse = 618;
+    core.GetPermissionsRequestMessage getPermissionsRequest = 609;
+    core.GetPermissionsResponseMessage getPermissionsResponse = 610;
   }
 }
