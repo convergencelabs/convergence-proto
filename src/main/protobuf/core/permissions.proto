@@ -70,13 +70,14 @@ message SetPermissionsRequestMessage {
     repeated string permissions = 1;
   }
 
-
   message SetUser {
     repeated UserPermissionsEntry permissions = 1;
+    bool replaceAll = 2;
   }
 
   message SetGroup {
     map<string, PermissionsList> permissions = 1;
+    bool replaceAll = 2;
   }
 
   PermissionTarget target = 1;

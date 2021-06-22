@@ -9,7 +9,6 @@ syntax = "proto3";
 package com.convergencelabs.convergence.proto.model;
 
 import "google/protobuf/timestamp.proto";
-import "scalapb/scalapb.proto";
 
 message ObjectValue {
   string id = 1;

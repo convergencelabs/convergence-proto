@@ -8,7 +8,6 @@ syntax = "proto3";
 
 package com.convergencelabs.convergence.proto.core;
 
-import "google/protobuf/wrappers.proto";
 import "scalapb/scalapb.proto";
 
 message PingMessage {

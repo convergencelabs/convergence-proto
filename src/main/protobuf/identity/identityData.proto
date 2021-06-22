@@ -8,8 +8,6 @@ syntax = "proto3";
 
 package com.convergencelabs.convergence.proto.identity;
 
-import "google/protobuf/wrappers.proto";
-
 import "core/identityData.proto";
 
 enum UserField {

@@ -9,8 +9,6 @@ syntax = "proto3";
 package com.convergencelabs.convergence.proto.model;
 
 import "google/protobuf/timestamp.proto";
-import "scalapb/scalapb.proto";
-
 import "model/modelDataValue.proto";
 
 message StringInsertOperationData {

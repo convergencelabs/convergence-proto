@@ -10,10 +10,10 @@ This repository defines the Convergence client-server, realtime, WebSocket proto
 Convergence supplies a JavaScript client with the server implemented in Scala. Thus this project builds JavaScript and Scala bindings.  The JavaScript bindings are provided by [protobuf.js](https://github.com/protobufjs/protobuf.js). The Scala bindings are provided by [ScalaPB](https://scalapb.github.io/).
 
 # Dependencies
-* [NodeJS](https://nodejs.org/) >= 10
-* [protobuf.js](https://github.com/protobufjs/protobuf.js) = 6.9.0
-* [sbt](https://www.scala-sbt.org/) >= 1.3
-* [ScalaPB](https://scalapb.github.io/) = 0.9.4
+* [NodeJS](https://nodejs.org/) >= 14
+* [protobuf.js](https://github.com/protobufjs/protobuf.js) = 6.10
+* [sbt](https://www.scala-sbt.org/) >= 1.5
+* [ScalaPB](https://scalapb.github.io/) = 0.11.0
 
 # Installation
 
