@@ -171,3 +171,20 @@ message ActivityStateUpdatedMessage {
   bool complete = 4;
   repeated string removed = 5;
 }
+
+message ActivityDeletedMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+
+  int32 resourceId = 1;
+}
+
+message ActivityForceLeaveMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.NormalMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ActivityMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+
+  int32 resourceId = 1;
+  string reason = 2;
+}

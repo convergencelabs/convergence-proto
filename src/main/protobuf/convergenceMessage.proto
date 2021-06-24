@@ -156,6 +156,10 @@ message ConvergenceMessage {
     activity.ActivityUpdateStateMessage activityUpdateState = 312;
     activity.ActivityStateUpdatedMessage activityStateUpdated = 313;
 
+    activity.ActivityDeletedMessage activityDeleted = 314;
+    activity.ActivityForceLeaveMessage activityForceLeave = 315;
+
+
     //
     // Presence
     //
