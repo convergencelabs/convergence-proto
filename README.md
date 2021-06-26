@@ -3,15 +3,17 @@
 </div>
 
 # Convergence Protocol
-[![Build Status](https://travis-ci.org/convergencelabs/convergence-proto.svg?branch=master)](https://travis-ci.org/convergencelabs/convergence-proto)
+[![Scala Build](https://github.com/convergencelabs/convergence-proto/actions/workflows/scala-build.yml/badge.svg)](https://github.com/convergencelabs/convergence-proto/actions/workflows/scala-build.yml)
+[![JavaScript Build](https://github.com/convergencelabs/convergence-proto/actions/workflows/js-build.yml/badge.svg)](https://github.com/convergencelabs/convergence-proto/actions/workflows/js-build.yml)
+
 
 This repository defines the Convergence client-server, realtime, WebSocket protocol.  The protocol is specified using [Google Protocol Buffers](https://developers.google.com/protocol-buffers) version 3 messages. The protocol itself can be found in the [src/main/protobuf](src/main/protobuf) directory. 
 
 Convergence supplies a JavaScript client with the server implemented in Scala. Thus this project builds JavaScript and Scala bindings.  The JavaScript bindings are provided by [protobuf.js](https://github.com/protobufjs/protobuf.js). The Scala bindings are provided by [ScalaPB](https://scalapb.github.io/).
 
 # Dependencies
-* [NodeJS](https://nodejs.org/) >= 14
-* [protobuf.js](https://github.com/protobufjs/protobuf.js) = 6.10
+* [NodeJS](https://nodejs.org/) >= 16.0
+* [protobuf.js](https://github.com/protobufjs/protobuf.js) = 6.11
 * [sbt](https://www.scala-sbt.org/) >= 1.5
 * [ScalaPB](https://scalapb.github.io/) = 0.11.0
 
