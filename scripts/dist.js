@@ -30,7 +30,6 @@ function packageJson() {
   }
 }
 
-
 function createProtoJson() {
   pbjs.main([
     "--target", "json",
