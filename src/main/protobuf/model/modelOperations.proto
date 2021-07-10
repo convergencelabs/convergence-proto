@@ -11,18 +11,12 @@ package com.convergencelabs.convergence.proto.model;
 import "google/protobuf/timestamp.proto";
 import "model/modelDataValue.proto";
 
-message StringInsertOperationData {
+message StringSpliceOperationData {
   string id = 1;
   bool noOp = 2;
   int32 index = 3;
-  string value = 4;
-}
-
-message StringRemoveOperationData {
-  string id = 1;
-  bool noOp = 2;
-  int32 index = 3;
-  string value = 4;
+  int32 deleteCount = 4;
+  string insertedValue = 5;
 }
 
 message StringSetOperationData {
@@ -116,22 +110,21 @@ message DateSetOperationData {
 
 message DiscreteOperationData {
   oneof operation {
-    StringInsertOperationData stringInsertOperation = 1;
-    StringRemoveOperationData stringRemoveOperation = 2;
-    StringSetOperationData stringSetOperation = 3;
-    ArrayInsertOperationData arrayInsertOperation = 4;
-    ArrayRemoveOperationData arrayRemoveOperation = 5;
-    ArrayReplaceOperationData arrayReplaceOperation = 6;
-    ArrayMoveOperationData arrayMoveOperation = 7;
-    ArraySetOperationData arraySetOperation = 8;
-    ObjectAddPropertyOperationData objectAddPropertyOperation = 9;
-    ObjectSetPropertyOperationData objectSetPropertyOperation = 10;
-    ObjectRemovePropertyOperationData objectRemovePropertyOperation = 11;
-    ObjectSetOperationData objectSetOperation = 12;
-    NumberDeltaOperationData numberDeltaOperation = 13;
-    NumberSetOperationData numberSetOperation = 14;
-    BooleanSetOperationData booleanSetOperation = 15;
-    DateSetOperationData dateSetOperation = 16;
+    StringSpliceOperationData stringSpliceOperation = 1;
+    StringSetOperationData stringSetOperation = 2;
+    ArrayInsertOperationData arrayInsertOperation = 3;
+    ArrayRemoveOperationData arrayRemoveOperation = 4;
+    ArrayReplaceOperationData arrayReplaceOperation = 5;
+    ArrayMoveOperationData arrayMoveOperation = 6;
+    ArraySetOperationData arraySetOperation = 7;
+    ObjectAddPropertyOperationData objectAddPropertyOperation = 8;
+    ObjectSetPropertyOperationData objectSetPropertyOperation = 9;
+    ObjectRemovePropertyOperationData objectRemovePropertyOperation = 10;
+    ObjectSetOperationData objectSetOperation = 11;
+    NumberDeltaOperationData numberDeltaOperation = 12;
+    NumberSetOperationData numberSetOperation = 13;
+    BooleanSetOperationData booleanSetOperation = 14;
+    DateSetOperationData dateSetOperation = 15;
   }
 }
 
