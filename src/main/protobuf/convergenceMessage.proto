@@ -15,6 +15,7 @@ import "core/heartbeatMessages.proto";
 import "core/connectionMessages.proto";
 import "core/permissions.proto";
 import "core/commonMessages.proto";
+import "core/utilityMessages.proto";
 
 import "activity/activityMessages.proto";
 import "chat/chatMessages.proto";
@@ -51,6 +52,9 @@ message ConvergenceMessage {
 
     core.ConnectionRequestMessage connectionRequest = 7;
     core.ConnectionResponseMessage connectionResponse = 8;
+
+    core.GetServerTimeRequestMessage serverTimeRequest = 20;
+    core.GetServerTimeResponseMessage serverTimeResponse = 21;
 
     //
     // Models

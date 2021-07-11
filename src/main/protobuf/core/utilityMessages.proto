@@ -1,0 +1,25 @@
+/*
+ * Copyright (C) Convergence Labs, Inc
+ *
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE', which is part of this source code package.
+ */
+syntax = "proto3";
+
+package com.convergencelabs.convergence.proto.core;
+
+import "scalapb/scalapb.proto";
+import "google/protobuf/timestamp.proto";
+
+
+message GetServerTimeRequestMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
+}
+
+message GetServerTimeResponseMessage {
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
+  option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
+
+  google.protobuf.Timestamp serverTime = 1;
+}
