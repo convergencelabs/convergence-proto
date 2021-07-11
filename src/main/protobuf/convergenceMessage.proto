@@ -121,6 +121,9 @@ message ConvergenceMessage {
     model.HistoricalOperationRequestMessage historicalOperationsRequest = 141;
     model.HistoricalOperationsResponseMessage historicalOperationsResponse = 142;
 
+    model.GetVersionAtTimeRequestMessage modelGetVersionAtTimeRequest = 143;
+    model.GetVersionAtTimeResponseMessage modelGetVersionAtTimeResponse = 144;
+
     //
     // Identity
     //
