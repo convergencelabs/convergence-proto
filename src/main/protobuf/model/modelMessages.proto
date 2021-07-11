@@ -555,7 +555,7 @@ message HistoricalOperationsResponseMessage {
   repeated ModelOperationData operations = 1;
 }
 
-message GetVersionAtTimeRequestMessage {
+message ModelGetVersionAtTimeRequestMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.RequestMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.HistoricalModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ClientMessage";
@@ -564,7 +564,7 @@ message GetVersionAtTimeRequestMessage {
   google.protobuf.Timestamp targetTime = 2;
 }
 
-message GetVersionAtTimeResponseMessage {
+message ModelGetVersionAtTimeResponseMessage {
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ResponseMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.HistoricalModelMessage";
   option (scalapb.message).extends = "com.convergencelabs.convergence.proto.ServerMessage";
