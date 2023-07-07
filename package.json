@@ -26,7 +26,7 @@
   "main": "convergence-proto.js",
   "types": "convergence-proto.d.ts",
   "dependencies": {
-    "protobufjs": "6.11.2"
+    "protobufjs": "7.2.4"
   },
   "devDependencies": {
     "bump-regex": "4.1.0",
